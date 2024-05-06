@@ -35,3 +35,4 @@ s
 *.blg
 *.tgz
 VERSION
+*.bak
