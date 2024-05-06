@@ -1,0 +1,23 @@
+% !TeX root = ../../thesis.tex
+\chapter{Summary}
+\label{ch:summary}
+
+Evolutionary reconstruction of ongoing viral outbreaks and epidemics using genomic sequence data can provide valuable insights into the evolution and spread of pathogens in an actionable time frame. %GB: the easy question here is whether you know the difference between an outbreak, an epidemic and a pandemic
+Bayesian phylodynamic inference represents a powerful tool for performing this task, but can be a complex and time-consuming endeavour which we show in our analyses of several hepatitis B virus data sets that comprise samples from multiple continents across a long time span.
+Such analyses require careful planning and decision-making regarding sequence and model selection, as any subsequent changes require a complete restart of the inference process.
+Recent developments in ‘online’ Bayesian phylogenetic methods enable scientists to efficiently update inferences upon the availability of new data, as is necessary during (ongoing) viral outbreaks that feature an increasing data flow over time.
+One limitation of phylogenetic inference is that it requires significant preprocessing of both sequence data and associated metadata relevant to the analysis.
+Reproducible analyses often require data to be subsampled by genotype, time, or based on other metadata, necessitating seamless integration between genomic sequence databases and phylogenetic inference software.
+In this thesis, we first demonstrate the utility of Bayesian phylodynamic inference in the analysis of three hepatitis B virus datasets---two of which leverage recently published genomes isolated from ancient mummies---to infer the evolutionary and migration history of the virus.
+Then, we implement a pipeline that enables BEAST 1.10 to make use of a continuous stream of data in a way that significantly eases the burden assiciated with preparing phylogenetic analyses.
+We apply this framework to data from seasonal Lassa virus outbreaks in Nigeria.
+% We find GLUE to be a particularly good use-case for Lassa virus, as its clade-aware data schema stores nucleotide alignments, eliminating many of the hurdles encountered when preprocessing genome sequence data derived from Lassa virus and other highly diverse segmented viruses. %GB: make sure to discuss other features of GLUE in the LASV chapter %Taking this sentence out, as it isn't really discussed in the thesis
+Finally, we propose generalizations of this framework for other ongoing viral epidemics (COVID-19, seasonal influenza, measles, etc.) to motivate future research.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Keep the following \cleardoublepage at the end of this file,
+% otherwise \includeonly includes empty pages.
+\cleardoublepage
+
+% vim: tw=70 nocindent expandtab foldmethod=marker foldmarker={{{}{,}{}}}

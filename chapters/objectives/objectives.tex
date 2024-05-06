@@ -1,0 +1,46 @@
+% !TeX root = ../../thesis.tex
+\chapter{Objectives}
+\label{ch:objectives}
+
+\section{Phylogeographic inference of HBV}
+
+In the first part of this thesis, we are interested in obtaining a better understanding of the spatiotemporal dynamics that have contributed to the current geographic diversity of \gls{hbv} genotypes A, D, and E.
+Unfortunately, one of the difficulties of analyzing \gls{hbv} is that \gls{hbv} genomic datasets generally contain very little temporal signal.
+To remedy this, we perform temporal phylogeographic analysis of contemporary \gls{hbv} genomes and explore how and if the addition of several ``ancient'' \gls{hbv} genomes isolated from the tissue of mummies \cite{muhlemann2018ancient, ross2018paradox} render these datasets suitable for Bayesian phylogeographic inference without the need for external calibration information.
+These ancient genomes range between 500--4,500 years in age, and cover a geographic range from central Asia to the Korean peninsula.
+The addition of these sequences provides more temporal signal to our data and helps generate more accurate reconstructions of the temporal aspects of the evolutionary history of \gls{hbv}.
+
+Beyond the accurate temporal inference of the evolutionary history of \gls{hbv}, we aim to reconstruct the migration history of the virus through time.
+In addition to the temporal signal that they contribute, the ancient genomes provide information about the historical locations of different \gls{hbv} genotypes.
+we aim to use these in tandem with our contemporary dataset of genomes to infer when major migration events have taken place over the history of each \gls{hbv} genotype.
+For this analysis, we strive to mitigate any potential sampling bias that is introduced by over- or under-sampling of specific locations in our dataset.
+
+Finally, we aim to phylogenetically place the novel set of \gls{hbv} genomes that are used in these analyses.
+In doing so, we seek to determine a ``subgenotype'' label for each new sequence.
+we will do this by first determining if new sequences fall within established clades of subgenotypes.
+If they do, we call the new sequence  members of that subgenotype.
+If not, we will compare those sequences with the existing known diversity of \gls{hbv} subgenotypes to hopefully determine an appropriate subgenotype label.
+
+\section{Seasonal outbreak analysis of LASV}
+
+In the second part of this thesis, we seek to better understand the dynamics of \gls{lasv} in ``real-time'' during seasonal outbreaks of Lassa fever in Nigeria.
+A major hindrance to this process is the significant amount of ``preprocessing'' currently required to begin any Bayesian phylogenetic analysis pipeline.
+It is a non-trivial process to add new data---even a single new genome---to an ongoing analysis; this often requires hand-made, bespoke preprocessing workflows.
+Here, we present a new method for automating one such workflow to facilitate rapid analysis of \gls{lasv} genomes during a seasonal outbreak.
+This workflow removes much of the manual labor required for Bayesian phylogenetic analysis and represents the first step toward creating a complete `online' \gls{beast} inference workflow.
+
+
+\section{Online BEAST roadmap}
+
+Finally, we present a framework by which this automated process may be extended in the future.
+Specifically, we propose a methodology by which the proposed pipeline may interact directly with existing genomic database tools to provide a turnkey database-to-analysis pipeline that is easily used and modified by any user, regardless of their familiarity with the existing phylogenetic analysis platform.
+We further describe some of the future work necessary to make this system robust to more phylogenetic models, and able to be run from start to finish without user intervention on cloud computing resources so that they are accessible to all researchers, regardless of access to physical computing resources.
+These improvements together constitute a platform in which fully `online' Bayesian phylogenetic analyses may be performed without exposing the user to the back-end operations, increasing both usability and interpretability.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Keep the following \cleardoublepage at the end of this file,
+% otherwise \includeonly includes empty pages.
+\cleardoublepage
+
+% vim: tw=70 nocindent expandtab foldmethod=marker foldmarker={{{}{,}{}}}

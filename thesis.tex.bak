@@ -1,0 +1,204 @@
+\documentclass[showinstructions,faculty=med,department=rega,phddegree=predoc,doctoralschool=bms]{kulphd}
+%\documentclass[showinstructions,faculty=firw,department=cws,phddegree=cws,doctoralschool=ads]{kulphd}
+%\documentclass[showinstructions,showlabels,coverfontpercent=100,faculty=firw,department=cws,phddegree=cws]{kulphd}
+%\documentclass[croppedpdf,showinstructions,faculty=firw,department=cws,phddegree=cws]{kulphd}
+%\documentclass[online,faculty=firw,department=cws,phddegree=cws]{kulphd}
+%\documentclass[print,bleed,cropmarks,faculty=firw,department=cws,phddegree=cws]{kulphd} % include bleed for the print service
+%\documentclass[print,faculty=firw,department=cws,phddegree=cws]{kulphd}
+%\documentclass[final,faculty=firw,department=cws,phddegree=cws]{kulphd}
+%\documentclass[showinstructions,faculty=firw,department=cws,phddegree=cws,epub]{kulphd}
+
+% !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+% !!                                                               !!
+% !!  WARNING: do not remove the following lines between           !!
+% !!  "%%% COVER: Settings %%%" and "%%% COVER: End settings %%%"  !!
+% !!                                                               !!
+% !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+%%% COVER: Settings %%%
+\title{Bayesian inference methodologies to reconstruct the evolution and spread of pathogens}
+%\subtitle{Multiscale computing for Dummies}
+
+\author{Barney}{Potter}
+
+\supervisor{Prof.~Dr.~G.~Baele}{}
+\supervisor{Dr.~M.S.~Gill}{}
+\president{Prof.~Dr.~G.~Opdenakker}
+\jury{Prof.~Dr.~P.~Lemey\\
+      Prof.~Dr.~J.~Matthijnssens\\
+}
+\externaljurymember{Prof.~Dr.~L.~Dupont}{Secretary}
+
+% Your research group within the department
+% e.g. iMinds-DistriNet, Scientific Computing Group, ...
+\researchgroup{Computational Evolutionary Virology}
+\website{} % Leave empty to hide
+\email{} % Leave empty to hide
+
+\address{Herestraat 49}
+\addresscity{3000 Leuven} % This is the default value. Note
+                              % that 'B-3001 Heverlee' is _incorrect_!!
+                              % /[https://www.kuleuven.be/communicatie/marketing/intranet/huisstijl/taalgebruik.html]
+
+\date{August 2020}
+\copyyear{2020}
+%\udc{XXX.XX}            % UDC, deposit number and ISBN are no longer necessary.
+%\depot{XXXX/XXXX/XX}    % Leave out the initial D/ (it is added
+                         % automatically)
+%\isbn{XXX-XX-XXXX-XXX-X}
+
+
+% Set spine width:
+\setlength{\kulphdspinewidth}{9mm}
+
+%% Set bleeds
+%\setlength{\defaultlbleed}{7mm}
+%\setlength{\defaultrbleed}{7mm}
+
+% Set custom cover page
+% \setcustomcoverpage{mycoverpage.tex} % mycoverpage.tex is the default
+
+%%% COVER: End settings %%%
+
+% for the nomenclature (comment out if you do not use the nomencl package
+\usepackage{nomencl}   % For nomenclature
+\renewcommand{\nomname}{List of Symbols}
+\newcommand{\myprintnomenclature}{%
+  \cleardoublepage%
+  \printnomenclature%
+  \chaptermark{\nomname}
+  \addcontentsline{toc}{chapter}{\nomname} %% comment to exclude from TOC
+}
+\makenomenclature%
+
+% for the glossary (comment out if you do not use the glossaries package)
+\usepackage{glossaries} % For list of abbreviations
+\newcommand{\glossname}{List of Abbreviations}
+\newcommand{\myprintglossary}{%
+  \renewcommand{\glossaryname}{\glossname}
+  \cleardoublepage%
+  \printglossary[title=\glossname]
+  \chaptermark{\glossname}
+  \addcontentsline{toc}{chapter}{\glossname} %% comment to exclude from TOC
+}
+\makeglossary%
+
+% For highlighting comments in red so that they are easily seen/removed later:
+\newcommand{\barneycomment}[1]{\textcolor{blue}{#1}}
+\newcommand{\guycomment}[1]{\textcolor{red}{#1}}
+
+% BibLaTeX
+%\usepackage[utf8]{inputenc}
+%\usepackage{csquotes}
+%\usepackage[
+  %hyperref=auto,
+  %mincrossrefs=999,
+  %backend=biber,
+  %style=authoryear-icomp
+%]{biblatex}
+%\addbibresource{allpapers.bib}
+
+% Fonts
+\usepackage{textcomp} % nice greek alphabet
+\usepackage{pifont}   % Dingbats
+\usepackage{booktabs}
+\usepackage{amssymb,amsthm}
+\usepackage{amsmath}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\makefrontcoverXII
+
+\maketitle
+
+\frontmatter % to get \pagenumbering{roman}
+
+% \includepreface{preface}
+\includeabstract{summary}
+% \includeabstractnl{abstractnl}
+
+% To create a list of abbreviations, there are 2 options
+% 1. manual creation of list of abbreviations and inclusion as a chapter
+%    \includeabbreviations{abbreviations}
+% 2. automatic generation via the glossary package
+%    \glossary{name=MD,description=molecular dynamics}
+\myprintglossary
+
+% To create a list of symbols, there are 2 options
+% 1. include a manually created nomenclature as a chapter
+%    \includenomenclature{nomenclaturechapter}
+% 2. automatic generation via the nomencl package
+%    \nomenclature[cB]{$c_B(\vec{x})$}{Characteristic function of $B$}
+% \myprintnomenclature
+
+\tableofcontents
+\listoffigures
+% \listoftables
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\mainmatter % to get \pagenumbering{arabic}
+
+% Show instructions on a separate page
+% \instructionschapters\cleardoublepage
+
+% Put all glossary definitions in one location
+\newglossaryentry{eids}{name={EIDs},description={Emerging infectious diseases. A number of infectious diseases, many of whom are caused by viruses, that have grown significantly in human impact in recent years (e.g. Zika, Ebola, Lassa)}}
+\newglossaryentry{hbv}{name={HBV},description={Hepatitis B virus. The causative agent of Hepatitis B, a liver disease infecting millions worldwide. One of two viruses being analyzed as part of this thesis, along with LASV}}
+\newglossaryentry{lasv}{name={LASV},description={Lassa virus. The causative agent of Lassa fever, a hemorrhagic fever that affects hundreds of thousands of people anually, primarily in sub-Saharan Africa. One of two viruses being analyzed as part of this thesis, along with HBV}}
+\newglossaryentry{ess}{name={ESS},description={Effective sample size. Metric representing the number of functionally independent samples are present in a posterior sample set}}
+\newglossaryentry{beast}{name={BEAST},description={Bayesian Evolutionary Analysis Sampling Trees. Software package implementing MCMC and related methods used for Bayesian phylogenetic inference in this thesis}}
+\newglossaryentry{mrca}{name={MRCA},description={Most recent common ancestor. The most recent organism from which a set of contemporary organisms are descended}}
+\newglossaryentry{mep}{name={MEP},description={Measurably evolving population. A set of organisms whose evolution can be directly observed over a period of time, and for which this evolutionary rate can be quantified as a function of time}}
+\newglossaryentry{mcmc}{name={MCMC},description={Markov chain Monte Carlo. A class of algorithms in which a target posterior distribution is parameterized (as a Markov chain), explored, and recorded}}
+\newglossaryentry{mcc}{name={MCC},description={Maximum clade credibility. Given a set of posterior trees, the individual tree whose internal nodes (``clades'') appear in the highest proportion of the entire distribution of trees}}
+\newglossaryentry{ctmc}{name={CTMC},description={Continuous-time Markov chain. Markov process in which jumps between states are parameterized in terms of their ``holding time'' in states as a continuous variable, rather than as dicrete-time jump probabilities}}
+\newglossaryentry{bssvs}{name={BSSVS},description={Bayesian stochastic serach variable selection. A method by which parameters' inclusion in a model are ``toggled'' randomly to determine whether those parameters should be considered part of the model}}
+\newglossaryentry{bf}{name={BF},description={Bayes factor. The likelihood ratio of the marginal likelihood of two different hypotheses}}
+\newglossaryentry{dag}{name={DAG},description={Directed acyclic graph. A graphical representation of the ``flow'' of a Snakemake script in which each steps leads out of the previous and into the next, and for which there are no ``loops'' backwards in the process}}
+\newglossaryentry{hmc}{name={HMC},description={Hamiltonian Monte Carlo. A method of MCMC whereby parameters are modified as a group by treating their movement through likelihood space as a single particle with inertia}}
+\newglossaryentry{tmrca}{name={tMRCA},description={Time of the most recent common ancestor. Point in time inferred by phylogenetic inference at which the MRCA was hypothesized to have existed}}
+
+\includechapter{introduction}
+% \includechapter{manual} % Remove this chapter
+
+% Insert here your own chapters
+% Chapters are expected to be in a tex-file with the given name dot
+% tex and in a directory with the given name in the chapters
+% directory.
+\includechapter{objectives}
+\includechapter{methodology}
+\includechapter{results}
+\includechapter{discussion}
+% \includechapter{conclusion}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\appendix
+
+\includeappendix{papersappendix}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\backmatter
+
+\includebibliography
+% BibTex
+\bibliographystyle{acm}
+\bibliography{allpapers}
+% BibLatex (comment lines above and comment out biblatex lines in preamble)
+%\printbibliography[title=\bibname]
+% \instructionsbibliography
+
+% \includecv{curriculum}
+
+% \includepublications{publications}
+
+\makebackcoverXII
+
+\end{document}

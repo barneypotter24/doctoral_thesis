@@ -1,0 +1,11 @@
+{
+  "projectPath": "/Users/bpotter/projects/predoc-thesis",
+  "title": "LaTeX-Plus Project",
+  "root": "chapters/objectives/objectives.tex",
+  "program": "pdflatex",
+  "latexmkOptions": "-bibtex -pdf -shell-escape",
+  "output": ".latex",
+  "openOutput": "true",
+  "postAction": "link",
+  "postPath": ""
+}

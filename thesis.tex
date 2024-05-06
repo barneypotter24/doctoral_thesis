@@ -1,0 +1,222 @@
+% \documentclass[final,faculty=med,department=rega,phddegree=bms,doctoralschool=bms]{kulphd}
+\documentclass[showinstructions,faculty=med,department=rega,phddegree=bms,doctoralschool=bms]{kulphd}
+%\documentclass[showinstructions,showlabels,coverfontpercent=100,faculty=med,department=rega,phddegree=bms,doctoralschool=bms]{kulphd}
+%\documentclass[croppedpdf,showinstructions,faculty=med,department=rega,phddegree=bms,doctoralschool=bms]{kulphd}
+%\documentclass[online,faculty=med,department=rega,phddegree=bms,doctoralschool=bms]{kulphd}
+%\documentclass[print,bleed,cropmarks,faculty=med,department=rega,phddegree=bms,doctoralschool=bms]{kulphd} % include bleed for the print service
+%\documentclass[print,faculty=med,department=rega,phddegree=bms,doctoralschool=bms]{kulphd}
+%\documentclass[final,faculty=med,department=rega,phddegree=bms,doctoralschool=bms]{kulphd}
+%\documentclass[showinstructions,faculty=med,department=rega,phddegree=bms,doctoralschool=bms,epub]{kulphd}
+
+% !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+% !!                                                               !!
+% !!  WARNING: do not remove the following lines between           !!
+% !!  "%%% COVER: Settings %%%" and "%%% COVER: End settings %%%"  !!
+% !!                                                               !!
+% !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+%%% COVER: Settings %%%
+\title{Bayesian inference methodologies to reconstruct the evolution and spread of pathogens}
+%\subtitle{Multiscale computing for Dummies}
+
+\author{Barney Isaksen}{Potter}
+
+\supervisor{Prof.~Dr.~G.~Baele}{}
+\supervisor{Dr.~M.S.~Gill}{}
+\president{president}
+\jury{Prof.~Dr.~P.~Lemey\\
+      Prof.~Dr.~J.~Matthijnssens\\
+}
+\externaljurymember{external1}{role}
+\externaljurymember{external2}{role2}
+
+% Your research group within the department
+% e.g. iMinds-DistriNet, Scientific Computing Group, ...
+\researchgroup{Computational Evolutionary Virology}
+\website{} % Leave empty to hide
+\email{} % Leave empty to hide
+
+\address{Herestraat 49}
+\addresscity{3000 Leuven} % This is the default value. Note
+                              % that 'B-3001 Heverlee' is _incorrect_!!
+                              % /[https://www.kuleuven.be/communicatie/marketing/intranet/huisstijl/taalgebruik.html]
+
+\date{September (?) 2024}
+\copyyear{2024}
+%\udc{XXX.XX}            % UDC, deposit number and ISBN are no longer necessary.
+%\depot{XXXX/XXXX/XX}    % Leave out the initial D/ (it is added
+                         % automatically)
+%\isbn{XXX-XX-XXXX-XXX-X}
+
+
+% Set spine width:
+\setlength{\kulphdspinewidth}{9mm}
+
+%% Set bleeds
+%\setlength{\defaultlbleed}{7mm}
+%\setlength{\defaultrbleed}{7mm}
+
+% Set custom cover page
+% \setcustomcoverpage{mycoverpage.tex} % mycoverpage.tex is the default
+
+%%% COVER: End settings %%%
+
+% for the nomenclature (comment out if you do not use the nomencl package
+\usepackage{nomencl}   % For nomenclature
+\renewcommand{\nomname}{List of Symbols}
+\newcommand{\myprintnomenclature}{%
+  \cleardoublepage%
+  \printnomenclature%
+  \chaptermark{\nomname}
+  \addcontentsline{toc}{chapter}{\nomname} %% comment to exclude from TOC
+}
+\makenomenclature%
+
+% for the glossary (comment out if you do not use the glossaries package)
+\usepackage{glossaries} % For list of abbreviations
+\newcommand{\glossname}{List of Abbreviations}
+\newcommand{\myprintglossary}{%
+  \renewcommand{\glossaryname}{\glossname}
+  \cleardoublepage%
+  \printglossary[title=\glossname]
+  \chaptermark{\glossname}
+  \addcontentsline{toc}{chapter}{\glossname} %% comment to exclude from TOC
+}
+\makeglossary%
+
+% For highlighting comments in red so that they are easily seen/removed later:
+\newcommand{\bip}[1]{\textcolor{blue}{#1}}
+\newcommand{\gb}[1]{\textcolor{red}{#1}}
+\newcommand{\msg}[1]{\textcolor{orange}{#1}}
+
+% BibLaTeX
+%\usepackage[utf8]{inputenc}
+%\usepackage{csquotes}
+%\usepackage[
+  %hyperref=auto,
+  %mincrossrefs=999,
+  %backend=biber,
+  %style=authoryear-icomp
+%]{biblatex}
+%\addbibresource{allpapers.bib}
+
+% Fonts
+\usepackage{textcomp} % nice greek alphabet
+\usepackage{pifont}   % Dingbats
+\usepackage{booktabs}
+\usepackage{amssymb,amsthm}
+\usepackage{amsmath}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\makefrontcoverXII
+
+\maketitle
+
+\frontmatter % to get \pagenumbering{roman}
+
+% \includepreface{preface}
+\includeabstract{summary}
+% \includeabstractnl{abstractnl}
+
+% To create a list of abbreviations, there are 2 options
+% 1. manual creation of list of abbreviations and inclusion as a chapter
+%    \includeabbreviations{abbreviations}
+% 2. automatic generation via the glossary package
+%    \glossary{name=MD,description=molecular dynamics}
+\myprintglossary
+
+% To create a list of symbols, there are 2 options
+% 1. include a manually created nomenclature as a chapter
+%    \includenomenclature{nomenclaturechapter}
+% 2. automatic generation via the nomencl package
+%    \nomenclature[cB]{$c_B(\vec{x})$}{Characteristic function of $B$}
+% \myprintnomenclature
+
+\tableofcontents
+\listoffigures
+% \listoftables
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\mainmatter % to get \pagenumbering{arabic}
+
+% Show instructions on a separate page
+% \instructionschapters\cleardoublepage
+
+% Put all glossary definitions in one location
+% NOTE: glossary entries should not end in `.' characters, as those are automatically added by the template
+\newglossaryentry{eid}{name={EID},description={Emerging infectious disease. One of a number of infectious diseases, many of whom are caused by viruses, that have grown significantly in human impact in recent years (e.g. SARS-CoV-2, Zika, Ebola)}}
+\newglossaryentry{hbv}{name={HBV},description={Hepatitis B virus. The causative agent of Hepatitis B, a liver disease infecting millions worldwide. One of two viruses being analyzed as part of this thesis, along with SARS-CoV-2}}
+\newglossaryentry{ess}{name={ESS},description={Effective sample size. Metric representing the number of functionally independent samples are present in a posterior sample set}}
+\newglossaryentry{beast}{name={BEAST},description={Bayesian Evolutionary Analysis Sampling Trees. Software package implementing MCMC and related methods used for Bayesian phylogenetic inference in this thesis}}
+\newglossaryentry{mrca}{name={MRCA},description={Most recent common ancestor. The most recent organism from which a set of contemporary organisms are descended}}
+\newglossaryentry{mep}{name={MEP},description={Measurably evolving population. A set of organisms whose evolution can be directly observed over a period of time, and for which this evolutionary rate can be quantified as a function of time}}
+\newglossaryentry{mcmc}{name={MCMC},description={Markov chain Monte Carlo. A class of algorithms in which a target posterior distribution is parameterized (as a Markov chain), explored, and recorded}}
+\newglossaryentry{dna}{name={DNA},description={Deoxyribonucleic acid. A molecule that encodes the genetic information of most organisms, including humans, bacteria, and many viruses}}
+\newglossaryentry{rna}{name={RNA},description={Ribonucleic acid. A molecule that encodes the genetic information of many viruses, including SARS-CoV-2, influenza virus, and rotavirus}}
+\newglossaryentry{nssrna}{name={(-)ssRNA},description={Negative-sense single-stranded RNA. A type of RNA genome that is complementary to the mRNA that is translated into proteins (e.g. influenza virus)}}
+\newglossaryentry{pssrna}{name={(+)ssRNA},description={Positive-sense single-stranded RNA. A type of RNA genome that is directly translatable into proteins (e.g. SARS-CoV-2)}}
+\newglossaryentry{mcc}{name={MCC},description={Maximum clade credibility (tree). Given a set of posterior trees, the individual tree from the set whose internal nodes---defined by their descendent tips---occur in the highest proportion of the distribution of trees}}
+\newglossaryentry{ctmc}{name={CTMC},description={Continuous-time Markov chain. Markov process in which jumps between states are parameterized in terms of their ``holding time'' in states as a continuous variable, rather than as discrete-time jump probabilities. Used to model both relative nucleotide/amino acid substitution rates, and relative geographic migration rates}}
+\newglossaryentry{bssvs}{name={BSSVS},description={Bayesian stochastic search variable selection. A method by which parameters' inclusion in a model are ``toggled'' randomly to determine whether those parameters should be considered part of the model}}
+\newglossaryentry{bf}{name={BF},description={Bayes factor. The likelihood ratio of the marginal likelihood of two different hypotheses. Used to compare the relative support of two models}}
+\newglossaryentry{tmrca}{name={tMRCA},description={Time of the most recent common ancestor. Point in time inferred by phylogenetic inference at which the MRCA was hypothesized to have existed}}
+\newglossaryentry{hbsag}{name={HBsAg},description={Hepatitis B surface antigen}}
+\newglossaryentry{hky}{name={HKY},description={Hasegawa, Kino, Yang model of nucleotide evolution. Markov model of nucleotide evolution in which the rate of transitions ($A \iff G$ or $C \iff T$) share one rate and transversions ($A \iff C/T$ or $G \iff C/T$) share another. The transition/transversion ratio can be described by a single parameter, kappa ($\kappa$)}}
+\newglossaryentry{hpd}{name={HPD},description={Highest posterior density (interval)}}
+\newglossaryentry{orf}{name={ORF},description={Open reading frame. PUT IN MORE DETAILS}}
+\newglossaryentry{hiv}{name={HIV},description={Human immunodeficiency virus. PUT IN MORE DETAILS}}
+\newglossaryentry{hcv}{name={HCV},description={Hepatitis C virus. PUT IN MORE DETAILS}}
+\newglossaryentry{hcc}{name={HCC},description={Hepatocellular carcinoma. A form of liver cancer affecting hepatocyte cells; often caused by chronic infection by hepatitis B virus}}
+\newglossaryentry{msa}{name={MSA},description={Multiple sequence alignment. Set of nucleotide sequences in FASTA format that have had their constituent nucleotides shifted according to an alignment algorightm (as implemented in software such as MAFFT or nextalign) so that the sequences are in frame with one another and can be compared at each site. Often constructed in relation to a given reference genome. The alignment is the primary input into phylogenetic reconstruction software used in this thesis}}
+\newglossaryentry{snp}{name={SNP},description={Single nucleotide polymorphism. An observed difference in a given genome at a single site (as in a multiple sequence alignment). Typically the result of mutation}}
+\newglossaryentry{lasv}{name={placeholder},description={placeholder}}
+\newglossaryentry{dag}{name={placeholder},description={placeholder}}
+\newglossaryentry{hmc}{name={placeholder},description={placeholder}}
+\newglossaryentry{sarscov2}{name={SARS-CoV-2},description={Severe acute respiratory syndrome coronavirus 2. The causative agent of COVID-19 and the pathegen responsible for the global COVID-19 pandemic that began in spring 2020. One of the two viruses being analyzed as part of this thesis, along with HBV}}
+
+
+\includechapter{introduction}
+% \includechapter{manual} % Remove this chapter
+
+% Insert here your own chapters
+% Chapters are expected to be in a tex-file with the given name dot
+% tex and in a directory with the given name in the chapters
+% directory.
+\includechapter{objectives}
+\includechapter{methodology}
+\includechapter{results}
+\includechapter{discussion}
+% \includechapter{conclusion}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\appendix
+
+\includeappendix{papersappendix}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\backmatter
+
+\includebibliography
+% BibTex
+\bibliographystyle{acm}
+\bibliography{allpapers}
+% BibLatex (comment lines above and comment out biblatex lines in preamble)
+%\printbibliography[title=\bibname]
+% \instructionsbibliography
+
+% \includecv{curriculum}
+
+% \includepublications{publications}
+
+\makebackcoverXII
+
+\end{document}
