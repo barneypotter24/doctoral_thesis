@@ -36,3 +36,6 @@ s
 *.tgz
 VERSION
 *.bak
+thesis.tex.bak
+thesis.fls
+thesis.fdb_latexmk
