@@ -39,3 +39,5 @@ VERSION
 thesis.tex.bak
 thesis.fls
 thesis.fdb_latexmk
+.ipynb_checkpoints
+.DS_Store

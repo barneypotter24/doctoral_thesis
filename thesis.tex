@@ -16,7 +16,7 @@
 % !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 %%% COVER: Settings %%%
-\title{Bayesian inference methodologies to reconstruct the evolution and spread of pathogens}
+\title{Phylodynamics and Genomic Epidemiology of Viral Pathogens}
 %\subtitle{Multiscale computing for Dummies}
 
 \author{Barney Isaksen}{Potter}
@@ -27,8 +27,8 @@
 \jury{Prof.~Dr.~P.~Lemey\\
       Prof.~Dr.~J.~Matthijnssens\\
 }
-\externaljurymember{external1}{role}
-\externaljurymember{external2}{role2}
+\externaljurymember{Dr.~Bram~Vrancken}{role}
+\externaljurymember{Dr.~N\'idia~Trov\~ao}{role2}
 
 % Your research group within the department
 % e.g. iMinds-DistriNet, Scientific Computing Group, ...
@@ -108,6 +108,9 @@
 \usepackage{amsmath}
 \usepackage[Bjarne]{fncychap}
 
+% Additional packages not part of the template
+\usepackage[super]{nth} % For superscript ordinal numbers
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -172,14 +175,11 @@
 \newglossaryentry{hky}{name={HKY},description={Hasegawa, Kino, Yang model of nucleotide evolution. Markov model of nucleotide evolution in which the rate of transitions ($A \iff G$ or $C \iff T$) share one rate and transversions ($A \iff C/T$ or $G \iff C/T$) share another. The transition/transversion ratio can be described by a single parameter, kappa ($\kappa$)}}
 \newglossaryentry{hpd}{name={HPD},description={Highest posterior density (interval)}}
 \newglossaryentry{orf}{name={ORF},description={Open reading frame. PUT IN MORE DETAILS}}
-\newglossaryentry{hiv}{name={HIV},description={Human immunodeficiency virus. PUT IN MORE DETAILS}}
+\newglossaryentry{hiv}{name={HIV},description={Human immunodeficiency virus. Ont of two species of retroviruses that are the causative agent of acquired immunodeficiency syndrome (AIDS). Responsible for the HIV/AIDS pandemic that started in the 1980s.}}
 \newglossaryentry{hcv}{name={HCV},description={Hepatitis C virus. PUT IN MORE DETAILS}}
 \newglossaryentry{hcc}{name={HCC},description={Hepatocellular carcinoma. A form of liver cancer affecting hepatocyte cells; often caused by chronic infection by hepatitis B virus}}
 \newglossaryentry{msa}{name={MSA},description={Multiple sequence alignment. Set of nucleotide sequences in FASTA format that have had their constituent nucleotides shifted according to an alignment algorightm (as implemented in software such as MAFFT or nextalign) so that the sequences are in frame with one another and can be compared at each site. Often constructed in relation to a given reference genome. The alignment is the primary input into phylogenetic reconstruction software used in this thesis}}
 \newglossaryentry{snp}{name={SNP},description={Single nucleotide polymorphism. An observed difference in a given genome at a single site (as in a multiple sequence alignment). Typically the result of mutation}}
-\newglossaryentry{lasv}{name={placeholder},description={placeholder}}
-\newglossaryentry{dag}{name={placeholder},description={placeholder}}
-\newglossaryentry{hmc}{name={placeholder},description={placeholder}}
 \newglossaryentry{sarscov2}{name={SARS-CoV-2},description={Severe acute respiratory syndrome coronavirus 2. The causative agent of COVID-19 and the pathegen responsible for the global COVID-19 pandemic that began in spring 2020. One of the two viruses being analyzed as part of this thesis, along with HBV}}
 
 
@@ -209,7 +209,7 @@
 
 \includebibliography
 % BibTex
-\bibliographystyle{acm}
+\bibliographystyle{apalike}
 \bibliography{allpapers}
 % BibLatex (comment lines above and comment out biblatex lines in preamble)
 %\printbibliography[title=\bibname]
