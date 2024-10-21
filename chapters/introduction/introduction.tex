@@ -103,18 +103,18 @@ Both on their own and cobined with other sources (patient demography, clinical i
 However, following the discovery of the structure of DNA by Rosalind Franklin, James Watson, and Francis Crick in 1953 \citep{franklin1953molecular,watson1953molecular}, the field of epidemiology has been revolutionized by the advent of molecular techniques.
 The addition of molecular data gave epidemiologists a newfound ability to not just analyze the disease outcomes that are can be observed in a population, but also to analyze the biological agents directly responsible for the epidemics.
 The field was further revolutionized in 1976, with the first full-genome sequence of a virus \citep{fiers1976complete}.
-As sequencing technology has become more advanced and less expensive, we now have the ability to obtain full-genome sequences of viral pathogens from hundreds or thousands of infected individuals in a single outbreak, allowing us to compare the genetic sequences (Fig.~\bip{ALIGNMENT}) of the viruses and infer their evolutionary relationships.
+As sequencing technology has become more advanced and less expensive, we now have the ability to obtain full-genome sequences of viral pathogens from hundreds or thousands of infected individuals in a single outbreak, allowing us to compare the genetic sequences (Fig.~\ref{fig:alignment}) of the viruses and infer their evolutionary relationships.
 We refer to these inferred hypotheses of shared evolutionary history as \textbf{phylogenies}, and the field of research related to their inference as \textbf{phylogenetics}.\\
 
 \begin{figure}[ht]
   \centering
-  \includegraphics[width=.85\textwidth]{rambautFig}
-  \caption[shortcaptionforindex]{longcaption \textit{Figure credit: Pybus \& Rambaut (2009)} \citep{pybus2009evolutionary}.}
-  \label{fig:phylogeneticsOverview}
+  \includegraphics[width=.85\textwidth]{alignment}
+  \caption[Multiple sequence alignment]{An alignment of five example genomic sequences, aligned using MAFFT \bip{cite} and visualized using AliView \bip{cite}; each row represents a single sequence, and each column represents a site shared between sequences. Sites are colored by the amino acid present in each sequence at each site. The sequence \textit{Example2} represents the most common type of mutation that we observe: single nucleotide polymorphisms (\gls{snp}s), where a single sequence has a single mutation from one amino acid to another. Examples 3--5 represent other types of genomic motifs that are frequenty observed, but not always explicitly modeled by phylogenetic inference algorithms.}
+  \label{fig:alignment}
 \end{figure}
 
 While it is interesting---and frequently useful---to understand the evolutionary relationships between viral sequences, the inferences made through phylogenetic analysis can tell us much more when we contextualize them in \textit{time} and \textit{space}.
-Viruses (and in particuar \gls{rna} viruses \bip{CITATION/FIGURE SHOWING EVOL RATES OF DIFFERENT DOMAINS}) accumulate genomic mutations at a staggering rate compared to many other domains of biological entities.
+Viruses (and in particuar \gls{rna} viruses) accumulate genomic mutations at a staggering rate compared to many other domains of biological entities (Fig.~\ref{fig:sizeVsRates}).
 Because of this, we are frequently able to make observations (i.e. collect sequences) of viruses over the same time scales that epidemics play out, and make phylogenetic inferences on the same time scales.
 We refer to this merger of phylogenetic and epidemic time scales as \textbf{phylodynamics}.
 When viral genomes also come with associate geographic metadata, we are able to make further inferences (either in sequence or jointly with the phylogeny) of where common ancestors of taxa likely existed, and the associated rates of migration between the sampled locations.
@@ -122,28 +122,35 @@ This process of combined spatiotemporal and evolutionary inference will be refer
 
 \begin{figure}[ht]
   \centering
-  \includegraphics[width=.85\textwidth]{rambautFig}
-  \caption[shortcaptionforindex]{longcaption \textit{Figure credit: Pybus \& Rambaut (2009)} \citep{pybus2009evolutionary}.}
-  \label{fig:phylogeneticsOverview}
+  \includegraphics[width=.85\textwidth]{genSizeVsMutRate}
+  \caption[Genome size vs. mutation rate in viruses.]{It is a well known phenomenon that as genome size and complexity increases, observed mutation (and evolutionary) rates decrease. For viruses in particular, this has the practical upshot that it means that genomic mutations accumulate frequently enough that they can be found during epidemic timescales. This \bip{finish this sentence} \textit{Figure credit: Duffy, Shackleton, \& Holmes (2008)} \citep{duffy2008rates}.}
+  \label{fig:sizeVsRates}
 \end{figure}
 
-figure: multiple sequence alignment
-Important differences
-different data, different biological questions
+\bip{Important differences
+different data, different biological questions, DEFINE GENOMIC EPIDEMIOLOGY}
+
 \subsection{A general model of the epidemic process}
+In the pursuit of descriptive models for pathogen evolution and spread, it is important to ask, ``Is this model a faithful description of my biological question?''
+To answer this question, it is necessary to construct a high-level framework of this biological system (i.e. epidemic spread), and to recognize the assumptions inherent to that framework.
+To this end, a brief description of the epidemic process as seen through the lens of phylogenetics is required so that we can answer the question, ``Do molecular phylogenies accurately describe viral epidemics?''\\
+
+At the beginning of an epidemic, we imagine that there is a single individual who may be infected by a virus, and they remain infectious for some limited period of time (either they will recover to the point of no longer being infectious, or die).
+During thier infectious period, the individual may go on to infect one or more other individuals with the virus.
+This process is then able to repeat itself for each of the infected individuals, and in turn for individuals infected downstream.
+Generally, if on average each infected person spreads the virus to more than one new person the epidemic will grow, and if they spread to fewer than one person on average then the epidemic will shrink.
+At some point---or in practice at many points---during the downstream epidemic, individuals may be sampled and a complete viral genomic sequence may be isolated from the individual.
+
+
+\bip{Assumptions: complete enough bottleneck, mutations happen along branches, each infection can be described by a consensus genome, infections are instantaneous and each happen at a different time.}
+
 figure: schematic of the tree-like epidemic process
 \subsection{Genomic epidemiology across spatiotemporal scales}
 Placeholder text \ref{fig:phylogeneticsOverview}
 \begin{figure}[ht]
   \centering
   \includegraphics[width=.85\textwidth]{rambautFig}
-  \caption[Applications of phylodynamics]{Key concepts in phylodynamic analysis. \bip{Re-word much of this to sound better}
-  a) Molecular phylogenies from viral gene sequences are typically rooted and bifurcating.
-  b) A molecular clock allows to define a relationship between genetic distance and time, with unusually fast or slow evolving lineages are shown as thick or thin lines, respectively.
-  c) Phylodynamic data can highlight the evolution through time of mutations that may reflect viral adaptations; of particular interest are the replacement mutations that are found on the persisting phylogenetic `backbone' that represents the ancestor of future virus populations (blue branches), as opposed to those occurring on branches that die out (black branches).
-  d) Temporal phylogeographic inference is used to reconstruct the history of pathogen spread, so that each branch is labeled with its estimated geographic position.
-  e) Coalescent analyses incorporate an explicit model of the sampled pathogen population.
-  The increasing width of each row therefore reflects the growth of the epidemic through time. Starting from the sampled infections (red), the sampled lineages (black lines) can be traced back through unsampled infections (gray) to the common ancestor (black circle).
+  \caption[Applications of phylodynamics]{Fundamental concepts in phylodynamic analysis. a) Rooted, bifurcating molecular phylogeny derived from (viral) gene sequences. b) Molecular clock model applied to the phylogeny, demonstrating the relationship between genetic distance and time; accelerated or decelerated evolutionary rates depicted by line thickness. c) Temporal evolution of mutations, emphasizing persistent mutations falling backbone (blue) versus those on terminal branches (black). d) Temporal phylogeographic inference reconstructing history of pathogen spread, with branches annotated by inferred geographic locations. e) Coalescent analysis incorporating an explicit model of the sampled pathogen population structure, illustrating epidemic growth over time from sampled infections (red) through unsampled infections (gray) to the most recent common ancestor (black circle).
   \textit{Figure credit: Pybus \& Rambaut (2009)} \citep{pybus2009evolutionary}.
   }
   \label{fig:phylogeneticsOverview}
@@ -156,7 +163,6 @@ NOTE: Find a better term for this
 
 % 1.2
   \section{Viruses discussed in this thesis}
-
     \subsection{SARS-CoV-2}
       \subsubsection{COVID-19 Pandemic}
       \subsubsection{SARS-CoV-2 virology and genome}

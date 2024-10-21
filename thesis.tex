@@ -41,7 +41,7 @@
                               % that 'B-3001 Heverlee' is _incorrect_!!
                               % /[https://www.kuleuven.be/communicatie/marketing/intranet/huisstijl/taalgebruik.html]
 
-\date{September (?) 2024}
+\date{December? 2024}
 \copyyear{2024}
 %\udc{XXX.XX}            % UDC, deposit number and ISBN are no longer necessary.
 %\depot{XXXX/XXXX/XX}    % Leave out the initial D/ (it is added
@@ -110,7 +110,23 @@
 
 % Additional packages not part of the template
 \usepackage[super]{nth} % For superscript ordinal numbers
-\usepackage[square,numbers,sort&compress]{natbib}
+\usepackage[square,numbers,sort&compress]{natbib} % For more control over bibliography and in-line citation formatting
+
+\usepackage{caption} % For figure caption font size control
+\captionsetup[figure]{font=small,labelfont=small}
+
+\usepackage{graphicx}% 
+\usepackage{pgffor}
+
+% This bit helps draft compilation time
+% Remove from final draft or comment any time I want to see the figures included
+\newif\ifdropfigures  % At the time of definition it is false!
+\dropfigurestrue % yes, we drop figures
+%\dropfiguresfalse
+\ifdropfigures
+\renewcommand{\includegraphics}[2][]{%
+}% Ok, `\includegraphics does nothing any longer
+\fi
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

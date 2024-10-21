@@ -1,0 +1,10 @@
+>Example1
+-----acgtacgtacgtacgtacgtacgtacg-tacgtacgtacgtacgtacgt-----
+>Example2: SNPs
+-----acttacgtaagtacgaacgtacgaacg-tacctacgtgcgtacgcacgt-----
+>Example3: insertions
+aaaaaacgtacgtacgtacgtacgtacgtacgttacgtacgtacgtacgtacgtttttt
+>Example4: deletions
+-----------------acgtacgta--tacg-tacgtacgtacgtacgtacgtaac--
+>Example5: inversions
+-----acgtacggcattacgtacgtacgtacg-tgcatacgtacgtacgtacgt-----
