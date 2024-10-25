@@ -117,6 +117,7 @@
 
 \usepackage{graphicx}% 
 \usepackage{pgffor}
+\PassOptionsToPackage{hyphens}{url}\usepackage{hyperref}
 
 % This bit helps draft compilation time
 % Remove from final draft or comment any time I want to see the figures included
@@ -197,7 +198,10 @@
 \newglossaryentry{msa}{name={MSA},description={Multiple sequence alignment. Set of nucleotide sequences in FASTA format that have had their constituent nucleotides shifted according to an alignment algorightm (as implemented in software such as MAFFT or nextalign) so that the sequences are in frame with one another and can be compared at each site. Often constructed in relation to a given reference genome. The alignment is the primary input into phylogenetic reconstruction software used in this thesis}}
 \newglossaryentry{snp}{name={SNP},description={Single nucleotide polymorphism. An observed difference in a given genome at a single site (as in a multiple sequence alignment). Typically the result of mutation}}
 \newglossaryentry{sarscov2}{name={SARS-CoV-2},description={Severe acute respiratory syndrome coronavirus 2. The causative agent of COVID-19 and the pathegen responsible for the global COVID-19 pandemic that began in spring 2020. One of the two viruses being analyzed as part of this thesis, along with HBV}}
-
+\newglossaryentry{voc}{name={VOC},description={Variant of concern. SARS-CoV-2 lineage which demonstrates both fitness-improving mutations in the spike protein, and increased spread in the global population compared to previously circulating variants. Frequently referred to by their WHO Greek-letter name (e.g. Alpha, Delta, Gamma, etc.)}}
+\newglossaryentry{voi}{name={VOI},description={Variant of interest. SARS-CoV-2 lineage which harbors known or speculative fitness-improving mutations in the spike protein. This designation is typically assigned prior to WHO designation as a variant of concern (VOC). Usually referred to by their Pango lineage designation (e.g. B.1.1.7, BA.1, etc.)}}
+\newglossaryentry{ecdc}{name={ECDC},description={European Centre for Disease Prevention and Control}}
+\newglossaryentry{pcr}{name={PCR},description={Polymerase chain reaction. A method used for the amplication of genetic material so that it may be used for both diagnostics (i.e PCR testing for COVID-19), or for whole genome sequencing}}
 
 \includechapter{introduction}
 % \includechapter{manual} % Remove this chapter
@@ -206,7 +210,7 @@
 % Chapters are expected to be in a tex-file with the given name dot
 % tex and in a directory with the given name in the chapters
 % directory.
-\includechapter{manual}
+% \includechapter{manual}
 \includechapter{chapter1}
 \includechapter{chapter2}
 \includechapter{chapter3}
