@@ -303,24 +303,88 @@ For this thesis, Pango lineages will be used primarily, however occasionally the
 \end{table}
 
 \subsubsection{Biological and epidemiological questions}
-This thesis focuses on two primary types of analysis of \gls{sarscov2}: real-time and \textit{post hoc} 
+This thesis focuses on two primary types of analysis of \gls{sarscov2}: real-time and \textit{post hoc} epidemiological settings.
+Each of these settings leads to different fundamental questions that we try to answer using the tools of phylodynamic inference.
 
-Highlight how retrospective analysis can help us understand important features of viral spread
+The primary questions that motivate the work shown Chapter~\ref{ch:chapter1} were those of immediate public health concern during the early--mid COVID-19 epidemic in Belgium.
+These questions were primarily motivated by three situations. 
+The first sitution conscerns specific clusters of sequences requiring investigation.
+These cases arise in situations when there were a set of infections in a group of epidemiologically linked individuals---for example Belgian military personnel returning from overseas \citep{pirnay2020study} or a cluster of infected students\citep{vanelslande2022two}---where we sought to understand if the cluster of cases were epidemiologically linked to each other, represented sources of viral introduction into the country, or posed an risk of driving onward transmission chains that could be prevented.
+The second major situation we encountered took place when globally emergent \gls{sarscov2} lineages needed to be characterized within Belgium.
+In these cases, either because of the emergence of \gls{VOC} lineages, or lineages that harbored \gls{voc}-like mutations \cite{dudas2021emergence}, public health officials sought our assistance in understanding whether the variants had reached Belgium, were driving an increased count in cases, and represented an urgent public health concern withing the country.
+The final important line of inquiry during this time concerned sequences generated through Belgium's routine genomic surveillance program.
+Over the course of the pandemic, Belgium sequenced a substantial fraction of \gls{pcr}-positive samples.
+As a result, we were able to rapidly incoroporate these sequences into the existing context of the Belgian \gls{sarscov2} epidemic, and we were thereby able to understand the relative growth or decline of variants, and characterize the within-Belgium distribution of sequences.
 
-    \subsection{Hepatitis B Virus (HBV)}
-      \subsubsection{An ancient human pathogen}
-      \subsubsection{HBV virology and genome}
-      figure: HBV genome schematic *
-      \subsubsection{Ethnospatial distribution of HBV}
-      figure: HBV genotype map
-      \subsubsection{Oops, no temporal signal!}
-      Enter: ancient DNA
-      \subsubsection{Biological and epidemiological questions}
+The second major analytical framework explored in this thesis, presented in Chapter~\ref{ch:chapter2}, demonstrates how phylodynamic methods can be applied retrospectively to understand historical patterns of viral spread, focusing on the emergence of the BA.1 Omicron variant in Pakistan.
+Through Bayesian phylogeographic reconstruction, we investigated the timing and frequency of BA.1 introductions into Pakistan, mapping the variant's spread from its global emergence to its establishment within the country.
+Such \textit{post hoc} analyses address fundamentally different questions than real-time surveillance, focusing on broader evolutionary and epidemiological patterns that emerge over time.
+By reconstructing these historical dynamics, we can better understand how viral variants establish themselves in new geographic regions, and identify major routes of viral movement.
+These insights, while not immediately applicable to public health response, are crucial for improving our understanding of \gls{sarscov2} spread at a global scale and informing future pandemic preparedness efforts.
+
+\subsection{Hepatitis B Virus (HBV)}
+The second virus analyzed in this thesis is hepatitis B virus (\gls{hbv}), a orthohepadnavirus spread through human bodily fluids.
+Hepatitis B virus (and its eponymous disease), are of significant global public health concern, causing nearly 300 million ongoing chronic cases of hepatitis B, as well as nearly one million deaths every year \citep{revill2020evolution}.
+In additon to its direct disease consequences, \gls{hbv} is also a primary driver of the liver cancer hepatocellular carcinoma (\gls{hcc}).
+Hepatitis B virus is characterized by several genotypes that are genetically distinct, and drive differences in both virulence and response to treatment.
+Because \gls{hbv} differs from \gls{sarscov2} in many ways---having an extremely different epidemiology, genome, and history in the human population---it presents an ideal system to demonstrate the utility of phylodynamic analysis over long time scales.
+
+\subsubsection{An ancient human pathogen}
+In stark contrast to \gls{sarscov2}, \gls{hbv} has been in the human population for an extremely long time.
+Recent estimates of the time of the most recent common ancestor (\gls{tmrca}) by \citet{kocher2021ten} suggest that the virus has circulated in the human population for upwards of ten thousand years (Fig.~\ref{fig:hbvFullTree}).
+This long evolutionary history means that HBV's early diversification and spread occurred during periods of dramatically different human population dynamics---before the advent of widespread agriculture, let alone the interconnected world we now live in. 
+One of the important results of this is that \gls{hbv} has a strong ethnospatial distribution throughout the globe (Fig.~\ref{fig:hbvDist}), as its historical dispersal has relied on the mobility of humans.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=.55\textwidth]{full-hbv-tree}
+  \caption[Phylogeny of all HBV genotypes]{Time-calibrated phylogeny of \gls{hbv} illustrating inferred evolutionary relationships between all genotypes. The inferred \gls{tmrca} suggests that \gls{hbv} has been in the human population for many thousands of years. \textit{Figure credit: Kocher et al. (2021)} \citep{kocher2021ten}.
+  }
+  \label{fig:hbvFullTree}
+\end{figure}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=.85\textwidth]{hbv-dist}
+  \caption[Global distribution of hepatitis B virus]{Map illustrating the global distribution of \gls{hbv} genotypes. This thesis focuses on genotypes A, D, and E.
+  \textit{Figure credit: Sunbul (2014)} \citep{sunbul2014hepatitis}.
+  }
+  \label{fig:hbvDist}
+\end{figure}
+
+\subsubsection{HBV genome}
+Hepatitis B virus has a unique genomic architecure that impacts phylogenetic analysis significantly (Fig.~\ref{fig:hbvGenome}).
+\gls{hbv} has a circular, partially double-stranded \gls{dna} (ds\gls{dna}) genome, with a a long strand approximately 3\,000 nucleotides in length, and a short strand of roughly 2\,200 nucleotides.
+With such a small and compact genome, \gls{hbv} has evolved to contain multiple overlapping reading frames along the genome.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=.45\textwidth]{hbv_genome_schematic}
+  \caption[Schematic of the hepatis B virus genome]{\bip{CAPTION} \textit{Figure credit: \bip{credit!} (2021)} \citep{kocher2021ten}.
+  }
+  \label{fig:hbvGenome}
+\end{figure}
+
+\paragraph*{Oops, no temporal signal!}
+The combination of these features---having a \gls{dna} genome rather than \gls{rna}, and overlapping \gls{orf}s---put a very strong purifying selective pressure on \gls{hbv}'s genome.
+Not only does ds\gls{dna} have an inherent error-correction mechanism, but any mutation that does arise has multiple opportunities to be deleterious.
+This resistence to mutation accumulation results in a virus that not only has a very small genome, but also accumulates mutations at a reduced rate.
+As a consequence, it is very difficult to derive an evolutionary rate estimate from a sample of contemporary \gls{hbv} genomes (referred to as weak \textit{temporal signal}, further described in Section~\ref{ssec:temporalSignal}).
+Weak temporal signal means that it is very difficult to confidently estimate the timing of historical events in \gls{hbv}'s ancestry.
+
+Fortunately, we are able to circumvent this issue in part by leveraging \gls{hbv}'s long history in the human population.
+Recently, researchers such as \citet{muhlemann2018ancient} have been able to extract and sequence viral \gls{dna} found in well-preserved mummies, allowing us to incorporate a small number of ancient genomes into our phylodynamic analysis, some upwards of four-thousand years old.
+By including these genomes we are able to inject our analysis of contemporary genomes with enough temporal information to make inference about the timing of past events.
+
+\subsubsection{Biological and epidemiological questions}
+Chapter~\ref{ch:chapter3} investigates questions relating to the patterns of global dispersal of three \gls{hbv} genotypes: A, D, and E.
+These three genotypes have recently been found in patients who have immigrated to Belgium, where there is low \gls{hbv} endimicity, and the genotypes are not typically associated.
+Understanding the contemporary patterns of spread for individual \gls{hbv} genotypes is important for the treatment and control of \gls{hbv} in particular because of the historical spatial distribution of the genotypes and the fact that the geotypes have different virulence and responses to treatments.
+Because different locations will likey have established treatment programs tailored to their local \gls{hbv} genotypes it is crutial to understand the patterns of viral dispersal that could lead such local treatment options less effective than they had previously been.
 
 %1.3
-  \section{Phylodynamics and phylogeography}
-  figure: what is a phylogeny, how to read it
-  some important terms and concepts used in this thesis (just diagram out an example tree that can be used later on as well)
+\section{Phylodynamics and phylogeography}
+how to read a phylogeny 
 
     \subsection{Phylogenetic inference}
 
@@ -342,15 +406,23 @@ Highlight how retrospective analysis can help us understand important features o
       figure: fossil calibration
       figure: prior knowledge
       figure: molecular clock inference
-      \subsubsection{Temporal signal}
+      \subsubsection{Temporal signal}\label{ssec:temporalSignal}
       figure: strong vs weak temporal signal
       \subsubsection{Clock models}
       figure: strict vs relaxed clock
       \subsubsection{Rate heterogeneity}
+
     \subsection{Phylodynamics and genomic epidemiology}
       \subsubsection{Population dynamics}
       \subsubsection{The coalescent}
-      figure: three coalescent trees *
+      The branching patterns and expected branch lengths of trees are correlated to the underlying population structure of the viruses they represent. Generally, we expect to observe more rapid branching (and therefore shorter expected branch lengths) in smaller populations, and longer branches in trees from larger populations.
+      \begin{figure}[ht]
+        \centering
+        \includegraphics[width=.95\textwidth]{coalescent_schematic}
+        \caption[Demography effects tree shape]{Illustrations of three tree structures expected under different coalescent models; each examples includes both an illustration of the generative coalescent process under a different population size model where dots represent individuals and lines represent parent/child relationships, a subsample of those relationships are highlighted in blue. Below each coalescent plot is the observed tree shape generated by that process. \textit{(left)} Constant population size over time: we expect relatively short branches near the present, and longer branches toward the past. \textit{(center)} Exponentially growing population: we expect longer branches near the present and relatively shorter branches in the past. \textit{(right)} Population with a bottleneck: we expect very short branches at the time of the bottleneck, and very long branches furter back in time.
+        }
+        \label{fig:coalescentOverview}
+      \end{figure} 
       comparison to case counts and calculation of $R_0$
 
     \subsection{Phylogeography}
