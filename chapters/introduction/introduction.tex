@@ -614,12 +614,18 @@ This approach helps prevent the overestimation of certain migration routes simpl
 The choice of subsampling strategy can significantly impact the resulting phylogeographic inference, making it crucial to carefully consider and document these choices in any analysis.
 
 % 1.4
-  \section{Phylodynamics: from theory to practice}
+\section{Phylodynamics: from theory to practice}
+The theoretical frameworks described in the previous section are implemented through several key software packages that enable practical phylodynamic analysis.
+This thesis employs different computational approaches depending on the specific requirements of each analysis, particularly whether speed or accuracy is the primary concern.
 
-    \subsection{Real-time phylodynamics}
-      \subsubsection{Maximizing phylogenetic likelihood}
-\bip{Recall that ML....}
-      How this maximum likelihood estimate is calculated in paractice is conceptually similar to the idea of climbing a hill to reach its peak.
+\subsection{Real-time phylodynamics}
+The demands of real-time phylodynamic analysis during disease outbreaks necessitate rapid computational approaches that can process new sequence data and generate results within timeframes relevant for public health decision-making.
+While Bayesian methods provide more comprehensive uncertainty quantification, their computational intensity makes them impractical for scenarios where results are needed within hours of sequence generation.
+Maximum likelihood methods, though less thorough in their exploration of parameter space, offer a pragmatic solution to this time-sensitivity problem by providing rapid, point estimates of evolutionary relationships and model parameters.
+
+\subsubsection{Maximizing phylogenetic likelihood}
+Recall that maximum likelihood analysis seeks to find the tree, branch lenghts, and model parameters that result in the highest likelihood score.
+How this maximum likelihood estimate is calculated in paractice is conceptually similar to the idea of climbing a hill to reach its peak.
 From wherever on the hillside that we begin, we may consider a step in any direction of our choice.
 If that step would take us to a higher elevation, we take the step; if the step would take us to a lower or the same elevation, we don't take the step and try again.
 Eventually, we will reach a point where we can no longer find a direction from which we can step uphill anymore.
@@ -631,11 +637,20 @@ We can then repeat this process until the algorithm is not able to generate a pr
 There are many potential optimizations to this algorithm.
 Within the hill climbing metaphor, one could seek to always take the steepest step uphill, vary their step length dynamically, or to try starting from different starting points on the hillside to see if they yield the same result.
 While they are beyond the scope of this thesis, such optimizations and many others have been included in popular software packages that perform ML phylogenetic inference.
-      \subsubsection{Public health policy relevancy and real-time communication}
-      \subsubsection{The Nextstrain platform}
-    \subsection{Bayesian phylodynamics}
-      \subsubsection{Quantifying phylogenetic uncertainty}
-      \subsubsection{Markov chain Monte Carlo}
+
+\subsubsection{Nextstrain}
+The choice of Nextstrain \citep{hadfield2018nextstrain} as our primary platform for real-time SARS-CoV-2 phylodynamic analysis in Belgium was driven by several features that made it well-suited for pandemic response within Belgium.
+At its core, Nextstrain provided a wrapper around established maximum likelihood phylogenetic software packages, including IQ-Tree2 \citep{minh2020iq}, with carefully curated default parameters optimized for SARS-CoV-2 analysis.
+Nextstrain links alignment, phylogenetic inference, time-resolution, and phylogeographic inference in a sequential manner, with the result of each step given as the input to the next.
+This conditional infererence procedure results in it running extremely quickly, with results often coming within minutes or hours.
+
+The integration of gold-standard phylogenetic tools, combined with automated quality control and alignment procedures, enabled rapid and reliable processing of new sequence data as it became available.
+Furthermore, the Nextstrain team's simultaneous efforts in updating the platform throughout the pandemic proved very useful, as new lineage definitions and scaling tools were integrated as new variants emerged and datasets grew through the pandemic.
+
+\subsection{Bayesian phylodynamics}
+For the analyses presented in Chapters~\ref{ch:chapter2}~\&~\ref{ch:chapter3}, Bayesian inference was used, as its joint inference framework proves more robust when analyses are not under such a tight time constraint.
+
+\subsubsection{Markov chain Monte Carlo}
       figure: MCMC explanation
       \subsubsection{BEAST}
       On MCMC convergence and mixing
