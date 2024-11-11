@@ -134,7 +134,7 @@ We refer to these inferred hypotheses of shared evolutionary history as \textbf{
 \begin{figure}[ht]
   \centering
   \includegraphics[width=.85\textwidth]{genSizeVsMutRate}
-  \caption[Genome size vs. mutation rate in viruses.]{It is a well known phenomenon that as genome size and complexity increases, observed mutation (and evolutionary) rates decrease. For viruses in particular, this has the practical upshot that it means that genomic mutations accumulate frequently enough that they can be found during epidemic timescales. This \bip{finish this sentence} \textit{Figure credit: Duffy, Shackleton, \& Holmes (2008)} \citep{duffy2008rates}.}
+  \caption[Genome size vs. mutation rate in viruses.]{It an established phenomenon that as genome size and complexity increases, observed mutation (and evolutionary) rates decrease. For viruses in particular, this has the practical upshot that it means that genomic mutations accumulate frequently enough that they can be found during epidemic timescales. \textit{Figure credit: Duffy, Shackleton, \& Holmes (2008)} \citep{duffy2008rates}.}
   \label{fig:sizeVsRates}
 \end{figure}
 
@@ -470,7 +470,7 @@ Both of these frameworks assume that we are able to geneate an initial parameter
 Both frameworks then use some method of updating these parameters (referred to as \textbf{transition kernels} or \textbf{operators}), going from $\Psi$ to the updated $\Psi^*$ by tweaking one (or more) of the tree topology, branch lengths, or model parameters slightly.
 It is important to note that both ML and Bayesian inference methodologies make use of the exact same likelihood functions and transtion kernels, they differ primarily in how they calculate and describe the optimal phylogeny and model parameters.
 
-\paragraph*{Maximum likelihood}
+\paragraph*{Maximum likelihood inference.}
 Maximum likelihood inference, as the name suggests, seeks to estimate the set of parameters $\hat{\Psi}$ for which the phylogenetic likelihood is maximized---the values for each model parameter that best explain the data.
 We call $\hat{\Psi}$ the maximum likelihood estimate (MLE) of model parameters, given the dataset:
 \begin{equation}
@@ -479,7 +479,7 @@ We call $\hat{\Psi}$ the maximum likelihood estimate (MLE) of model parameters, 
 
 The key features of ML phylogenetic inference are that they are \textit{fast} and provide an \textit{easy-to-interpret} estimate of the best model parameters.
 
-\paragraph*{Bayesian inference}
+\paragraph*{Bayesian inference.}
 In contrast to maximum likelihood phylogenetic inference, Bayesian inference differs in two key conceptual areas.
 Bayesian inference supposes that in addition to information included in data, by including prior knowledge about a system we may improve our estimates about that system, particularly in cases where data are limited.
 The results of Bayesian inference then describe not only the best single estimate of which parameter best describes the data, but also the uncertainty associated with that estimate.
@@ -521,7 +521,7 @@ Our final equation that describes our posterior estimtes of the model parameters
 
 This formulation ends up being extremely time consuming to compute compared to MLE (where ML analysis could take hours, Bayesian inference may take days or weeks), however the benefits of both including prior information and quantifying uncertainty make Bayesian phylogenetic analysis more robust in situations where time and computational resources allow it.
 
-\paragraph*{Choosing the correct method for the questions at hand}
+\paragraph*{Which should I use?}
 This thesis uses both ML and Bayesian phylogenetic inference for different tasks.
 Because of its speed and clarity, ML analyses were used for the entirety of Chapter~\ref{ch:chapter1}, as the time constraint of real-time analysis made Bayesian inference impossible.
 Additionally, ML analyses prove extremely useful for preliminary analyses of datasets, when quick insights are useful for deciding how to formulate a larger-scale Bayesian inference later, as is shown in Chapter~\ref{ch:chapter2}.
@@ -544,18 +544,18 @@ This can be used when the phylogeny spans such distant past that the fossil reco
 In the case of viral phylodynamics, it is quite rare for ancestral lineage divergences to be well characterized in a way that makes this method particularly useful.
 The primary method of molecular clock modeling used in this thesis involves the estimation of a molecular clock directly from time-stamped sequence data.
 
-\paragraph*{Measurably evolving populations}
+\paragraph*{Measurably evolving populations.}
 In cases wwe are able to collect genomes from a group of organisms over the same time period that their evolution is taking place, that is said to be a measurably evolving population (\gls{mep}).
 One scenario that can result in a \gls{mep} is when bodies from that population have been well preserved (e.g. in permafrost) for enough of their evolutionary history that we can extract genetic material from the mummies \citep{shapiro2004rise}.
 The other main scenario where we observe \gls{mep}s comes when organisms (such as RNA viruses) evolve so quickly that we are able to observe evolution taking place at the same time scale as the epidemic itself.
 
-\paragraph*{Temporal signal}
+\paragraph*{Temporal signal.}
 If a dataset contains sufficient information to accurately fit a molecular clock, it is said to have \textit{temporal signal}.
 A standard preliminary analysis to assess whether a dataset contains sufficient temporal signal involves taking a rooted ML tree of the dataset with branch lengths measured in genetic distance and associated dates.
 Each tip can then be plotted as a function of its root-tip total divergence against time.
 If the dataset demonstrates strong temporal signal, this scatterplot will be well-fit by a linear regression whose slope describes its evolutionary rate (substitutions per site per unit time), and its x-intercept will represent an estimate for its \gls{tmrca}.
 
-\paragraph*{Clock models}
+\paragraph*{Clock models.}
 The analyses in this thesis use different types of clock models.
 For the real-time ML analyses, we use a model known as a strict clock.
 Under this model, one clock rate governs all branches in the tree, representing an expectation that evolution takes place at the same average rate across the entire evolutionary history.
@@ -565,7 +565,7 @@ By contrast, the Bayesian phylodynamic analyses use a relaxed clock model, where
 Beyond the evolutionary dynamics of a virus, it is possible to infer some of the underlying epidemiological features of a virus from its phylogeny.
 Among these include an estimate of the viruses underlying demography (i.e. population structure through time), as well as how it has been spreading through space and time.
 
-\paragraph*{The coalescent}
+\paragraph*{The coalescent.}
 The branching patterns and expected branch lengths of trees are correlated to the underlying population structure of the viruses they represent.
 Generally, we expect to observe more rapid branching (and therefore shorter expected branch lengths) in smaller populations, and longer branches in trees from larger populations (Fig.~\ref{fig:coalescentOverview}).
 This relationship is defined under a backwards-in-time model known as the coalescent \citep{kingman1982coalescent,kingman1982genealogy}.
@@ -600,13 +600,13 @@ These patterns of introduction and establishment are crucial for understanding b
 While it is possible to consider viral locations as a continuous trait that moves through space, it is often more helpful to consider discrete geographic locations (zip codes, countries, continents) instead (Fig.~\ref{fig:phylogeneticsOverview}d).
 By treating location as a discrete trait we can both infer migrations between units that are politically and socially relevant---helping for public health communication and intervention---as well as simplifying the computational burden of the analysis.
 
-\paragraph*{CTMC model of geographic dispersal in discrete space}
+\paragraph*{CTMC model of geographic dispersal in discrete space.}
 The mathematical framework for discrete phylogeographic inference parallels that of nucleotide evolution, employing a continuous-time Markov chain model to describe transitions between geographic states.
 Just as the $\mathbf{Q}$ matrix in nucleotide models describes instantaneous rates of mutation between different nucleotides, in phylogeography it describes rates of movement between different locations.
 Each element, $\mathbf{Q}_{ij}$, represents the rate at which lineages transition from location $i$ to location $j$.
 This mathematical equivalence allows us to leverage the same likelihood calculation machinery used in sequence evolution models, treating geographic locations as discrete character states evolving along the branches of the phylogeny.
 
-\paragraph*{Statistical power and overcoming sampling bias}
+\paragraph*{Statistical power and overcoming sampling bias.}
 A significant challenge in phylogeographic inference arises from sampling bias, as the number of sequences available from different locations rarely reflects the true underlying prevalence of the pathogen in those areas.
 More economically developed regions often contribute disproportionately more sequences to global databases, while regions with limited surveillance capacity may be underrepresented despite having significant disease burden.
 To address this bias, studies often employ strategic subsampling of overrepresented regions to create more balanced datasets.
