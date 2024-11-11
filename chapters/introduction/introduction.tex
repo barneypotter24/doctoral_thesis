@@ -369,7 +369,7 @@ With such a small and compact genome, \gls{hbv} has evolved to contain multiple 
 The combination of these features---having a \gls{dna} genome rather than \gls{rna}, and overlapping \gls{orf}s---put a very strong purifying selective pressure on \gls{hbv}'s genome.
 Not only does ds\gls{dna} have an inherent error-correction mechanism, but any mutation that does arise has multiple opportunities to be deleterious.
 This resistence to mutation accumulation results in a virus that not only has a very small genome, but also accumulates mutations at a reduced rate.
-As a consequence, it is very difficult to derive an evolutionary rate estimate from a sample of contemporary \gls{hbv} genomes (referred to as weak \textit{temporal signal}, further described in Section~\ref{ssec:temporalSignal}).
+As a consequence, it is very difficult to derive an evolutionary rate estimate from a sample of contemporary \gls{hbv} genomes (referred to as weak \textit{temporal signal}, further described in Section~\ref{ssec:molClock}).
 Weak temporal signal means that it is very difficult to confidently estimate the timing of historical events in \gls{hbv}'s ancestry.
 
 Fortunately, we are able to circumvent this issue in part by leveraging \gls{hbv}'s long history in the human population.
@@ -384,82 +384,262 @@ Because different locations will likey have established treatment programs tailo
 
 %1.3
 \section{Phylodynamics and phylogeography}
-how to read a phylogeny 
+The primary methods by which this thesis addresses the biological questions posed in the previous section fall into the domain of phylodynamic inference.
+These methodologies leverage statistical models of genetic sequence evolution, evolutionary rates, geographic dispersal, and poulation structures to reconstruct hypotheses of evolutionary history.
+For the purpose of this thesis, these hypotheses take the form of one or more time-calibrated, bifurcating, labeled, rooted phylogenetic trees (frequntly simply called a tree).
+While the development of these models was not part of my PhD work, it is still useful to review the specific theory that underpins the analyses presented in the chapters of the thesis.
 
-    \subsection{Phylogenetic inference}
+While trees represent a very powerful data structure to describe inferred evolutionary relationships, they are not always an intuitive structure to ``read.''
+Figure~\ref{fig:treeDiagram} illustrates a hypothetical tree that describes a possible evolutionary relationship between three sequences, named \textit{A}, \textit{B}, and \textit{C}, and represented on the diagram by points.
+By convention, such tree diagrams have a horizontal axis on which ranges from the past on the left to the present on the right.
+Throughout this thesis, these sequences will interchangably be referred to as \textbf{taxa} (singular: \textbf{taxon}), \textbf{tips}, or \textbf{leaves}.
+Each taxon has a single \textbf{edge} (or \textbf{branch}) leading into it, where the length of the branch represents distance---either evolutionary or time.
+When to branches merge together, the internal \textbf{node} on the tree where they meet represents the inferred most recent common ancestor (\gls{mrca}) of the set of taxa.
+We call the subtree that descends from an internal node a \textbf{clade}.
+For example, node \textit{ac} represents the inferred \gls{mrca} of taxa \textit{A} and \textit{B} occurring at $time=2$.
+Each internal node then has its own branch in turn.
+We refer to the \gls{mrca} of the entire set of taxa as the \textbf{root} of the tree. 
 
-      \subsubsection{Nucleotide evolution}
-      models of nucleotide evolution, different substitution models
-      \subsubsection{Phylogenetic likelihood}
-      example: simple tree likelihood calculation on one site
-      equation: tree likelihood on full multiple sites
-      \subsubsection{Inferring phylogenies}
-        \paragraph*{Maximum likelihood}
-        \paragraph*{Bayesian inference}
-        Bayes' Theorem (regular)
-        Bayes' Theorem with all of the phylogenetic bits
-        \paragraph*{Choosing the correct method for the questions at hand}
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=.6\textwidth]{treeDiagram}
+  \caption[Example phylogenetic tree]{A simple phylogenetic tree showing a hypothetical relationship between three taxa (\textit{A}, \textit{B}, and \textit{C}).
+  }
+  \label{fig:treeDiagram}
+\end{figure}
 
-    \subsection{Temporal resolution and the molecular clock}
-      \subsubsection{Measurably evolving populations}
-      \subsubsection{Calibrating a molecular clock}
-      figure: fossil calibration
-      figure: prior knowledge
-      figure: molecular clock inference
-      \subsubsection{Temporal signal}\label{ssec:temporalSignal}
-      figure: strong vs weak temporal signal
-      \subsubsection{Clock models}
-      figure: strict vs relaxed clock
-      \subsubsection{Rate heterogeneity}
+Importantly (and often confusingly), it should be noted that both the vertical axis and the vertical lines in the tree diagram do not contain any meaningful information!
+They only exist for visual clarity.
+As such, any rotations about an internal node (e.g. if the clade containing taxa \textit{A} and \textit{B} were moved to the bottom of the tree and the branch to \textit{C} to the top) do not change the interpretation of the tree in any way.
+Similarly, because the vertical axis does not carry information, when we want to calculate how much distance separates two taxa we only want to consider the sum of the horizontal branches that connect them, so the total distance that separates \textit{A} and \textit{B} is just the sum of the two branches that lead from \textit{ac} to \textit{A} ($l_A=1$) and \textit{B} ($l_B=2$), so the total distance beween these two sequences is $l_A + l_B = 3$.
 
-    \subsection{Phylodynamics and genomic epidemiology}
-      \subsubsection{Population dynamics}
-      \subsubsection{The coalescent}
-      The branching patterns and expected branch lengths of trees are correlated to the underlying population structure of the viruses they represent. Generally, we expect to observe more rapid branching (and therefore shorter expected branch lengths) in smaller populations, and longer branches in trees from larger populations.
-      \begin{figure}[ht]
-        \centering
-        \includegraphics[width=.95\textwidth]{coalescent_schematic}
-        \caption[Demography effects tree shape]{Illustrations of three tree structures expected under different coalescent models; each examples includes both an illustration of the generative coalescent process under a different population size model where dots represent individuals and lines represent parent/child relationships, a subsample of those relationships are highlighted in blue. Below each coalescent plot is the observed tree shape generated by that process. \textit{(left)} Constant population size over time: we expect relatively short branches near the present, and longer branches toward the past. \textit{(center)} Exponentially growing population: we expect longer branches near the present and relatively shorter branches in the past. \textit{(right)} Population with a bottleneck: we expect very short branches at the time of the bottleneck, and very long branches furter back in time.
-        }
-        \label{fig:coalescentOverview}
-      \end{figure} 
-      comparison to case counts and calculation of $R_0$
+\subsection{Phylogenetic inference}
+The theoretical core of all phylodyanamic analysis concerns how can we infer a tree that accurately describes a observed set of related genomic sequences.
+There are many ways by which one could judge how well a tree describes a observed set of taxa---some try to minimize the number of mutations that are necessary along the tree to produce the observed sequences, others attempt to find the tree that optimize all pairwise genetic distances between sequences---however the current gold standard for this task is to calculate phylogenetic \textit{tree likelihoods} under a continuous-time Markov chain (\gls{ctmc}) model of nucleotide evolution.
+By using such models we have a principled method by which we can compare trees, regardless of how similar or dissimilar they are.
 
-    \subsection{Phylogeography}
+\subsubsection{Nucleotide evolution}
+The backbone of phylogenetic likelihood calculation lies in modeling the nucleotide mutation process as a continuous-time Markov chain.
+These models describe the instantaneous relative rates of mutations between nucleotides (A,C,G,T) described by a four-by-four matrix: $\mathbf{Q}$ where $\mathbf{Q}_{ij}$ is the relative mutation rate from nucleotide $i$ to nucleotide $j$.
+Under such \gls{ctmc} models, each $\mathbf{Q}_{ij}$ can be thought of as the product of a model-specific rate parameter $\xu_{ij}$ and the equilibrium nucleotide frequency of the nucleotide that results from the mutation ($\pi_j$).
+As an example, if we are interested in the relative instantaneous rate of mutation from $A \implies G$, we define:
+\begin{equation}
+  \mathbf{Q}_{AG} = \xu_{AG} \times \pi_G.
+\end{equation}
 
-      \subsubsection{Reconstructing the spatiotemporal spread of a pathogen}
-      biological questions: where did it come from? where is it going? how long did it spend in a location? what are the patterns of dispersal?
-      \subsubsection{Discrete trait analysis}
+For mathematical stability, $\mathbf{Q}$ defines the diagonal entries (corresponding to the rate at which a nucleotide mutates to the same nucleotide) are the negative sum of the rest of the row.
 
-        \paragraph*{CTMC model of geographic dispersal in discrete space}
-        figure: discrete trait phylogeography (maybe straight from Pybus \& Rambaut 2009)
-        \paragraph*{Statistical power and overcoming sampling bias}
-        schematic of sampling evenly through space and time and grouping samples to decrease number of locations
+The most simple of these models was proposed by \citet{jukes1969evolution} (JC69), and models all relative rates with a single rate parameter, $\lambda$, and all equilibrium frequencies are equal ($\pi_A = \pi_C = \pi_G = \pi_T = .25$).
+The most complex of these models that is generally used is called the generalized time-reversible (GTR) model \citep{tavare1986some}, which models each of the twelve potential mutations is allowed its own parameter, and all equilibrium frequencies are also allowed their own values.
+Models with more parameters have a tendency to more accurately describe data, however this comes at the cost of computational complexity (resulting in longer runtimes) and risk that the data do not contain enough information to avoid model overfitting.
+To strike an appropriate balance between model fit and complexity most analyses described in this thesis use the Hasegawa-Kishino-Yano (\gls{hky}) \citep{hasegawa1985dating}, which uses one rate ($\xu_I$) for transitions ($A \iff G$ and $C \iff T$), and another rate ($\xu_{II}$) for transversions ($A \iff C$, $A \iff T$, $G \iff C$, and $G \iff T$).
+The \gls{hky} model allows each equilibrium frequency to have its own value.
 
-      \subsubsection{Other methods not used in this thesis}
+\subsubsection{Phylogenetic likelihood}
+Using the \gls{ctmc} model of nucleotide evolution, we can then define the \textbf{phylogenetic likelihood} for the chosen model: a function $\mathcal{L}$ that quantifies how well a given set of parameters for that model describe the data that we have observed.
 
-        \paragraph*{Generalized linear models for discrete phylogeography}
-        \paragraph*{Continuous phylogeography and spatial statistics}
-        \paragraph*{Structured coalescent}
+We say that a tree ($\mathcal{T}}$), as a combination of its topology ($\tau$) and a vector of its branch lengths ($\mathbf{\nu}$).
+We call our dataset of $N$ aligned genomic sequences $\mathbf{X} = {x_1, x_2, \dots, x_N}$.
+Because all sequences have the same lenth, $M$, we also consider the observed data by the site patterns found at the same position ($m \in M$) in all seqeuences, $\mathbf{X}^m$.
+
+\clearpage
+Consider the following hypothetical alignment of four sequences, each five nucleotides long:\\
+\verb|ACGT|\\
+\verb|ACGT|\\
+\verb|ACGT|\\
+\verb|CCGT|\\
+
+If this alignment represented our observed data $\mathbf{X}$, then the first site pattern would be: $\mathbf{X}^1 = (A, A, A, C)$.
+
+Under the \gls{ctmc} model of nucleotide evolution, we can calculate a probability of observing a particular site pattern $\mathbf{X}^m$, given a tree: $\mathbb{P}(\mathbf{X}^m | \tau, \mathbf{\nu})$.
+While the exact calculation of this likelihood is not the focus of this thesis, conceptually it assigns probabilities to each branch of the tree based on their length and the transition rate matrix, and integrates over all possible ancestral states at internal nodes to assign a probability that a particular tree produced the observed data at its leaves.
+
+Because of the critical assumption that all sites in the genome evolve independently, we are able define our phylogenetic likelihood for a tree given our observed data as the product of the probabilities at all sites:
+\begin{equation}\label{eq:likelihood}
+  \mathcal{L}(T | \mathbf{X}) = \prod_{m=1}^M \mathbb{P}(\mathbf{X}^m | \tau, \mathbf{\nu}). 
+\end{equation}
+
+This likelihood calculation can be expanded upon to include additional features of interest (correlations between muatations and time, models of demography, models of geographic dispersal, etc.); such extensions are the topic of Sections~\ref{ssec:molClock},~\ref{ssec:phylodynamics},~\&~\ref{ssec:phylogeography}.
+The key function of the likelihood is that it allows us a principled manner by which we can compare two different trees which might describe the data that we observe, and to ask, ``which of these two trees is most likely to have generated the data?''
+
+\subsubsection{Inferring phylogenies}
+With a phylogenetic likelihood in hand, it is finally possible to explore methods by which we can infer a phylogeny and model parameters that best describes a set of sequences.
+To accomplish this task there are two main statistical frameworks under which we can operate: maximum likelihood (ML), and Bayesian inference.
+
+Both of these frameworks assume that we are able to geneate an initial parameterization of a phylogenetic model: $\Psi = (\tau, \mathbf{\nu}, \mathbf{\Theta})$, where $\mathbf{\Theta}$ includes values for all of the parameters in the model (e.g. substitution rate matrix $\mathbf{Q}$).
+Both frameworks then use some method of updating these parameters (referred to as \textbf{transition kernels} or \textbf{operators}), going from $\Psi$ to the updated $\Psi^*$ by tweaking one (or more) of the tree topology, branch lengths, or model parameters slightly.
+It is important to note that both ML and Bayesian inference methodologies make use of the exact same likelihood functions and transtion kernels, they differ primarily in how they calculate and describe the optimal phylogeny and model parameters.
+
+\paragraph*{Maximum likelihood}
+Maximum likelihood inference, as the name suggests, seeks to estimate the set of parameters $\hat{\Psi}$ for which the phylogenetic likelihood is maximized---the values for each model parameter that best explain the data.
+We call $\hat{\Psi}$ the maximum likelihood estimate (MLE) of model parameters, given the dataset:
+\begin{equation}
+  \hat{\Psi} = \argmax_{\tau,\mathbf{\nu},\mathbf{\Theta}} \mathcal{L}(\tau, \mathbf{\nu},\mathbf{\Theta} | \mathbf{X}).
+\end{equation}
+
+The key features of ML phylogenetic inference are that they are \textit{fast} and provide an \textit{easy-to-interpret} estimate of the best model parameters.
+
+\paragraph*{Bayesian inference}
+In contrast to maximum likelihood phylogenetic inference, Bayesian inference differs in two key conceptual areas.
+Bayesian inference supposes that in addition to information included in data, by including prior knowledge about a system we may improve our estimates about that system, particularly in cases where data are limited.
+The results of Bayesian inference then describe not only the best single estimate of which parameter best describes the data, but also the uncertainty associated with that estimate.
+
+For example, if one were interested in describing the average height of adults in Belgium, they may go and measure the heights of several people found on the street.
+If they were performing maximum likelihood inference, simply calculaing the mean and variance of the heights would be sufficient.
+The Bayesian, by contrast, may both have a prior idea that the heights might be normally distributed around an average of 170cm.
+After sampling they may update this estimate based on their observations, but the prior would still be incorporated.
+This incorporation of prior information allows them to account for the possibility that they may only sample heights outside of a contrived bar catering only to professional basketball players and horse jockeys, which may result in a biased estimation.
+
+To formalize these ideas, we make use of Bayes' theorem:
+\begin{equation}
+  \mathbb{P}(H|D) = \frac{\mathbb{P}(D|H) \times \mathbb{P}(H)}{\mathbb{P}(D)}.
+\end{equation}
+Put into English, this states that the probability of some hypothesis, $H$, given some data $D$ ($\mathbb{P}(H|D)$; called the \textit{posterior}) is proportional to the probability of the data given the hypothesis ($\mathbb{P}(D|H)$) and the probability of hypothesis itself ($\mathbb{P}(H)$).
+We refer to these terms as the \textit{likelihood} and \textit{prior}, respectively.
+Bayes' theorem also states that the posterior is inversely proportional to the overall probability of the data ($\mathbb{P}(D)$), called the \textit{marginal likelihood} term.
+
+Adapting this framework into our phylogenetic context, we get:
+\begin{equation}
+  \mathbb{P}(\Psi|\mathbf{X}) = \frac{\mathbb{P}(\mathbf{X}|\Psi) \times \mathbb{P}(\Psi)}{\mathbb{P}(\mathbf{X})}.
+\end{equation}
+This equation can be expanded in part by substituting our phylogenetic likelihood from Equation~\ref{eq:likelihood}.
+As it is quite difficult to assign a joint prior distribution to all model parameters, we instead also treat this as the product of priors on all model parameters.
+
+The final consideration is to calculate the marginal likelihood term, which represents the probability of observing the data.
+We can calculate this term by computing:
+\begin{equation}
+  \mathbb{P}(\mathbf{X}) = \sum_{k=1}^{\zeta} \mathbb{P}(\mathbf{X}|\tau_k)\mathbb{P}(\tau_k).
+\end{equation}
+This represents a discrete integral over all possible tree topologies that could have generated the sequence data that we observe ($\zeta$ represents the number of all such topologies).
+
+Our final equation that describes our posterior estimtes of the model parameters given the data that we have observed is:
+\begin{equation}
+  \mathbb{P}(\Psi|\mathbf{X}) = 
+    \frac{\mathcal{L}(\tau,\mathbf{\nu},\mathbf{\Theta}|\mathbf{X}) \times \mathbb{P}(\tau)\mathbb{P}(\mathbf{\nu})\mathbb{P}(\mathbf{\Theta})}
+    {\sum_{k=1}^{\zeta} \mathbb{P}(\mathbf{X}|\tau_k)\mathbb{P}(\tau_k)}.
+\end{equation}
+
+This formulation ends up being extremely time consuming to compute compared to MLE (where ML analysis could take hours, Bayesian inference may take days or weeks), however the benefits of both including prior information and quantifying uncertainty make Bayesian phylogenetic analysis more robust in situations where time and computational resources allow it.
+
+\paragraph*{Choosing the correct method for the questions at hand}
+This thesis uses both ML and Bayesian phylogenetic inference for different tasks.
+Because of its speed and clarity, ML analyses were used for the entirety of Chapter~\ref{ch:chapter1}, as the time constraint of real-time analysis made Bayesian inference impossible.
+Additionally, ML analyses prove extremely useful for preliminary analyses of datasets, when quick insights are useful for deciding how to formulate a larger-scale Bayesian inference later, as is shown in Chapter~\ref{ch:chapter2}.
+Generally, Bayesian phylogenetic inference proves to be better when time is not extremely constrained, and is therefore the main methodology used in Chapters~\ref{ch:chapter2}~\&~\ref{ch:chapter3}.
+The ability to quantify uncertainty allows us to not only make inferences, but also to speak about how confident we are in those inferences.
+Additionally, the ability to inject prior information into an analysis proves extremely useful in cases where the data do not provide sufficient signal to infer particular parameters---this is crucial to the analysis shown in Chapter~\ref{ch:chapter3}.
+
+\subsection{Temporal resolution and the molecular clock}\label{ssec:molClock}
+While the \gls{ctmc} model of nucleotide evolution underpins all phylogenetic models by giving us a way to infer trees with branch lengths from genomic sequence data, there are numerous categories of models that allow us to infer epidemiologically relevant traits from our datasets.
+One such category---referred to as \textbf{molecular clock} models---consider the mutation process as a function of time, thereby re-scaling phylogenies to have branches whose lengths represent time rather than genetic distances (Fig.~\ref{fig:phylogeneticsOverview}b).
+In doing so, we can consider \textit{when in history} the \gls{mrca} of a set of sequences existed, which proves useful when trying to understand how a disease has spread through time.
+
+\subsubsection{Setting a molecular clock}
+Generally, there are three main ways that a molecular clock can be assigned to a phylogeny.
+The most simple of these is to know the evolutionary rate of the phylogeny \textit{a priori}---this is frequently the case for well-characterized pathogens such as \gls{sarscov2}.
+In such cases, one can apply the known clock rate to their pathogen of interest.
+The second method leverages \textit{a priori} knowledge slightly differently, but to a similar effect.
+In cases where a known split present in the the pylogeny occurred at a known time, it is possible to calibrate a clock model based on knowing how far in the past that ``calibration point'' took place.
+This can be used when the phylogeny spans such distant past that the fossil record gives an estimate for a known divergence time.
+In the case of viral phylodynamics, it is quite rare for ancestral lineage divergences to be well characterized in a way that makes this method particularly useful.
+The primary method of molecular clock modeling used in this thesis involves the estimation of a molecular clock directly from time-stamped sequence data.
+
+\paragraph*{Measurably evolving populations}
+In cases wwe are able to collect genomes from a group of organisms over the same time period that their evolution is taking place, that is said to be a measurably evolving population (\gls{mep}).
+One scenario that can result in a \gls{mep} is when bodies from that population have been well preserved (e.g. in permafrost) for enough of their evolutionary history that we can extract genetic material from the mummies \citep{shapiro2004rise}.
+The other main scenario where we observe \gls{mep}s comes when organisms (such as RNA viruses) evolve so quickly that we are able to observe evolution taking place at the same time scale as the epidemic itself.
+
+\paragraph*{Temporal signal}
+If a dataset contains sufficient information to accurately fit a molecular clock, it is said to have \textit{temporal signal}.
+A standard preliminary analysis to assess whether a dataset contains sufficient temporal signal involves taking a rooted ML tree of the dataset with branch lengths measured in genetic distance and associated dates.
+Each tip can then be plotted as a function of its root-tip total divergence against time.
+If the dataset demonstrates strong temporal signal, this scatterplot will be well-fit by a linear regression whose slope describes its evolutionary rate (substitutions per site per unit time), and its x-intercept will represent an estimate for its \gls{tmrca}.
+
+\paragraph*{Clock models}
+The analyses in this thesis use different types of clock models.
+For the real-time ML analyses, we use a model known as a strict clock.
+Under this model, one clock rate governs all branches in the tree, representing an expectation that evolution takes place at the same average rate across the entire evolutionary history.
+By contrast, the Bayesian phylodynamic analyses use a relaxed clock model, wherein each branch of the tree is considered a draw from an underlying probability distribution (generally a lognormal distribution).
+
+\subsection{Phylodynamics and genomic epidemiology}\label{ssec:phylodynamics}
+Beyond the evolutionary dynamics of a virus, it is possible to infer some of the underlying epidemiological features of a virus from its phylogeny.
+Among these include an estimate of the viruses underlying demography (i.e. population structure through time), as well as how it has been spreading through space and time.
+
+\paragraph*{The coalescent}
+The branching patterns and expected branch lengths of trees are correlated to the underlying population structure of the viruses they represent.
+Generally, we expect to observe more rapid branching (and therefore shorter expected branch lengths) in smaller populations, and longer branches in trees from larger populations (Fig.~\ref{fig:coalescentOverview}).
+This relationship is defined under a backwards-in-time model known as the coalescent \citep{kingman1982coalescent,kingman1982genealogy}.
+Under this model, any two individuals have an equal probability of ``choosing'' any individual from the previous generation as their ancestor, so the propabability that any two choose the same ancestor is inversely proportional to the size of the population.
+This leads lineages moving backwards through time to \textit{coalesce} more quickly in small populations and more slowly in large populations.
+If we invert this relationship, we can infer that periods of time where a phylogeny has many branching events (i.e. coalescences) come from a smaller population, and times with fewer branching events from larger populations.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=.95\textwidth]{coalescent_schematic}
+  \caption[Demography effects tree shape]{Illustrations of three tree structures expected under different coalescent models; each examples includes both an illustration of the generative coalescent process under a different population size model where dots represent individuals and lines represent parent/child relationships, a subsample of those relationships are highlighted in blue. Below each coalescent plot is the observed tree shape generated by that process. \textit{(left)} Constant population size over time: we expect relatively short branches near the present, and longer branches toward the past. \textit{(center)} Exponentially growing population: we expect longer branches near the present and relatively shorter branches in the past. \textit{(right)} Population with a bottleneck: we expect very short branches at the time of the bottleneck, and very long branches furter back in time.
+  }
+  \label{fig:coalescentOverview}
+\end{figure}
+
+Under this framework, we are able to not only define some sort of prior on tree shapes based known epidemiological information, but also we are able to independently derive epidemiological features such as $R_0$ independently from case count data.
+
+\subsection{Phylogeography}\label{ssec:phylogeography}
+Phylogeographic analysis provides a framework for understanding how pathogens move through space and time by integrating geographic information into phylogenetic inference.
+By considering the locations from which sequences were sampled as traits that can be mapped onto a phylogeny, we can reconstruct the geographic history of viral lineages.
+This approach has proven particularly valuable in understanding the emergence and spread of viral pathogens across different spatial scales, from local transmission chains to global pandemics.
+
+\subsubsection{Reconstructing spatiotemporal spread}
+The primary goal of phylogeographic analysis is to answer fundamental questions about pathogen movement and establishment.
+Perhaps the most basic of these questions concerns the geographic origin of a pathogen: where did it first emerge, and from where did it spread to other locations?
+This origin question is particularly relevant for emerging infectious diseases, where identifying the source location can inform both prevention strategies and our understanding of zoonotic spillover events.
+A second key question addresses the timing of pathogen introduction into specific locations: when did the pathogen first arrive in a given area, and how does this timing relate to the first detected cases?
+Finally, phylogeographic methods can reveal the number and timing of separate introduction events into a location, helping us understand whether an outbreak represents a single introduction followed by local transmission, or multiple independent introductions from different sources.
+These patterns of introduction and establishment are crucial for understanding both historical epidemics and preparing for future outbreaks.
+
+\subsubsection{Discrete phylogeographic models}
+While it is possible to consider viral locations as a continuous trait that moves through space, it is often more helpful to consider discrete geographic locations (zip codes, countries, continents) instead (Fig.~\ref{fig:phylogeneticsOverview}d).
+By treating location as a discrete trait we can both infer migrations between units that are politically and socially relevant---helping for public health communication and intervention---as well as simplifying the computational burden of the analysis.
+
+\paragraph*{CTMC model of geographic dispersal in discrete space}
+The mathematical framework for discrete phylogeographic inference parallels that of nucleotide evolution, employing a continuous-time Markov chain model to describe transitions between geographic states.
+Just as the $\mathbf{Q}$ matrix in nucleotide models describes instantaneous rates of mutation between different nucleotides, in phylogeography it describes rates of movement between different locations.
+Each element, $\mathbf{Q}_{ij}$, represents the rate at which lineages transition from location $i$ to location $j$.
+This mathematical equivalence allows us to leverage the same likelihood calculation machinery used in sequence evolution models, treating geographic locations as discrete character states evolving along the branches of the phylogeny.
+
+\paragraph*{Statistical power and overcoming sampling bias}
+A significant challenge in phylogeographic inference arises from sampling bias, as the number of sequences available from different locations rarely reflects the true underlying prevalence of the pathogen in those areas.
+More economically developed regions often contribute disproportionately more sequences to global databases, while regions with limited surveillance capacity may be underrepresented despite having significant disease burden.
+To address this bias, studies often employ strategic subsampling of overrepresented regions to create more balanced datasets.
+This approach helps prevent the overestimation of certain migration routes simply due to sampling intensity, though care must be taken to ensure that important evolutionary or epidemiological signals are not lost in the process.
+The choice of subsampling strategy can significantly impact the resulting phylogeographic inference, making it crucial to carefully consider and document these choices in any analysis.
 
 % 1.4
   \section{Phylodynamics: from theory to practice}
 
     \subsection{Real-time phylodynamics}
-      \subsubsection{What scope of questions can we answer in real-time?}
-      \subsubsection{Dataset construction: context is key}
       \subsubsection{Maximizing phylogenetic likelihood}
+\bip{Recall that ML....}
+      How this maximum likelihood estimate is calculated in paractice is conceptually similar to the idea of climbing a hill to reach its peak.
+From wherever on the hillside that we begin, we may consider a step in any direction of our choice.
+If that step would take us to a higher elevation, we take the step; if the step would take us to a lower or the same elevation, we don't take the step and try again.
+Eventually, we will reach a point where we can no longer find a direction from which we can step uphill anymore.
+
+We apply this same algorithm to maximum likelihood estimation: given an initial set of parameters, $\Psi$, we can apply a transition kernel to generate a modified parameter set, $\Psi^*$, which we call the \textit{proposal}.
+We can then compare the likelihoods generated by the initial parameters ($\mathcal{L}(\Psi)$) and the proposal ($\mathcal{L}(\Psi^*)$): if the proposal set generated a higher likelihood, then we update $\Psi$ to take the values of the proposal set, if the proposal set is less likely, we discard it and keep $\Psi$ the same.
+We can then repeat this process until the algorithm is not able to generate a propsosal that improves the likelihood.
+
+There are many potential optimizations to this algorithm.
+Within the hill climbing metaphor, one could seek to always take the steepest step uphill, vary their step length dynamically, or to try starting from different starting points on the hillside to see if they yield the same result.
+While they are beyond the scope of this thesis, such optimizations and many others have been included in popular software packages that perform ML phylogenetic inference.
       \subsubsection{Public health policy relevancy and real-time communication}
       \subsubsection{The Nextstrain platform}
     \subsection{Bayesian phylodynamics}
       \subsubsection{Quantifying phylogenetic uncertainty}
-      \subsubsection{Markov cahin Monte Carlo}
+      \subsubsection{Markov chain Monte Carlo}
       figure: MCMC explanation
       \subsubsection{BEAST}
       On MCMC convergence and mixing
       \subsubsection{Prior specification}
-      \subsubsection{Optimization and computational complexity}
-      figure: snakemake parallelization
 
 % Infectious diseases are now emerging or reemerging almost every year.
 % This trend will continue because a number of factors, including increased global population, aging, travel, urbanization, and climate change, favor the emergence, evolution, and spread of new pathogens \citep{bloom2017emerging}.

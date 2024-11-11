@@ -128,11 +128,14 @@
 \usepackage{etoolbox} % block quotes
 \AtBeginEnvironment{quote}{\par\singlespacing\small}
 
+\newcommand\xu{\rotatebox[origin=c]{180}{$\pi$}}
+\DeclareMathOperator*{\argmax}{argmax}
+
 % This bit helps draft compilation time
 % Remove from final draft or comment any time I want to see the figures included
 % \newif\ifdropfigures  % At the time of definition it is false!
 % \dropfigurestrue % yes, we drop figures
-% %\dropfiguresfalse
+%\dropfiguresfalse
 % \ifdropfigures
 % \renewcommand{\includegraphics}[2][]{%
 % }% Ok, `\includegraphics does nothing any longer
@@ -198,11 +201,11 @@
 \newglossaryentry{bf}{name={BF},description={Bayes factor. The likelihood ratio of the marginal likelihood of two different hypotheses. Used to compare the relative support of two models}}
 \newglossaryentry{tmrca}{name={tMRCA},description={Time of the most recent common ancestor. Point in time inferred by phylogenetic inference at which the MRCA was hypothesized to have existed}}
 \newglossaryentry{hbsag}{name={HBsAg},description={Hepatitis B surface antigen}}
-\newglossaryentry{hky}{name={HKY},description={Hasegawa, Kino, Yang model of nucleotide evolution. Markov model of nucleotide evolution in which the rate of transitions ($A \iff G$ or $C \iff T$) share one rate and transversions ($A \iff C/T$ or $G \iff C/T$) share another. The transition/transversion ratio can be described by a single parameter, kappa ($\kappa$)}}
+\newglossaryentry{hky}{name={HKY},description={Hasegawa-Kishino-Yano model of nucleotide evolution. Markov model of nucleotide evolution in which the rate of transitions ($A \iff G$ or $C \iff T$) share one rate and transversions ($A \iff C/T$ or $G \iff C/T$) share another. The transition/transversion ratio can be described by a single parameter, kappa ($\kappa$)}}
 \newglossaryentry{hpd}{name={HPD},description={Highest posterior density (interval)}}
 \newglossaryentry{orf}{name={ORF},description={Open reading frame. PUT IN MORE DETAILS}}
 \newglossaryentry{hiv}{name={HIV},description={Human immunodeficiency virus. Ont of two species of retroviruses that are the causative agent of acquired immunodeficiency syndrome (AIDS). Responsible for the HIV/AIDS pandemic that started in the 1980s.}}
-\newglossaryentry{hcv}{name={HCV},description={Hepatitis C virus. PUT IN MORE DETAILS}}
+\newglossaryentry{hcv}{name={HCV},description={Hepatitis C virus.}}
 \newglossaryentry{hcc}{name={HCC},description={Hepatocellular carcinoma. A form of liver cancer affecting hepatocyte cells; often caused by chronic infection by hepatitis B virus}}
 \newglossaryentry{msa}{name={MSA},description={Multiple sequence alignment. Set of nucleotide sequences in FASTA format that have had their constituent nucleotides shifted according to an alignment algorightm (as implemented in software such as MAFFT or nextalign) so that the sequences are in frame with one another and can be compared at each site. Often constructed in relation to a given reference genome. The alignment is the primary input into phylogenetic reconstruction software used in this thesis}}
 \newglossaryentry{snp}{name={SNP},description={Single nucleotide polymorphism. An observed difference in a given genome at a single site (as in a multiple sequence alignment). Typically the result of mutation}}
