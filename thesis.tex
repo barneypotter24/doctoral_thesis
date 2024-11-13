@@ -133,13 +133,13 @@
 
 % This bit helps draft compilation time
 % Remove from final draft or comment any time I want to see the figures included
-% \newif\ifdropfigures  % At the time of definition it is false!
-% \dropfigurestrue % yes, we drop figures
-% \dropfiguresfalse
-% \ifdropfigures
-% \renewcommand{\includegraphics}[2][]{%
-% }% Ok, `\includegraphics does nothing any longer
-% \fi
+\newif\ifdropfigures  % At the time of definition it is false!
+\dropfigurestrue % yes, we drop figures
+\dropfiguresfalse
+\ifdropfigures
+\renewcommand{\includegraphics}[2][]{%
+}% Ok, `\includegraphics does nothing any longer
+\fi
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -195,7 +195,7 @@
 \newglossaryentry{rna}{name={RNA},description={Ribonucleic acid. A molecule that encodes the genetic information of many viruses, including SARS-CoV-2, influenza virus, and rotavirus}}
 \newglossaryentry{nssrna}{name={(-)ssRNA},description={Negative-sense single-stranded RNA. A type of RNA genome that is complementary to the mRNA that is translated into proteins (e.g. influenza virus)}}
 \newglossaryentry{pssrna}{name={(+)ssRNA},description={Positive-sense single-stranded RNA. A type of RNA genome that is directly translatable into proteins (e.g. SARS-CoV-2)}}
-\newglossaryentry{mcc}{name={MCC},description={Maximum clade credibility (tree). Given a set of posterior trees, the individual tree from the set whose internal nodes---defined by their descendent tips---occur in the highest proportion of the distribution of trees}}
+\newglossaryentry{mcc}{name={MCC},description={Maximum clade credibility (tree). Given a set of posterior trees, the individual tree from the set whose internal nodes---defined by their descendant tips---occur in the highest proportion of the distribution of trees}}
 \newglossaryentry{ctmc}{name={CTMC},description={Continuous-time Markov chain. Markov process in which jumps between states are parameterized in terms of their ``holding time'' in states as a continuous variable, rather than as discrete-time jump probabilities. Used to model both relative nucleotide/amino acid substitution rates, and relative geographic migration rates}}
 \newglossaryentry{bssvs}{name={BSSVS},description={Bayesian stochastic search variable selection. A method by which parameters' inclusion in a model are ``toggled'' randomly to determine whether those parameters should be considered part of the model}}
 \newglossaryentry{bf}{name={BF},description={Bayes factor. The likelihood ratio of the marginal likelihood of two different hypotheses. Used to compare the relative support of two models}}
@@ -207,13 +207,13 @@
 \newglossaryentry{hiv}{name={HIV},description={Human immunodeficiency virus. Ont of two species of retroviruses that are the causative agent of acquired immunodeficiency syndrome (AIDS). Responsible for the HIV/AIDS pandemic that started in the 1980s.}}
 \newglossaryentry{hcv}{name={HCV},description={Hepatitis C virus.}}
 \newglossaryentry{hcc}{name={HCC},description={Hepatocellular carcinoma. A form of liver cancer affecting hepatocyte cells; often caused by chronic infection by hepatitis B virus}}
-\newglossaryentry{msa}{name={MSA},description={Multiple sequence alignment. Set of nucleotide sequences in FASTA format that have had their constituent nucleotides shifted according to an alignment algorightm (as implemented in software such as MAFFT or nextalign) so that the sequences are in frame with one another and can be compared at each site. Often constructed in relation to a given reference genome. The alignment is the primary input into phylogenetic reconstruction software used in this thesis}}
+\newglossaryentry{msa}{name={MSA},description={Multiple sequence alignment. Set of nucleotide sequences in FASTA format that have had their constituent nucleotides shifted according to an alignment algorithm (as implemented in software such as MAFFT or nextalign) so that the sequences are in frame with one another and can be compared at each site. Often constructed in relation to a given reference genome. The alignment is the primary input into phylogenetic reconstruction software used in this thesis}}
 \newglossaryentry{snp}{name={SNP},description={Single nucleotide polymorphism. An observed difference in a given genome at a single site (as in a multiple sequence alignment). Typically the result of mutation}}
-\newglossaryentry{sarscov2}{name={SARS-CoV-2},description={Severe acute respiratory syndrome coronavirus 2. The causative agent of COVID-19 and the pathegen responsible for the global COVID-19 pandemic that began in spring 2020. One of the two viruses being analyzed as part of this thesis, along with HBV}}
+\newglossaryentry{sarscov2}{name={SARS-CoV-2},description={Severe acute respiratory syndrome coronavirus 2. The causative agent of COVID-19 and the pathogen responsible for the global COVID-19 pandemic that began in spring 2020. One of the two viruses being analyzed as part of this thesis, along with HBV}}
 \newglossaryentry{voc}{name={VOC},description={Variant of concern. SARS-CoV-2 lineage which demonstrates both fitness-improving mutations in the spike protein, and increased spread in the global population compared to previously circulating variants. Frequently referred to by their WHO Greek-letter name (e.g. Alpha, Delta, Gamma, etc.)}}
 \newglossaryentry{voi}{name={VOI},description={Variant of interest. SARS-CoV-2 lineage which harbors known or speculative fitness-improving mutations in the spike protein. This designation is typically assigned prior to WHO designation as a variant of concern (VOC). Usually referred to by their Pango lineage designation (e.g. B.1.1.7, BA.1, etc.)}}
 \newglossaryentry{ecdc}{name={ECDC},description={European Centre for Disease Prevention and Control}}
-\newglossaryentry{pcr}{name={PCR},description={Polymerase chain reaction. A method used for the amplication of genetic material so that it may be used for both diagnostics (i.e PCR testing for COVID-19), or for whole genome sequencing}}
+\newglossaryentry{pcr}{name={PCR},description={Polymerase chain reaction. A method used for the amplification of genetic material so that it may be used for both diagnostics (i.e PCR testing for COVID-19), or for whole genome sequencing}}
 
 \includechapter{introduction}
 % \includechapter{manual} % Remove this chapter
