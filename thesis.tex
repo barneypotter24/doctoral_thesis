@@ -133,13 +133,13 @@
 
 % This bit helps draft compilation time
 % Remove from final draft or comment any time I want to see the figures included
-\newif\ifdropfigures  % At the time of definition it is false!
-\dropfigurestrue % yes, we drop figures
-\dropfiguresfalse
-\ifdropfigures
-\renewcommand{\includegraphics}[2][]{%
-}% Ok, `\includegraphics does nothing any longer
-\fi
+% \newif\ifdropfigures  % At the time of definition it is false!
+% \dropfigurestrue % yes, we drop figures
+% % \dropfiguresfalse
+% \ifdropfigures
+% \renewcommand{\includegraphics}[2][]{%
+% }% Ok, `\includegraphics does nothing any longer
+% \fi
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -153,9 +153,9 @@
 
 \frontmatter % to get \pagenumbering{roman}
 
-\includepreface{preface}
+% \includepreface{preface}
 \includeabstract{summary}
-\includeabstractnl{abstractnl}
+% \includeabstractnl{abstractnl}
 
 % To create a list of abbreviations, there are 2 options
 % 1. manual creation of list of abbreviations and inclusion as a chapter

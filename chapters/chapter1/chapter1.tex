@@ -1,7 +1,7 @@
 % !TeX root = ../../thesis.tex
 \chapter{Real-time genomic epidemiology of SARS-CoV-2 in Belgium}\label{ch:chapter1}
 
-\begin{minipage}[b]{0.6\textwidth}
+\begin{minipage}[b]{0.57\textwidth}
     \includegraphics[width=\textwidth]{title2} % Note: image needs to be cropped and faded
     % https://phil.cdc.gov/Details.aspx?pid=23591
   \end{minipage}
@@ -20,29 +20,339 @@ Tolkien, The Lord of the Rings
 
 \onehalfspacing
 
-
 \section{Necesseties of an ongoing pandemic}
-figure: case counts in Belgium
-figure: variant distribution in Belgium
+The onset of the COVID-19 pandemic in early 2020 resulted in unprecedented disruption to global public health, economic activity, and daily life worldwide---Belgium was no exception (Fig.~\ref{fig:beCaseCountsRegion}).
+The Belgian response to \gls{sarscov2} required rapid development and mobilization of public health infrastructure, including the establishment of nationwide genomic surveillance network.
+This surveillance system would ultimately process tens of thousands of viral genomes, generating an unprecedented volume of sequence data that needed to be analyzed and interpreted in near real-time to inform public health decision-making.
 
-\section{Real-time genomic epidemiology in Belgium}
+% Belgian Case Counts
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=.9\textwidth]{be_cases_region}
+  \caption[COVID-19 cases in Belgum by province]{Number of weekly confirmed \gls{sarscov2} cases in Belgium between the beginning of the pandemic and October 2022. Bars are colored by province. \textit{(Data: Sciensano)}}
+  \label{fig:beCaseCountsRegion}
+\end{figure}
 
-\section{Situation reports}
+Perhaps the most significant challenge was in maintaining the qualityof analyses while operating under intense time pressure.
+The rapid evolution of \gls{sarscov2}, emergence of new variants, and changing public-health intervention landscape meant that analytical methods needed to be both robust and adaptable.
+This required constant refinement of bioinformatic pipelines, regular updates to reference datasets, and ongoing communication with international partners to ensure that Belgian surveillance efforts remained aligned with global standards.
+The system needed to be sufficiently flexible to incorporate new types of data and analysis methods as our encodings viral metadata shifted, and needed to be adapted frequently as the number of available genomes rapidly outscaled any previously established analysis methodologies.
 
-\section{Published research}
+\section{Real-time genomic epidemiology in Belgium}\label{sec:nextstrainBE}
+\bip{finally type up some of the nextstrain stuff}
+
+\subsection{Dataset construction}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=.9\textwidth]{monthly_gisaid_counts_adj}
+  \caption[Population-adjusted GISAID sequences]{}
+  \label{fig:gisaidSeq}
+\end{figure}
+
+\subsection{Metadata canonicalization}
+
+\subsection{Custom fork of Nextstrain}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=.75\textwidth]{nextstrain_process}
+  \caption[Modified Nextstrain pipeline]{}
+  \label{fig:beNxt}
+\end{figure}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=.95\textwidth]{initial_belgian_build}
+  \caption[First Belgian Nextstrain instance]{}
+  \label{fig:voiSI2}
+\end{figure}
+
+\subsection{Practical applications}
+
+\subsubsection{Genomic surveillance situation reports}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=.9\textwidth]{belgium_voc_sequences}
+  \caption[VOC sequences in Belgium]{}
+  \label{fig:beVoc}
+\end{figure}
+
+\subsubsection{\textit{Post hoc} research}
+
+\section{Situation reports}\label{sec:sitRep}
+\singlespacing
+\hrule
+\vspace*{12pt}
+The following section includes excerpts from three of the 102 Belgian genomic surveillance reports written between 17 January 2021 and 8 November 2022.
+The more than one situation report per week were coauthored by many members of the COVID-19 Genomics Belgium consortium, and came in the form of rapid communiqu\'{e}s intended for the Belgian Consultative Committee---the panel of experts who directly advised policymakers on the status of the pandemic and appropriate intervention strategies.
+
+I have chosen to include excerpts from three such reports, each of which represents a core feature of the reports.
+In all cases, I have chosen to include the excerpts and figures that best represent my own personal contribution to the authorship of these reports---typically in the form of Nextstrain trees or phylogenetic insights---and included the results of others only where they are appropriate to contextualize my own work.
+
+The first report we ever released is included, as it coincided with the emergence of the three \gls{voc} lineages that would go on to be known as Alpha, Beta, and Gamma.
+The second report presented in this thesis came from a time when all three of the original \gls{voc}s were circulating, representing one of the periods where we reported ``baseline'' genomic surveillance to the Consultative Committee.
+Finally, a report highlighting an emergent \gls{voc} (Delta) in the middle of its rise to fixation from the summer of 2021 is presented.
+These three reports represent a small sampling of how real-time phylodynamic inferences were generated and reported to public health officials in Belgium during the first year of the pandemic.
+\vspace*{12pt}
+\hrule
+\onehalfspacing
+
+\subsection{First genomic surveillance report: 17 January 2021}
+\subsubsection{Executive summary}
+Genomic surveillance has scaled-up as decided on \nth{29} of December 2020, with over 1.100 recent viral genomes sequenced. Approximately 1/3 of these genomes could be analysed, highlighting that Belgium has recently experienced multiple introductions of variants of concern (VOCs). The consolidated epidemiological data are consistent with documented events of local transmission, including at least one large community outbreak.
+The trend in ``S dropouts'' among PCR results obtained in the Federal Platform laboratories are consistent with a recent phenomenon steadily increasing over the recent days.
+
+\subsubsection{International context}
+Since the end of the year, 3 variants of concern (\gls{voc}s) have arisen independently of one another in the United Kingdom (501Y.V1), South Africa (501Y.V2) and Brazil (501Y.V3).
+These variants harbour a number of mutations and deletions associated with higher infectiousness and immune escape.
+All 3 variants are spreading internationally, with 501Y.V1 and 501Y.V2 having been detected in Belgium.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=.8\textwidth]{sitRepFirstVOC}
+  \caption[Global view on the 3 variants: 501Y.V1, 501Y.V2 and 501Y.V3]{Global view on the 3 variants: 501Y.V1, 501Y.V2 and 501Y.V3.}
+  \label{fig:sitRepFirstVOC}
+\end{figure}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=.8\textwidth]{sitRepCoverage}
+  \caption[Coverage by province of available sequences]{Coverage by province of available sequences.}
+  \label{fig:sitRepCoverage}
+\end{figure}
+
+\subsubsection{Recent introduction of VOCs in Belgium}
+Of the 91 501Y.V1 and 7 501Y.V2 identified by the sequencing platforms, only 7 501Y.V1 sequences were available on GISAID on the 16th of January.
+The phylogenetic analysis of these sequences show that these originated from 4 individual introduction events, with a first case of local transmission in Belgium.
+Although most of the \gls{voc} genomes are not yet included in the analysis hereunder, we know from the context of the latest \gls{voc}s detected that both 501Y.V1 and 501Y.V2 have generated secondary infections in Belgium and that 501Y.V1 has been involved in at least one large community outbreak.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=.8\textwidth]{sitRep501YV1}
+  \caption[UK variant 501Y.V1 sequenced in Belgium]{UK variant 501Y.V1 sequenced in Belgium.}
+  \label{fig:sitRep501YV1}
+\end{figure}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=.8\textwidth]{sitRepLocalTransmission}
+  \caption[Local transmission in Belgium of UK variant 501Y.V1]{Local transmission in Belgium of UK variant 501Y.V1.}
+  \label{fig:sitRepLocalTransmission}
+\end{figure}
+
+\subsubsection{Active surveillance through ``S dropouts''}
+As shown below, the H69- deletion in the S gene, which generates the ``S dropout'' profile in the \gls{pcr} used by the Belgian Federal Platform Bis laboratories, is not only present in the 501Y.V1, but also in non-\gls{voc} strains circulating in Belgium since several months.
+This is the reason why this signal cannot be considered as specific for \gls{voc}s, nor highly sensitive, considering that 501Y.V2 and 501Y.V3 do not present this deletion.
+
+Another element that needs to be considered is that among Platform Bis laboratories, a variable proportion of ``S dropouts'' also show a weak Orf signal (\textit{table not shown}), what has not been typically described with the 501Y.V1.
+
+\vdots
+
+Nevertheless, considering the high number of travels between UK (and Ireland) and Belgium and that this \gls{voc} is already circulating since a number of months in the UK, using the evolution of the proportion of S dropouts among the positive \gls{pcr} results is informative of the current situation in our country.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=.8\textwidth]{sitRepH69del}
+  \caption[Few Belgian sequences with H69- deletion]{Few Belgian sequences with H69- deletion.}
+  \label{fig:sitRepH69del}
+\end{figure}
+
+\subsection{Baseline surveillance and variants of interest: 18 February 2021}
+\subsubsection{Executive summary}
+Genomic surveillance in Belgium is organised around 3 different arms aiming to monitor the emergence and the further spread of specific viral populations (variants of concern, VOCs) which may impact disease control and/or vaccination strategies.
+
+Through ``baseline surveillance'', an unbiased selection of positive samples from 24 sentinel labs (selected based on geographical dispersion and diversity of clinical patterns) are analysed in designated sequencing platforms.
+Currently, 5.526 Belgian sequences are available on GISAID. During weeks 5,6 and 7, 728 samples have been sequenced as part of the baseline surveillance, among which 249 were 20I/501Y.V1 (34\%), 30 were 20H/501Y.V2 (4\%) and 3 were 20J/501Y.V3 (0,4\%).
+Considering baseline and active surveillance together since Week 1, laboratories positively confirmed the presence of 1.339 VOCs in Belgium (1.183 20I/501Y.V1, 148 20H/501Y.V2 and 8 20J/501Y.V3).
+
+In this report, we describe a new viral variant consistently detected in Belgium and probably originating from central African countries.
+This variant shows a combination of several mutations and deletions which may lead to competitive advantages and would explain why this strain seems to successfully spread in Belgium under the current---and extensive---disease control arsenal.
+
+\subsubsection{International context}
+Since the end of the year, 4 variants of concern (VOCs) have arisen independently of one another in the United Kingdom (20I/501Y.V1), South Africa (20H/501Y.V2) and Brazil (20J/501Y.V3 and P.2).
+These variants harbour several mutations and deletions associated with higher infectiousness and immune escape.
+All variants are spreading internationally, with 3 VOCs having been detected to date in Belgium (1.183 for 20I/501Y.V1, 148 for 20H/501Y.V2 and 8 for 20J/501Y.V3).
+
+\subsubsection{Baseline surveillance}
+Since support was offered by the federal government end of December 2020, both the temporal coverage (number of sequences performed per week) and geographical coverage (number of collection sites) have improved.
+Currently, 5.526 Belgian sequences are available on GISAID.
+
+\vdots
+
+During weeks 5,6 and 7, 728 samples have been sequenced as part of the baseline surveillance, among which 249 were 20I/501Y.V1 (34\%), 30 were 20H/501Y.V2 (4\%) and 3 were 20J/501Y.V3 (0,4\%).
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=.8\textwidth]{sitRepBaseline}
+  \caption[Baseline surveillance VOC phylogeny]{Nextrain build of currently available sequences from Belgium. VOCs are highlighted in dark orange (20I/501Y.V1), light orange (20H/501Y.V2) and red (20J/501Y.V3). Warning: this phylogeny tree is not representative is biased due to including all sequenced VOCs.}
+  \label{fig:sitRepBaseline}
+\end{figure}
+
+Considering baseline and active surveillance together since Week 1, laboratories positively confirmed the presence of 1.339 VOCs in Belgium (1.183 20I/501Y.V1, 148 20H/501Y.V2 and 8 20J/501Y.V3).
+Currently, all 20J/501Y.V3 strains detected in Belgium seem to be clustered when comparing with other strains detected internationally, in particular in Europe.
+Nevertheless, the information collected by health inspectors to date do not allow to find a clear link between all these patients.
+This suggests that the cluster is actually much wider than the one described hereunder and that backward contact tracing must be pursued and intensified in order to contain this emerging chain of transmission.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=.8\textwidth]{sitRepGamma}
+  \caption[20J/501Y.V3 monitoring]{Currently, it the 8 20J/501Y.V3 strains detected in Belgium seem to be clustered when comparing with other strains detected internationally, in particular in Europe. Nevertheless, the information collected by health inspectors to date do not allow to find a clear link between all these patients. This suggests that the cluster is actually much wider than the one described hereunder and that backward contact tracing must be pursued and intensified in order to contain this emerging chain of transmission.}
+  \label{fig:sitRepGamma}
+\end{figure}
+
+\subsubsection{Variant of interest B1.525}
+This variant of interest was first described mid-December in England (England/CAMC-C769B3/2020) and has since then been described in 11 countries: England (28), Nigeria (7), USA (7), France (5), Canada (4), Ghana (4), Japan (4), Jordan (2), \textbf{Belgium (1)}, Italy (1) and Spain (1).
+
+This variant is characterised by mutations: S:E484K, S:Q677H, S:F888L, S:69-70 deletion, and S:144 deletion, and a 9 nucleotide mutation in nsp6 (as seen in B.1.1.7, B.1.351, P.1). (\url{https://github.com/cov-lineages/pango-designation/issues/4}).
+
+\subsubsection{Variant of interest with Spike Insertion (VOI-SI)}
+A key feature of the recently identified VOCs is a suite of single base pair mutations that generate amino acid changes at key points within the spike protein.
+In addition to these single base pair changes, a number of sometimes overlapping short deletions have been observed in the different VOCs \citep{garry2021spike}, both within spike and other viral genes \citep{pango4}.
+
+The lineage B.1.1.7 (20I/501Y.V1), which arose in the United Kingdom in late 2020 \citep{rambaut2020preliminary} and the recently described B.1.525 lineage \citep{pango4}, carry deletions in spike affecting amino acid positions 69-70 & 144, while the B.1.351 lineage (20H/501Y.V2), originally identified in South Africa \citep{Tegally2020} carries a deletion of three amino acids (positions 242 to 244) in spike.
+In contrast, the P.1 lineage (20J/501Y.V3) \citep{faria2021genomic} does not carry any deletions in the spike protein, however, all four carry a three amino acid deletion in the nsp6 protein.
+
+In contrast to spike deletions, the frequency of insertions in the SARS-CoV-2 spike gene appears rare. \citet{garry2021spike} examined ~350,000 SARS-CoV-2 sequences from the GISAID database, identifying only two examples with insertions at amino acid R214.
+In the same report they also point out that passage of SARS-CoV-2 in cell culture (Vero cells) can generate amino acid insertions in the same spike region \citep{garry2021spike}, indicating that in some contexts such insertions are advantageous.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=.8\textwidth]{voiSI}
+  \caption[VOI-SI monitoring]{VOI-SI which also harbour the N450K amino acid change (shown in yellow) cluster together, the Belgian samples fall across the cluster indicating multiple independent introductions.}
+  \label{fig:voiSI}
+\end{figure}
+
+Baseline surveillance of SARS-CoV-2 genomes carried out at the University of Li\`{e}ge highlighted a Belgian genome carrying a spike insertion, which we will refer to as Variant of Interest with Spike Insertion (VOI-SI).
+The sample was collected on the \nth{7} January, in an individual hospitalised for COVID-19, who recently returned from travel in the Congo.
+In the subsequent weeks additional similar genomes have been identified by both ULi\`{e}ge and UZ Leuven/KU Leuven, while genomes from the same lineage have been deposited in the GISAID database with origins in the UK, Ireland and France.
+
+The earliest example of a VOI-SI was isolated in the UK on the \nth{5} of December and was one of the spike insertions identified by \citet{garry2021spike}.
+To date that number has grown to 43, with the majority (30) isolated in Belgium.
+The Pangolin COVID-19 Lineage Assigner (\url{https://pangolin.cog-uk.io/}) assigns the majority of the VOI-SI to lineage B.1.214 which is most commonly found in the Democratic Republic of the Congo.
+A Nextrain build using the available VOI-SI shows them to cluster together and indicates that the lineage has been introduced to Belgium multiple times (Fig.~\ref{fig:voiSI}).
+
+In addition to the insertion in spike the lineage also carries a number of other amino acid changes in spike (Q414K, N450K, D614G, T716I) as well as a 30bp deletion in ORF3a (I20-, K21-, D22-, A23-, T24-, P25-, S26-, D27-, F28-, V29-).
+This lineage does not have the N501Y or E484K, changes found in the majority of VOCs, although the T716I amino acid change is also found in the B.1.1.7 lineage.
+One of the main reasons for concern regarding the B.1.351, P.1 and B.1.525 lineages is the presence of E484K which has been shown to impact antibody binding \citep{Greaney2021}.
+The same work highlighted that mutation in the 443--450 loop region can have a large impact on antibody binding \citep{Greaney2021}, which makes the N450K change observed in the VOI-SI concerning.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=.8\textwidth]{voiSI2}
+  \caption[VOI-SI clade]{VOI-SI forms a separate clade among international SARS-CoV-2 sequences.}
+  \label{fig:voiSI2}
+\end{figure}
+
+Finally, nearly half of the VOI-SI genomes submitted to date carry a three amino acid deletion in nsp6.
+The same deletion is observed in the VOC lineages B.1.1.7, B.1.351, B.1.525 and P.1, suggesting epistatic interactions between this deletion and changes in spike.
+
+\subsection{Delta ascendant: 29 June 2021}
+\subsubsection{Executive summary}
+
+28.058 Belgian sequences of SARS-CoV-2 are now publicly available on GISAID.
+Among these, 486 sequences of positive SARS-CoV-2 samples collected between 14 June and 27 June were reported,
+\begin{itemize}
+  \item B.1.1.7 (Alpha) represented 65,2\% (compared to 71,3\% in the last report)
+  \item B.1.617.2 (Delta) represented 23\% (compared to 15,7\% in the last report)
+  \item P.1 (Gamma) represented 8,6\% (compared to 9,7\% in the last report)
+  \item B.1.351 (Beta) represented 0,8\% (compared to 1,2\% in the last report)
+\end{itemize}
+
+Other points of attention:
+\begin{itemize}
+  \item The NRC performed 63 VOC PCRs on unselected positive samples analyzed during the last 9 days.
+B.1.1.7 and B.1.617.1/.2 represented respectively 33,3\% and 60,3\% of the results.
+  \item The decreasing epidemiological trend observed in Belgium is a very positive element as it will help
+mitigate the impact of the rapid viral population replacement currently taking place.
+\end{itemize}
+
+Currently, the absolute number of B.1.617.2 cases reported is not rising.
+This fragile equilibrium could be disrupted and lead to a deterioration of the epidemiological situation by a combination of (1) relaxation of measures, (2) an increasing number of travellers that will return from zones where the number of infections is rapidly increasing and (3) the foreseen limited coverage of testing offered to travellers coming back from red zones, resulting in a higher risk of secondary infections after importation of cases.
+
+\subsubsection{Monitoring of VOCs}
+\paragraph*{International evolution.}
+The Delta variant (B.1.617.2) has continued to spread globally.
+It has become the dominant lineage in several European countries, and other EU countries are expected to follow this evolution during the summer period.
+
+\vdots
+
+\paragraph*{Situation in Belgium.}
+While it was first identified on 6 April 2021 in Belgium, the B.1.617.2 Variant of Concern (Delta) is on its path to become the dominant lineage in the country.
+Between 14/6/2021 and 27/6/2021 (486 genomes available to date):
+\begin{itemize}
+  \item B.1.1.7 (Alpha) represented 65,2\%
+  \item B.1.617.2 (Delta) represented 23\%
+  \item P.1 (Gamma) represented 8,6\%
+  \item B.1.351 (Beta) represented 0,8\%
+\end{itemize}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=.8\textwidth]{deltaFreq}
+  \caption[Weekly VOCs as of 2021-06-21]{Weekly evolution of the frequency of variants of concern reported by the baseline surveillance network using a whole genome sequencing (WGS) approach.}
+  \label{fig:deltaFreq}
+\end{figure}
+
+\vdots
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=.8\textwidth]{deltaIntro}
+  \caption[Introductions and local transmission of B.1.617.2]{381 Belgian genomes in the latest available Nextstrain build show both small and large local transmission clusters within Belgium for B.1.617.2.}
+  \label{fig:deltaIntro}
+\end{figure}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=.8\textwidth]{deltaDist}
+  \caption[Distribution of Belgian B.1.617.2 sequences]{B.1.617.2 is present in all Belgian provinces but mostly in and around major cities.}
+  \label{fig:deltaDist}
+\end{figure}
+
+Two large clades of B.1.617.2 can be seen in Figure~\ref{fig:deltaIntro}. In Figures~\ref{fig:delta1}~and~\ref{fig:delta2}, we look into each of those clades in more detail, focusing on the possible relationship between the situation in Belgium and the United Kingdom.
+
+Whereas Figure~\ref{fig:delta1}, showing less than half of the Belgian B.1.617.2 genomes (the upper blue part in Figure~\ref{fig:deltaIntro}), indicates the importance of our connection to/with the United Kingdom, Figures~\ref{fig:delta2}~and~\ref{fig:delta3} (showing the majority of Belgian infections; the lower blue part in Figure~\ref{fig:deltaIntro}) paint a somewhat different picture.
+While some infections and local transmission clusters in Belgium can still be linked to the United Kingdom (see Figure~\ref{fig:delta2}), Figure~\ref{fig:delta3} shows the impact of Asian countries (India, Singapore, ...) on the increase of B.1.617.2 infections in Belgium.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=.8\textwidth]{delta1}
+  \caption[B.1.617.2 clade 1]{Top clade in Figure~\ref{fig:deltaIntro} analysed in more detail (orange: United Kingdom; green: Belgium). The largest (transmission) cluster of infections is nested within an otherwise entirely UK clade, suggesting the role of the UK in seeding a proportion of B.1.617.2 introductions into Belgium, in a similar manner as to what was observed at the time of B.1.1.7. Single-case introductions and smaller transmission clusters in Belgium can be seen to have both a UK and a non-UK origin.}
+  \label{fig:delta1}
+\end{figure}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=.8\textwidth]{delta2}
+  \caption[B.1.617.2 clade 2]{Bottom clade in Figure~\ref{fig:deltaIntro} analysed in more detail (orange: United Kingdom; green: Belgium), showing---to a lesser extent as in Figure~\ref{fig:delta1}---the importance of the situation in the UK for Belgium.}
+  \label{fig:delta2}
+\end{figure}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=.8\textwidth]{delta3}
+  \caption[B.1.617.2 alternate coloring]{Alternative representation of Figure~\ref{fig:delta2} to assess the relationship between Asian countries and Belgium, showing the importance of introductions from those countries into Belgium.}
+  \label{fig:delta3}
+\end{figure}
+
+\section{Two years of genomic surveillance in review}
 
 \singlespacing
-
 \hrule
 \vspace*{12pt}
 The following was published as \textbf{Lize Cuypers, Simon Dellicour, Samuel L Hong, Barney I Potter, Bruno Verhasselt, Nick Vereecke, Laurens Lambrechts, Keith Durkin, Vincent Bours, Sofieke Klamer, Guillaume Bayon-Vicente, Carl Vael, Kevin K Ari\"{e}n, Ricardo De Mendonca, Oriane Soetens, Charlotte Michel, Bertrand Bearzatto, Reinout Naesens, Jeremie Gras, Anne Vankeerberghen, Veerle Matheeussen, Geert Martens, Dagmar Obbels, Ann Lemmens, Bea Van den Poel, Ellen Van Even, Klara De Rauw, Luc Waumans, Marijke Reynders, Jonathan Degosserie on behalf of COVID-19 Genomics Belgium Consortium, Piet Maes, Emmanuel Andr\'{e}, Guy Baele}.
 ``Two years of genomic surveillance in Belgium during the SARS-CoV-2 pandemic to attain country-wide coverage and monitor the introduction and spread of emerging variants.'' \textit{Viruses} 14, no.
 10 (2022): 2301.
 
-The efforts made by the entirety of the COVID-19 Genomics Belgium consortium\footnote{Membership of the COVID-19 Genomics Belgium Consortium is listed in the Acknoledgments of this chapter.} ...
+The efforts made by the entirety of the COVID-19 Genomics Belgium consortium\footnote{Membership of the COVID-19 Genomics Belgium Consortium is listed in the Acknoledgments of this chapter.} represent a herculean, multidisciplinary effort to use genomic epidemiology to try to mitigate the effects of the COVID-19 epidemic in Belgium.
+This included front-line clinicians, wet lab scientists, modelers, data scientists, and numerous researchers willing to put themselves on in the path of not only the virus itself, but also into the public and political spotlight.
+The publication that follows represents a collaborative, \textit{post hoc} review of just a fraction of the total effort that was put forth by so many people to combat the pandemic.
+
+In addition to the public-facing Nextstrain instance mentioned in Section~\ref{sec:nextstrainBE}, and genomic surveillance reports mentioned in Section~\ref{sec:sitRep}, which are in part summarized below, I performed sampling and preliminary ML analysis for several of the published research articles mentioned herein.
 \vspace*{12pt}
 \hrule
-
 \onehalfspacing
 
 \subsection{Introduction}
@@ -100,31 +410,33 @@ Within the Flemish Region, two general COVID-19 funding calls were launched duri
 However, the eligible research projects were a mix of social, economic, and public health applications, all competing with vaccine research and genomic sequencing projects.
 Within the Wallonia-Brussels Federation, one call for Exceptional Research Projects (PER) Coronavirus and another for Urgent Research Credits (CUR) Coronavirus were both launched in 2020, but no dedicated funding was set aside for genomic sequencing here either.
 As a result, only two \gls{sarscov2} sequencing projects were granted within Belgium (one in the Flemish Region, and one in the Wallonia-Brussels Federation) during 2020, which resulted in different coexisting sampling strategies: UZ/KU Leuven (acting as part of the National Reference Center—NRC—for Respiratory Pathogens) collected samples from all over the country, while the University of Li\`{e}ge focused on samples originating from the province of Li\`{e}ge, the University of Ghent on samples from the provinces of East and West Flanders, and the Institute of Tropical Medicine Antwerp on samples from the province of Antwerp.
-This biased sampling strategy is apparent when visualizing a large number of the publicly available Belgian sequences in GISAID (see Figure 1).
-As a result, Figure 1 shows clear geographical gaps in Belgium's spatial sequencing coverage during the first year of the pandemic, on top of a lack of temporal continuity, both being the consequences of project-based funding and a non-centralized approach to \gls{sarscov2} genomic surveillance efforts.
+This biased sampling strategy is apparent when visualizing a large number of the publicly available Belgian sequences in GISAID (see Fig.~\ref{fig:beGenomesPer10k}).
+As a result, Fig.~\ref{fig:beGenomesPer10k} shows clear geographical gaps in Belgium's spatial sequencing coverage during the first year of the pandemic, on top of a lack of temporal continuity, both being the consequences of project-based funding and a non-centralized approach to \gls{sarscov2} genomic surveillance efforts.
 
-Figure 1. 
+% Figure 1
 \begin{figure}[ht]
   \centering
-  \includegraphics[width=.6\textwidth]{fig1}
-  \caption[John Snow's map of the 1854 Broad Street cholera outbreak in London]{John Snow's characterization of the 1854 London cholera outbreak is considered epidemiology's foundational moment. Snow incorporated the geographic locations (addresses) of Snow's map of the outbreak, which showed a cluster of cases around the Broad Street pump, illustrates the process that led him to conclude that the pump was the source of the outbreak. \textit{Figure credit: John Snow, 1854} \citep{snow1854mode}.}
-  \label{fig:broadStreetPump}
+  \includegraphics[width=.7\textwidth]{fig1}
+  \caption[Total SARS-CoV-2 genomes in Belgium]{Number of available \gls{sarscov2} genomes for Belgium---per 10,000 inhabitants---on the public GISAID database since the start of the COVID-19 pandemic.}
+  \label{fig:beGenomesPer10k}
 \end{figure}
 
 As part of the NRC for Respiratory Pathogens, UZ/KU Leuven was the first laboratory in Belgium to diagnose COVID-19 cases by \gls{pcr}, identifying the first Belgian case on 3 February 2020.
-From the start and throughout the first year of the pandemic, a geographically heterogeneous share of the samples collected on a national level (Figure 1) was analyzed in the clinical laboratory of UZ Leuven, providing a unique opportunity for a national genomic surveillance initiative.
+From the start and throughout the first year of the pandemic, a geographically heterogeneous share of the samples collected on a national level (Fig.~\ref{fig:beGenomesPer10k}) was analyzed in the clinical laboratory of UZ Leuven, providing a unique opportunity for a national genomic surveillance initiative.
 Although without structural funding at that time, over 750 complete \gls{sarscov2} genomes of samples originating from the first epidemiological wave (March to June 2020) in Belgium were sequenced to characterize the temporal and geographic distribution of the COVID-19 pandemic in Belgium through phylogenetic and variant analysis.
 \citet{wawina-bokalanga2021genetic} showed the presence of the major \gls{sarscov2} clades (G, GH and GR) and lineages circulating in Belgium at that time.
 The continuation of this initiative to sequence a share of the positive samples, conducted by the different sequencing centers at that time, resulted in a total of over 3700 genomes in Belgium by the end of 2020.
 
-In order to inform authorities, the scientific community, and the general public on the evolution and spread of \gls{sarscov2} in Belgium, we used the available genomes to construct our first Belgian Nextstrain instance, which became publicly available on 8 January 2021 (see Figure 2).
+In order to inform authorities, the scientific community, and the general public on the evolution and spread of \gls{sarscov2} in Belgium, we used the available genomes to construct our first Belgian Nextstrain instance, which became publicly available on 8 January 2021 (see Fig.~\ref{fig:beFirstMap}).
 Nextstrain's joint temporal and spatial visualizations integrate sequence data with geographic information, lineage nomenclature, and mutations of interest to show how the pandemic unfolded over time, delivering important insights to health professionals, epidemiologists, virologists, and the general public via easily shareable links (for example, through social media) \citep{hadfield2018nextstrain}.
 
-
-Figure 2. First publicly available Nextstrain build for Belgium, released on 8 January 2021 (just before the Alpha variant was detected in Belgium—or at least before any genomes from Alpha were available).
-In cases where GDPR prevents sharing the patient's actual municipality of residence the sequencing center's location was used, leading to larger numbers for the cities of Leuven, Li\`{e}ge, Ghent, and Antwerp.
-Pie charts are colored according to the \gls{sarscov2} clades defined in Nextstrain.
-
+% Figure 2
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=.7\textwidth]{fig2}
+  \caption[First Belgian Nextstrain map]{First publicly available Nextstrain build for Belgium, released on 8 January 2021 (just before the Alpha variant was detected in Belgium—or at least before any genomes from Alpha were available). In cases where GDPR prevents sharing the patient's actual municipality of residence the sequencing center's location was used, leading to larger numbers for the cities of Leuven, Li\`{e}ge, Ghent, and Antwerp. Pie charts are colored according to the \gls{sarscov2} clades defined in Nextstrain.}
+  \label{fig:beFirstMap}
+\end{figure} 
 
 Further, the availability of such a large collection of genomes resulted in various \gls{sarscov2} studies to which members of the genomic surveillance network were able to contribute, before a national initiative was even set up.
 These studies primarily focused on the evolution and spread of \gls{sarscov2} in Belgium and Europe \citep{alm2020geographical}.
@@ -164,60 +476,71 @@ Enhanced molecular surveillance was aimed at monitoring \gls{sarscov2} diversity
 Specifically, this initiative enabled the tracking of \gls{voc} frequency, as well as their circulation within the country.
 Furthermore, it provided an early warning system in the case of the emergence of potentially more transmissible, virulent, or vaccine-escaping strains.
 We note that while the official start of the nationwide genomic surveillance initiative was at the end of February 2021, many labs had already started their sequencing efforts at the beginning of the year, thereby strengthening surveillance in anticipation of the nationwide initiative.
-This can be seen in Figure 1, which shows a strong increase in available genome sequences across all Belgian provinces since the start of the national \gls{sarscov2} genomic surveillance initiative.
+This can be seen in Fig.~\ref{fig:beGenomesPer10k}, which shows a strong increase in available genome sequences across all Belgian provinces since the start of the national \gls{sarscov2} genomic surveillance initiative.
 
 At the inter-ministerial conference for public health on 20 January 2021, it was decided that special attention should be given to the proactive detection and monitoring of circulating variants of the \gls{sarscov2} virus.
 A conceptual note was presented at the insurance committee on 22 February 2021, followed by the drafting of a detailed two-pillar model of surveillance efforts: a national genomic surveillance consortium, fueled by a sentinel laboratory network for the supply of a representative share of their positive samples.
 In mid-March, a call was launched to all laboratories in Belgium to apply to be part of the national genomic surveillance consortium for \gls{sarscov2}, coordinated by the NRC UZ/KU Leuven with the support of Sciensano.
-Following this candidacy call, a network of 17 laboratory network partners was initiated to be responsible for the \gls{sarscov2} genomic surveillance in Belgium, of which the majority of centers signed a convention for reimbursement purposes (Figure 3).
+Following this candidacy call, a network of 17 laboratory network partners was initiated to be responsible for the \gls{sarscov2} genomic surveillance in Belgium, of which the majority of centers signed a convention for reimbursement purposes (Fig.~\ref{fig:bePipeline}).
 To this end, based on a predefined required sequencing capacity per Belgian province (based on the number of inhabitants rather than infections, as the latter would fluctuate over time), a minimum of 1150 genome sequences needed to be generated per week, roughly aiming to sequence at least 5\% of all positive cases diagnosed within Belgium.
 
+% Figure 3
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=.6\textwidth]{fig3}
+  \caption[Genomic surveillance pipeline]{Workflow of the \gls{sarscov2} genomic surveillance established in Belgium. ``NRC'' stands for National Reference Center (and in this context refers to the NRC for respiratory pathogens), ``RIZIV'' for National Institute for Health and Disability, and ``NGS'' for next-generation sequencing.}
+  \label{fig:bePipeline}
+\end{figure} 
 
-Figure 3. Workflow of the \gls{sarscov2} genomic surveillance established in Belgium.
-``NRC'' stands for National Reference Center (and in this context refers to the NRC for respiratory pathogens), ``RIZIV'' for National Institute for Health and Disability, and ``NGS'' for next-generation sequencing.
-
-
-The year following the start of the nationwide genomic surveillance initiative in Belgium saw an important increase in the sequencing coverage of positive cases, rising from 1\% to nearly 4\% (Figure 4).
+The year following the start of the nationwide genomic surveillance initiative in Belgium saw an important increase in the sequencing coverage of positive cases, rising from 1\% to nearly 4\% (Fig.~\ref{fig:euGenomeCounts}).
 While the initial sequencing coverage of positive cases of 1\% already put Belgium at a recently proposed threshold/benchmark for rapidly detecting circulating \gls{sarscov2} variants through random sampling, this increase put Belgium closer towards ensuring the rapid detection of viral lineages, according to a recent simulation study \citep{brito2022global}.
 This increase puts Belgium just below several other European countries in terms of coverage of positive cases, including Germany, Austria, Norway, and Finland, but ahead of the Netherlands, France, Portugal, and Spain.
 Of note, this sequencing coverage of positive cases has been highly variable throughout the pandemic, directly related to the number of cases associated with the different pandemic waves of infections.
-During times when there has been a relatively low number of infections, sequencing coverage of positive cases was shown to reach nearly 25\% of cases (Figure 5 and Figure 6), whereas during epidemic peaks of infections, the imposed threshold of 5\% could not be reached consistently.
+During times when there has been a relatively low number of infections, sequencing coverage of positive cases was shown to reach nearly 25\% of cases (Fig.~\ref{fig:beSeqCoverage} and Fig.~\ref{fig:beCasesSciensano}), whereas during epidemic peaks of infections, the imposed threshold of 5\% could not be reached consistently.
 
+% Figure 4
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=.8\textwidth]{fig4}
+  \caption[European sequencing coverage 2020--2022]{Sequencing efforts for European countries that reported over 10,000 positive cases on a given year, expressed as the percentage of confirmed COVID-19 cases sequenced that have been submitted to GISAID (retrieved from the GISAID database on 31 August 2022), with a minimum sequence/case ratio of 0.1\%. Top: Sequencing coverage of positive cases prior to the establishment of the COVID-19 Genomics Belgian Consortium, from January 2020 to the end of February 2021. Bottom: Sequencing coverage of positive cases a year after the establishment of the consortium, from 1 March 2021 to the end of February 2022. Large discrepancies can be seen among European countries, both before and after March 2021, with Belgium's performance in 2021 at a similar level as most of its neighboring countries.}
+  \label{fig:euGenomeCounts}
+\end{figure}
 
-Figure 4. Sequencing efforts for European countries that reported over 10,000 positive cases on a given year, expressed as the percentage of confirmed COVID-19 cases sequenced that have been submitted to GISAID (retrieved from the GISAID database on 31 August 2022), with a minimum sequence/case ratio of 0.1\%.
-Top: Sequencing coverage of positive cases prior to the establishment of the COVID-19 Genomics Belgian Consortium, from January 2020 to the end of February 2021.
-Bottom: Sequencing coverage of positive cases a year after the establishment of the consortium, from 1 March 2021 to the end of February 2022.
-Large discrepancies can be seen among European countries, both before and after March 2021, with Belgium's performance in 2021 at a similar level as most of its neighboring countries.
+% Figure 5
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=.95\textwidth]{fig5}
+  \caption[Belgian sequencing coverage]{Sequencing numbers, sequencing coverage (the ratio between genomes sequenced and confirmed cases), and relative abundance of \gls{sarscov2} variants of concern in Belgium.
+  Individual colors were assigned to lineages depending on their \gls{voc} status and prevalence in Belgium.
+  Dotted lines indicate events related to the COVID-19 Belgium Genomics Consortium.}
+  \label{fig:beSeqCoverage}
+\end{figure}
 
+% Figure 6
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=.9\textwidth]{fig6}
+  \caption[Confirmed cases, tests, hospitalizations, \& vaccinations]{Daily number of confirmed cases (7-day moving average), daily number of COVID-19 tests performed (7-day moving average), new hospitalizations (new daily admissions to hospital of lab-confirmed COVID-19 patients, with a 7-day moving average) and cumulative number of vaccines administered in Belgium from March 2020 to May 2022. Data retrieved from Sciensano, Belgium's national public health institute (\url{https://epistat.sciensano.be/covid} (accessed on 22 August 2022)). Dotted lines indicate events related to the COVID-19 Belgium Genomics Consortium. Peaks in cases and hospitalizations roughly align with moments where the different \gls{voc}s were dominant.}
+  \label{fig:beCasesSciensano}
+\end{figure}
 
-Figure 5. Sequencing numbers, sequencing coverage (the ratio between genomes sequenced and confirmed cases), and relative abundance of \gls{sarscov2} variants of concern in Belgium.
-Individual colors were assigned to lineages depending on their \gls{voc} status and prevalence in Belgium.
-Dotted lines indicate events related to the COVID-19 Belgium Genomics Consortium.
-
-
-Figure 6. Daily number of confirmed cases (7-day moving average), daily number of COVID-19 tests performed (7-day moving average), new hospitalizations (new daily admissions to hospital of lab-confirmed COVID-19 patients, with a 7-day moving average) and cumulative number of vaccines administered in Belgium from March 2020 to May 2022.
-Data retrieved from Sciensano, Belgium's national public health institute (\url{https://epistat.sciensano.be/covid} (accessed on 22 August 2022)).
-Dotted lines indicate events related to the COVID-19 Belgium Genomics Consortium.
-Peaks in cases and hospitalizations roughly align with moments where the different \gls{voc}s were dominant.
-
-
-In Europe, Iceland, the UK, and Denmark have been particularly credited for their massive genomic sequencing efforts throughout the pandemic (Figure 4), with Denmark deciding to sequence every positive case during certain periods throughout the pandemic, and Iceland sequencing up to 90\% of positive cases during the first year of the pandemic.
+In Europe, Iceland, the UK, and Denmark have been particularly credited for their massive genomic sequencing efforts throughout the pandemic (Fig.~\ref{fig:euGenomeCounts}), with Denmark deciding to sequence every positive case during certain periods throughout the pandemic, and Iceland sequencing up to 90\% of positive cases during the first year of the pandemic.
 In the UK, the COVID-19 Genomics UK Consortium (COG-UK), established in April 2020, undertook sequencing of \gls{sarscov2} samples from a target of 10\% of confirmed positive cases, which translated to an average of 6800 sequences per week during its first year (\verb|www.cogconsortium.uk| (accessed on 22 June 2021)).
 For comparison, during the same time period, Denmark averaged approximately 1000 sequences per week and the Netherlands averaged 370 sequences per week.
 Prior to the establishment of the Belgian consortium, in terms of sequencing efforts within Europe, Iceland and Denmark attained higher numbers than the UK, with a coverage of 71\% and 23\% of confirmed positive cases, respectively.
-Meanwhile, Luxemburg sequenced approximately 6\%, Finland, Norway and Switzerland roughly 2\%, and Ireland, Belgium and the Netherlands nearly 1\% (Figure 4).
+Meanwhile, Luxemburg sequenced approximately 6\%, Finland, Norway and Switzerland roughly 2\%, and Ireland, Belgium and the Netherlands nearly 1\% (Fig.~\ref{fig:euGenomeCounts}).
 
 The two-pillar model of genomic surveillance consists of, on the one hand, an unbiased and random sequencing of cases, called baseline (or passive) surveillance, while on the other hand, the pillar of active surveillance focused on specific questions, populations, or settings, as determined through official sequencing indications proposed by the risk-assessment group (RAG).
-In the context of baseline surveillance, samples are collected through a country-wide network of almost 50 sentinel \gls{pcr} laboratories (Figure 3), geographically dispersed across Belgium and selected to be representative of the heterogeneous population of persons being infected with \gls{sarscov2} (including hospital and private laboratories as well as federal testing platforms).
-The selection of these participating laboratories ensured a wide community-based sequencing coverage of positive cases in all Belgian provinces (Figure 2), while in the context of active surveillance, samples could be sent to the sequencing laboratories from all diagnostic COVID-19 testing laboratories across Belgium, including testing laboratories of the main airports in Belgium (located in Zaventem and Charleroi) to monitor import events.
+In the context of baseline surveillance, samples are collected through a country-wide network of almost 50 sentinel \gls{pcr} laboratories (Fig.~\ref{fig:bePipeline}), geographically dispersed across Belgium and selected to be representative of the heterogeneous population of persons being infected with \gls{sarscov2} (including hospital and private laboratories as well as federal testing platforms).
+The selection of these participating laboratories ensured a wide community-based sequencing coverage of positive cases in all Belgian provinces (Fig.~\ref{fig:beFirstMap}), while in the context of active surveillance, samples could be sent to the sequencing laboratories from all diagnostic COVID-19 testing laboratories across Belgium, including testing laboratories of the main airports in Belgium (located in Zaventem and Charleroi) to monitor import events.
 Apart from returning travelers, active surveillance was initially focused on reinfection cases, post-vaccination breakthrough samples, atypical \gls{pcr} results (e.g., dropout or shift in viral load for one of the target genes of a \gls{pcr} assay), outbreak settings, and populations at risk for mutations (e.g., immunocompromised patients \citep{vandermoeren2022viral}).
 Throughout the pandemic, there was a specific request to obtain and sequence samples in large outbreak settings, such as elderly care facilities (e.g., \citep{vuylsteke2022role}), hospitals, or schools, to identify potential superspreaders and fine-tune biosecurity measures.
-Evolving towards a higher vaccination coverage (see Figure 6), post-vaccination breakthrough cases were asked to be sequenced only in particular situations, such as residents of long-term care facilities or when associated with increased disease severity.
-Along the road, it was requested that sequencing efforts be reinforced for the hospitalized population, mapping in detail the circulation of variants within hospitals and particular units in detail, allowing for association studies between different \gls{voc}s and disease severity (\citep{vangoethem2022severity,vangoethem2022clinical}, but see also Section 4\bip{fix the link}).
+Evolving towards a higher vaccination coverage (see Fig.~\ref{fig:beCasesSciensano}), post-vaccination breakthrough cases were asked to be sequenced only in particular situations, such as residents of long-term care facilities or when associated with increased disease severity.
+Along the road, it was requested that sequencing efforts be reinforced for the hospitalized population, mapping in detail the circulation of variants within hospitals and particular units in detail, allowing for association studies between different \gls{voc}s and disease severity (\citep{vangoethem2022severity,vangoethem2022clinical}, but see also Section~\ref{ssec:beGenSurPapers}).
 
 As among the national sequencing network, various sequencing protocols and bioinformatics pipelines were implemented to detect and monitor the circulation of \gls{sarscov2} variants, and no official or commercial external quality control assessment was in place for \gls{sarscov2} WGS at the start of the genomic surveillance consortium, quality assurance was decided to be the responsibility of the coordinator of the consortium, i.e., the NRC UZ/KU Leuven, supported by Sciensano.
 Overall, eight laboratory networks implemented a sequencing protocol relying on Illumina sequencing technology, while nine centers obtained \gls{sarscov2} full-length sequences using the Oxford Nanopore Technology.
-In the first year of the national genomic surveillance initiative, three cross-validation rounds were organized (see also Figure 5 and Figure 6), in which all sequencing laboratories with a signed convention in a context of reimbursement were required to participate.
+In the first year of the national genomic surveillance initiative, three cross-validation rounds were organized (see also Fig.~\ref{fig:beSeqCoverage} and Fig.~\ref{fig:beCasesSciensano}), in which all sequencing laboratories with a signed convention in a context of reimbursement were required to participate.
 All sequencing centers were asked to supply the NRC with three to five samples of sufficient leftover material after initial sequencing at their facility, corresponding to different \gls{sarscov2} variants.
 Sequencing information of the initial sequencing center was also shared with the NRC to facilitate the evaluation of the cross-validation round.
 At the level of the NRC, new panels were constructed and sent out to the participating sequencing laboratories, consisting of a mix of \gls{sarscov2} variants, different transport media, and with each sample being ideally sent to at least two laboratories (that make use of different sequencing technologies) to render a broad comparison of results possible.
@@ -231,11 +554,11 @@ At the time of writing, 102 reports have been written and disseminated.
 The sequencing centers that received samples were responsible for reporting the results to the respective laboratories or prescribing clinicians that requested the sequencing analysis, as well as reporting in real-time the variant information to Sciensano, through the national data platform called healthdata.be, using the message `LaboratoryTestResultVariants', through which variant information obtained by both presumptive genotyping (such as the use of marker \gls{pcr}s) and WGS could be transferred (\url{https://docs.healthdata.be/nl/node/286} (accessed on 8 June 2022)).
 This dataflow provided for, amongst others, the weekly reporting in the epidemiological bulletin of Sciensano, the real-time reporting on the public dashboard of Sciensano, and reporting to the \gls{ecdc}.
 Furthermore, as stated in the convention, the sequencing centers were also responsible for making the actual nucleotide sequences, annotated with minimal metadata (e.g., age, gender, location, and sequencing indication), publicly available through submission to the international database GISAID \citep{shu2017gisaid}.
-These sequences were used to update both global and Belgium-focused Nextstrain builds (e.g., Figure 2) and to transparently inform public health authorities on the circulation of the different variants of the virus (e.g., results of these analyses are often used in the weekly reports of the consortium).
-The combination of an extensive spatial sequencing coverage and the integration of a sufficiently representative number of positive samples allowed for the minimization of noise inevitably generated by project-centered sequencing initiatives leading to the over-representation of some regions (see Figure 1) or particular patient groups.
+These sequences were used to update both global and Belgium-focused Nextstrain builds (e.g., Fig.~\ref{fig:beFirstMap}) and to transparently inform public health authorities on the circulation of the different variants of the virus (e.g., results of these analyses are often used in the weekly reports of the consortium).
+The combination of an extensive spatial sequencing coverage and the integration of a sufficiently representative number of positive samples allowed for the minimization of noise inevitably generated by project-centered sequencing initiatives leading to the over-representation of some regions (see Fig.~\ref{fig:beGenomesPer10k}) or particular patient groups.
 
 
-\subsection{Studies Resulting from the Genomic Surveillance Initiative}
+\subsection{Studies Resulting from the Genomic Surveillance Initiative}\label{ssec:beGenSurPapers}
 As mentioned in the previous section, the genomic sequences generated by the consortium enabled collaboration on many joint publications, which we discuss here in chronological order (of the variants being studied).
 
 \citet{vangoethem2022severity} compared COVID-19 disease severity between hospitalized patients in Belgium infected with the \gls{sarscov2} variant B.1.1.7 (Alpha) and those infected with previously circulating strains.
@@ -271,7 +594,7 @@ Sera from Ronapreve recipients did not neutralize lineage BA.1 and weakly inhibi
 
 Starting in late 2020, Alpha was the first \gls{voc} to become dominant in Belgium, reaching a relative abundance of up to 82\%, whereas the Beta and Gamma \gls{voc}s only reached a maximum abundance of 7.7\% and 9.9\%, respectively.
 The Belgian COVID-19 epidemic was then followed by waves where Delta, BA.1 (and descendants) and BA.2 (and descendants) were dominant.
-The replacement of Delta with the Omicron \gls{voc} as the dominating lineage worldwide (Figure 5) resulted in possible co-infections of patients by different \gls{sarscov2} strains.
+The replacement of Delta with the Omicron \gls{voc} as the dominating lineage worldwide (Fig.~\ref{fig:beSeqCoverage}) resulted in possible co-infections of patients by different \gls{sarscov2} strains.
 \citet{wawina-bokalanga2022genomic} report on such a co-identification of \gls{sarscov2} variants Omicron and Delta in two geographically unrelated cases.
 Both patients reported no recent travel history abroad.
 Such co-infection cases with different variants may lead to the emergence of novel \gls{sarscov2} recombinant variants, which might influence viral transmission, disease severity, and vaccine efficacy \citep{rehman2020evolutionary}.
@@ -281,8 +604,8 @@ Using data from 954 COVID-19 patients, of which 445 were infected with Omicron, 
 
 \subsection{Conclusions and Discussion}
 We have here presented an overview through time of genomic surveillance efforts in Belgium, which evolved from non-structural, project-based initiatives to a nationwide approach following the establishment of a genomic surveillance consortium.
-We have shown that initiating this consortium at the start of 2021 quickly resulted in a marked increase in the number of \gls{sarscov2} genomic sequences being generated in Belgium, as well as overall sequencing coverage of positive cases (Figure 5).
-We have also provided an overview of the number of tests performed, alongside the number of cases detected, and the number of recorded hospitalizations, which are obviously all strongly correlated (Figure 6).
+We have shown that initiating this consortium at the start of 2021 quickly resulted in a marked increase in the number of \gls{sarscov2} genomic sequences being generated in Belgium, as well as overall sequencing coverage of positive cases (Fig.~\ref{fig:beSeqCoverage}).
+We have also provided an overview of the number of tests performed, alongside the number of cases detected, and the number of recorded hospitalizations, which are obviously all strongly correlated (Fig.~\ref{fig:beCasesSciensano}).
 Of note, the Belgian Interministerial Public Health Conference asked the \gls{ecdc} to carry out an external evaluation of the testing policy applied by Belgium during June--December 2021, in response to the coronavirus disease 2019 (COVID-19) pandemic \citep{ecdcBelgiumTesting}.
 As with the genomic surveillance, the \gls{ecdc} noted that testing strategies were first decided upon in Belgium by existing institutions, but during the crisis, other bodies were set up; testing strategies were developed based on scientific advice and have regularly been adapted, based on the epidemiological situation.
 More importantly, and related to this review, the \gls{ecdc} found that Belgium performs comprehensive genomic surveillance and acknowledged that sequences were reported weekly, with volumes sufficient to estimate variant proportions of 2.5\% or lower, following \gls{ecdc} recommendations.
