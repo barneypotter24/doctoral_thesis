@@ -55,9 +55,9 @@ Transparency---through public sharing of both methods and results---fostered col
 As we anticipate and prepare for future viral epidemics, these principles provide a valuable framework for genomic surveillance.
 
 \subsection{\textit{Post hoc} outbreak genomic epidemiology}
-Our \textit{post hoc} analysis of BA.1 emergence in Pakista demonstrated both the power and limitations of phylogeographic methods when applied to countries with limited genomic surveillance capacity.
+Our \textit{post hoc} analysis of BA.1 emergence in Pakistan demonstrated both the power and limitations of phylogeographic methods when applied to countries with limited genomic surveillance capacity.
 Pakistan, like many lower- and middle-income countries \citep{brito2022global}, contributed relatively few sequences to GISAID compared to North American and European nations.
-This sampling bias presented significant analytical challenges, requiring careful subsampling strategies to prevent overrepresentation of highly sampled regions from obscuring true patterns of viral spread.
+This sampling bias presented significant analytical challenges, requiring careful subsampling strategies to prevent over representation of highly sampled regions from obscuring true patterns of viral spread.
 Additionally, the sheer size of the global BA.1 dataset necessitated substantial computational resources and time, even after subsampling.
 These challenges highlighted the ongoing need for both \textit{expanded global surveillance capacity} and more \textit{efficient computational methods} for analyzing increasingly large datasets.
 
@@ -91,7 +91,7 @@ Furthermore, understanding how globalization has accelerated viral movement help
 One of the most promising future directions for phylodynamic analysis is the development of methods that would enable Bayesian inference in real-time outbreak settings.
 While maximum likelihood approaches currently provide the necessary speed for immediate public health response, they lack robust methods with which to quantify uncertainty---a feature that makes Bayesian methods so valuable for understanding complex epidemiological dynamics.
 Recent advances in computational methods, including Hamiltonian Monte Carlo approaches \citep{baele2020hamiltonian,ji2023scalable} and online Bayesian inference \citep{gill2020online,dinh2018online}, suggest potential pathways for achieving Bayesian inference with significantly reduced computational time.
-Additionally, the development of new algorithms to exploit cutting-edge parallelized hardware could significantly reduce phylogenetic likelihood computation times---the most time consuming part of Bayesiand an ML phylogenetic inference.
+Additionally, the development of new algorithms to exploit cutting-edge parallelized hardware could significantly reduce phylogenetic likelihood computation times---the most time consuming part of both Bayesian and ML phylogenetic inference.
 Such advances would be particularly valuable during outbreak responses, allowing public health officials to better understand the uncertainty in their predictions while maintaining the rapid turnaround times necessary for actionable insights.
 
 \subsection{Pandemic scale phylodynamics}
@@ -106,16 +106,27 @@ Others seek to use methods such as variational inference \cite{zhang2019variatio
 
 \subsubsection{Dataset exploration and visualization}
 It is perhaps obvious to state that as phylogenetic datasets grow, so do the phylogenies that relate their taxa.
-Historically, many inferences drawn from phylogenetic analyses have come from methods like ``looking at the tree'' and ``counting cetain features.''
+Historically, many inferences drawn from phylogenetic analyses have come from methods like ``looking at the tree'' and ``counting certain features.''
 With increasing dataset size, these tools prove less useful, as such tasks become onerous on trees representing even a few thousand taxa.
 Consider the phylogeny from Chapter~\ref{ch:chapter2}, which relates 1\,700 taxa; the full, labeled tree (Suppl.~Fig.~\ref{sfig:fullPKTree}) spans several pages, and is incredibly difficult to parse visually.
 Additionally, it is convention for papers that perform phylogenetic inference to show a tree, however this is either impossible to do, in the case of large, legible trees, or the resultant trees are nearly uninterpretable because of how much they need to be downscaled to fit the target figure size.
 
 To handle these problems, future researchers will need to develop both standardized algorithmic tools for extracting more useful information from trees, and to establish new norms for the visual display of phylogenetic information.
-New algorithms should make it easier for phylogeneticists to identify and interrograte parts of potentially massive phylogenies that may contain characteristics of public health interest, as well as to reduce some of the noise that can be presented by large background datasets.
+New algorithms should make it easier for phylogeneticists to identify and interrogate parts of potentially massive phylogenies that may contain characteristics of public health interest, as well as to reduce some of the noise that can be presented by large background datasets.
 Visual tools should then fall naturally from these algorithms, so that researchers can present more compelling, interpretable visualizations of the large phylogenies that they infer.
 
-\section{Concluding remarks}
+\section{Final remarks}
+The integration of molecular techniques with traditional epidemiology has revolutionized our ability to understand and combat viral pathogens.
+Through this dissertation, we have seen how genomic epidemiology can be applied across multiple timescales to address diverse public health challenges.
+The COVID-19 pandemic, despite its devastating impact, catalyzed a movement of global scientific collaboration and data sharing that has transformed our capacity to respond to viral threats.
+
+While the challenges posed by emerging infectious diseases remain significant---particularly as human expansion into natural environments increases the risk of zoonotic spillover---in the pandemic era, we possess powerful tools to detect, track, and respond to viral threats.
+The continuing advancement (and subsequently decreasing cost) of sequencing technologies, coupled with increasingly sophisticated analytical methods, positions us to respond more effectively to future outbreaks.
+Moreover, the establishment of global genomic surveillance networks during the COVID-19 pandemic has created sustainable infrastructure for early warning systems for other viruses of global public health concern.
+
+The future of genomic epidemiology lies not just in technological advancement, but in maintaining and strengthening the spirit of global scientific cooperation that was fortified during the pandemic.
+By sharing data, methods, and expertise across borders, we can ensure that tools for understanding viral spread and evolution remain accessible to all.
+While viruses may continue to pose significant challenges to human health, our collective ability to understand and respond to these threats in a timely manner has never been stronger.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Keep the following \cleardoublepage at the end of this file,
