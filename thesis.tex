@@ -1,5 +1,5 @@
-% \documentclass[final,faculty=med,department=rega,phddegree=bms,doctoralschool=bms]{kulphd}
-\documentclass[showinstructions,faculty=med,department=rega,phddegree=bms,doctoralschool=bms]{kulphd}
+\documentclass[final,faculty=med,department=rega,phddegree=bms,doctoralschool=bms]{kulphd}
+% \documentclass[showinstructions,faculty=med,department=rega,phddegree=bms,doctoralschool=bms]{kulphd}
 %\documentclass[showinstructions,showlabels,coverfontpercent=100,faculty=med,department=rega,phddegree=bms,doctoralschool=bms]{kulphd}
 %\documentclass[croppedpdf,showinstructions,faculty=med,department=rega,phddegree=bms,doctoralschool=bms]{kulphd}
 %\documentclass[online,faculty=med,department=rega,phddegree=bms,doctoralschool=bms]{kulphd}
@@ -22,7 +22,7 @@
 \author{Barney Isaksen}{Potter}
 
 \supervisor{Prof.~Dr.~G.~Baele}{}
-\supervisor{Prof.~Dr.~M.S.~Gill}{}
+\cosupervisor{Prof.~Dr.~M.S.~Gill}{}
 \president{president}
 \jury{Prof.~Dr.~P.~Lemey\\
       Prof.~Dr.~J.~Matthijnssens\\
@@ -110,7 +110,7 @@
 
 % Additional packages not part of the template
 \usepackage[super]{nth} % For superscript ordinal numbers
-\usepackage[square,numbers,sort&compress]{natbib} % For more control over bibliography and in-line citation formatting
+\usepackage[square,authoryear,sort&compress]{natbib} % For more control over bibliography and in-line citation formatting
 
 \usepackage{caption} % For figure caption font size control
 \usepackage{subcaption}
@@ -154,7 +154,7 @@
 \frontmatter % to get \pagenumbering{roman}
 
 % \includepreface{preface}
-\includeabstract{summary}
+% \includeabstract{summary}
 % \includeabstractnl{abstractnl}
 
 % To create a list of abbreviations, there are 2 options
