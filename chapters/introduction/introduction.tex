@@ -232,7 +232,7 @@ Even though a complete understanding of these characteristics is not necessary t
 \subsection{SARS-CoV-2}
 The first virus discussed in this thesis is \textbf{severe acute respiratory syndrome coronavirus 2} (\gls{sarscov2}), the causative agent of coronavirus disease 2019 (COVID-19).
 \gls{sarscov2} is a \textit{Betacoronavirus} first observed in the human population in late-2019.
-It is very closely related to the previously observed SARS-CoV and MERS-CoV---responsible for the 2002--2004 severe acute respiratory syndrome and Middle Eastern respiratory syndrome of the 2010's, respectively \cite{gorbalenya2020species}.
+It is very closely related to the previously observed SARS-CoV and MERS-CoV---responsible for the 2002--2004 severe acute respiratory syndrome and Middle Eastern respiratory syndrome of the 2010's, respectively \citep{gorbalenya2020species}.
     
 Careful readers may notice discrepancies in names---particularly in sequence IDs for \gls{sarscov2}.
 This is a result of shifting nomenclature used during the early stages of the COVID-19 pandemic, resulting in cases where ``ncov'' (novel coronavirus) or ``hCoV-19'' (human coronavirus 2019) are used and may appear in figures or associated code repositories.
@@ -243,7 +243,7 @@ Contemporary readers of this thesis will require no introduction to the COVID-19
 
 The first reported cases of an atypical pneumonia was first noted in Wuhan, Hebei, China, in December 2019 \citep{zhou2020pneumonia}.
 This outbreak of atypical pneumonia was promptly identified as a novel coronavirus \citep{wu2020new}.
-Within three months, the virus had globalized \cite{dong2020interactive}, leading the World Health Organization to declare a global pandemic on March 11, 2020 \cite{healthorganization2020coronavirus}.
+Within three months, the virus had globalized \citep{dong2020interactive}, leading the World Health Organization to declare a global pandemic on March 11, 2020 \citep{healthorganization2020coronavirus}.
 
 Between 2020 and 2023, the COVID-19 pandemic demonstrated repeated resurgences, with successive waves driven by the emergence of novel variants.
 This ultimately resulted in over 770 million reported cases and over 7\,000\,000 confirmed deaths \citep{ourworldindata-covid-explorer}.
@@ -290,7 +290,7 @@ With very few exceptions, each novel \gls{voc} has completely outcompeted the pr
 The complexities of SARS-CoV-2 evolution demanded multiple systems for naming and tracking viral lineages.
 The World Health Organization developed a simplified Greek alphabet naming system (e.g., Alpha, Delta, Omicron) for variants of concern, providing an accessible vocabulary for public health communications and media reporting.
 However, more detailed classification systems were needed for scientific purposes.
-The Pango nomenclature system \citep{o2021assignment,o2022pango}, which has become the \textit{de facto} standard for SARS-CoV-2 classification, uses an alphanumeric hierarchy to designate lineages (e.g., B.1.1.7, JN.1), with new levels added as the virus diversifies.
+The Pango nomenclature system \citep{rambaut2020dynamic,o2021assignment,o2022pango}, which has become the \textit{de facto} standard for SARS-CoV-2 classification, uses an alphanumeric hierarchy to designate lineages (e.g., B.1.1.7, JN.1), with new levels added as the virus diversifies.
 Complementing these approaches, the Nextstrain \citep{hadfield2018nextstrain,aksamentov2021nextclade} nomenclature system provides broader evolutionary context by grouping viruses into major clades (e.g., 19A, 20I) based on defining mutations.
 While the WHO system names only variants with significant public health impact, these technical classification systems together provide the detailed framework necessary for tracking the full diversity of SARS-CoV-2 evolution.
 A (partial) mapping between these different nomenclature systems is noted in Table~\ref{tab:variants}.
@@ -319,7 +319,7 @@ These questions were primarily motivated by three situations.
 The first situation concerns specific clusters of sequences requiring investigation.
 These cases arise in situations when there were a set of infections in a group of epidemiologically linked individuals---for example Belgian military personnel returning from overseas \citep{pirnay2020study} or a cluster of infected students\citep{vanelslande2022two}---where we sought to understand if the cluster of cases were epidemiologically linked to each other, represented sources of viral introduction into the country, or posed an risk of driving onward transmission chains that could be prevented.
 The second major situation we encountered took place when globally emergent \gls{sarscov2} lineages needed to be characterized within Belgium.
-In these cases, either because of the emergence of \gls{VOC} lineages, or lineages that harbored \gls{voc}-like mutations \cite{dudas2021emergence}, public health officials sought our assistance in understanding whether the variants had reached Belgium, were driving an increased count in cases, and represented an urgent public health concern withing the country.
+In these cases, either because of the emergence of \gls{VOC} lineages, or lineages that harbored \gls{voc}-like mutations \citep{dudas2021emergence}, public health officials sought our assistance in understanding whether the variants had reached Belgium, were driving an increased count in cases, and represented an urgent public health concern withing the country.
 The final important line of inquiry during this time concerned sequences generated through Belgium's routine genomic surveillance program.
 Over the course of the pandemic, Belgium sequenced a substantial fraction of \gls{pcr}-positive samples.
 As a result, we were able to rapidly incorporate these sequences into the existing context of the Belgian \gls{sarscov2} epidemic, and we were thereby able to understand the relative growth or decline of variants, and characterize the within-Belgium distribution of sequences.
@@ -556,7 +556,7 @@ In the case of viral phylodynamics, it is quite rare for ancestral lineage diver
 The primary method of molecular clock modeling used in this thesis involves the estimation of a molecular clock directly from time-stamped sequence data.
 
 \paragraph*{Measurably evolving populations.}
-In cases we are able to collect genomes from a group of organisms over the same time period that their evolution is taking place, that is said to be a measurably evolving population (\gls{mep}) \cite{drummond2003measurably}.
+In cases we are able to collect genomes from a group of organisms over the same time period that their evolution is taking place, that is said to be a measurably evolving population (\gls{mep}) \citep{drummond2003measurably}.
 One scenario that can result in a \gls{mep} is when bodies from that population have been well preserved (e.g. in permafrost) for enough of their evolutionary history that we can extract genetic material from the mummies \citep{shapiro2004rise}.
 The other main scenario where we observe \gls{mep}s comes when organisms (such as RNA viruses) evolve so quickly that we are able to observe evolution taking place at the same time scale as the epidemic itself.
 

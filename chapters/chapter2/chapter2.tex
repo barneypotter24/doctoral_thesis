@@ -39,24 +39,24 @@ Our findings highlight the importance of continued genomic surveillance, particu
 
 
 \section{Introduction}
-The emergence and spread of novel variants fueled the persistence of the COVID-19 pandemic from its beginning in 2019 \cite{harvey2021sars, tao2021biological}.
+The emergence and spread of novel variants fueled the persistence of the COVID-19 pandemic from its beginning in 2019 \citep{harvey2021sars, tao2021biological}.
 The emergence of the Omicron (B.1.1.529, BA, and later XBB lineages) variant of concern (VOC) led to a large wave of COVID-19 cases worldwide, starting November 22, 2021.
-This VOC featured advantageous mutations that boosted its fitness \cite{dhawan2022Omicron, francisco2022emergence} to the point where it displaced the Delta VOC, triggering a wave that quickly spread globally.
+This VOC featured advantageous mutations that boosted its fitness \citep{dhawan2022Omicron, francisco2022emergence} to the point where it displaced the Delta VOC, triggering a wave that quickly spread globally.
 Its subsequent cryptic transmission severely impacted Pakistan, which first detected the variant on December 13, 2021.
-Later, persistent local transmission caused a surge in the number of cases, resulting in the fifth wave of the pandemic, which spanned from mid-December 2021 to March 2022, with a peak positivity rate exceeding 12\% \cite{ourworldindataPK}.
+Later, persistent local transmission caused a surge in the number of cases, resulting in the fifth wave of the pandemic, which spanned from mid-December 2021 to March 2022, with a peak positivity rate exceeding 12\% \citep{ourworldindataPK}.
 Before the fifth wave, 1\,285\,254 severe cases of SARS-CoV-2 were reported in Pakistan, along with 28\,737 deaths.
-Prior to the emergence of Omicron, Delta was the dominant VOC in Pakistan, and only 25\% of the total population was fully vaccinated \cite{covid-pakistan-stats}.
-Moreover, it was found that that Omicron-infected patients had significantly higher vaccine breakthrough rates compared to Delta-infected patients \cite{christensen2022signals}.
+Prior to the emergence of Omicron, Delta was the dominant VOC in Pakistan, and only 25\% of the total population was fully vaccinated \citep{covid-pakistan-stats}.
+Moreover, it was found that that Omicron-infected patients had significantly higher vaccine breakthrough rates compared to Delta-infected patients \citep{christensen2022signals}.
 In response to the emerging variants in Pakistan, it became necessary not only to curb the pandemic through vaccination but also to understand the dynamics of Omicron variants' evolution.
 
 The Omicron VOC initially drew global attention due to its large number of mutational differences from the previously-dominant Delta VOC.
-More than 30 mutations in the spike region altered its potential for transmission, replication proficiency and antibody binding \cite{viana2022rapid}.
-Omicron demonstrated a capability to evade the immune response even with prior vaccination, with a subsequent risk of reinfection \cite{cele2022Omicron, lista2022p681h}.
-Based on the genomic diversity of Omicron, five distinct lineages were reported: BA.1, BA.2, BA.3, BA.4 and BA.5 \cite{o2022pango}.
-Lineage BA.1 spread globally, leading to new waves of infections in many countries, displacing the highly transmissible Delta soon after its initial detection \cite{yamasoba2022virological}.
+More than 30 mutations in the spike region altered its potential for transmission, replication proficiency and antibody binding \citep{viana2022rapid}.
+Omicron demonstrated a capability to evade the immune response even with prior vaccination, with a subsequent risk of reinfection \citep{cele2022Omicron, lista2022p681h}.
+Based on the genomic diversity of Omicron, five distinct lineages were reported: BA.1, BA.2, BA.3, BA.4 and BA.5 \citep{rambaut2020dynamic,o2022pango}.
+Lineage BA.1 spread globally, leading to new waves of infections in many countries, displacing the highly transmissible Delta soon after its initial detection \citep{yamasoba2022virological}.
 After the emergence of BA.2 in February 2022, BA.1 was replaced by this more transmissible variant.
 Globally, BA.2 constituted most of the sequences submitted to GISAID (961\,114), followed by BA.1 (502\,472) as of May 19, 2022.
-BA.2 differed from BA.1 by 27 mutations \cite{wolter2022early}, notably with BA.2 lacking the S69/70 deletion, which could be screened in spike gene target failure samples using specific real-time PCR kits.
+BA.2 differed from BA.1 by 27 mutations \citep{wolter2022early}, notably with BA.2 lacking the S69/70 deletion, which could be screened in spike gene target failure samples using specific real-time PCR kits.
 This lack of the S69/70 deletion, made it more difficult to detect using such real-time PCR kits.
 
 We investigated the circulating variants of SARS-CoV-2 in Pakistan during the BA.1/BA.2 wave using a real-time PCR-based approach that was fast, economical, and could be used by labs in resource-limited settings.
@@ -83,7 +83,7 @@ A subset of non-SGTF samples amplification of K417N was selected for whole-genom
 
 
 \subsection{cDNA synthesis and amplification }\label{2:mm-amp}
-The cDNA synthesis and amplification were performed according to the ARTIC amplicon sequencing protocol (version 2) using SuperScript\texttrademark IV VILO\texttrademark Master Mix (Invitrogen, USA) and Q5\textsuperscript{\textregistered} High-Fidelity 2X Master Mix (New England BioLabs, USA), with the ARTIC nCoV-2019 Panel V3 (Integrated DNA Technologies, Inc, USA) \cite{quick2020ncov}.
+The cDNA synthesis and amplification were performed according to the ARTIC amplicon sequencing protocol (version 2) using SuperScript\texttrademark IV VILO\texttrademark Master Mix (Invitrogen, USA) and Q5\textsuperscript{\textregistered} High-Fidelity 2X Master Mix (New England BioLabs, USA), with the ARTIC nCoV-2019 Panel V3 (Integrated DNA Technologies, Inc, USA) \citep{quick2020ncov}.
 
 
 \subsection{Next-generation sequencing}\label{2:mm-seq}
@@ -92,49 +92,49 @@ The prepared libraries were pooled and subjected to sequencing on the Illumina p
 
 
 \subsection{Genome assembly and typing}\label{2:mm-assembly}
-The Fastq files were processed for quality assessment using the FastQC tool (v0.11.9)\cite{andrews2010fastqc}.
-Trimmomatic (v0.39) \cite{bolger2014trimmomatic} was employed to eliminate artifacts and technical biases by removing adapter sequences and low-quality base calls ($<30$).
-The filtered reads were aligned using the Burrows-Wheeler Aligner's (BWA, v0.7.17) \cite{li2010fast} and available reference genome (Wuhan-Hu-1, GISAID ID: EPI\_ISL\_402125).
-According to Centers for Disease Control and Prevention (CDC, USA) guidelines, variants were identified and consensus sequences for all genomes were generated \cite{paden2020rapid}.
-Pangolin v4.0.5 and pangoLEARN v1.3 were used to classify the assembled genomes into Pango lineages \cite{o2021assignment}.
+The Fastq files were processed for quality assessment using the FastQC tool (v0.11.9)\citep{andrews2010fastqc}.
+Trimmomatic (v0.39) \citep{bolger2014trimmomatic} was employed to eliminate artifacts and technical biases by removing adapter sequences and low-quality base calls ($<30$).
+The filtered reads were aligned using the Burrows-Wheeler Aligner's (BWA, v0.7.17) \citep{li2010fast} and available reference genome (Wuhan-Hu-1, GISAID ID: EPI\_ISL\_402125).
+According to Centers for Disease Control and Prevention (CDC, USA) guidelines, variants were identified and consensus sequences for all genomes were generated \citep{paden2020rapid}.
+Pangolin v4.0.5 and pangoLEARN v1.3 were used to classify the assembled genomes into Pango lineages \citep{rambaut2020dynamic,o2021assignment}.
 
 
 \subsection{Maximum-likelihood phylogenetic analysis}\label{2:mm-ml}
-Initial maximum-likelihood (ML) phylogenetic analysis was performed using Nextstrain's standard protocol for analyzing SARS-CoV-2 genomes \cite{hadfield2018nextstrain}.
-We first queried BLAST for all SARS-CoV-2 genome sequences most similar to our study's Omicron isolates (67), and obtained each hit's sequence from the GISAID database \cite{shu2017gisaid}. 
+Initial maximum-likelihood (ML) phylogenetic analysis was performed using Nextstrain's standard protocol for analyzing SARS-CoV-2 genomes \citep{hadfield2018nextstrain}.
+We first queried BLAST for all SARS-CoV-2 genome sequences most similar to our study's Omicron isolates (67), and obtained each hit's sequence from the GISAID database \citep{shu2017gisaid}. 
 This resulted in a total of 160 sequences, including sequences from the current study. 
-We used Augur---Nextstrain's phylodynamic toolkit---to cluster the sequences \cite{huddleston2021augur}.
-We aligned the sequences to the Wuhan reference genome with MAFFT v7.470 \cite{katoh2002mafft}.
-We estimated the initial maximum-likelihood phylogenetic tree using IQTREE v1.6.12 \cite{nguyen2015iq}, which used a generalized time-reversible (GTR) nucleotide substitution model \cite{tavare1986some, yang1994estimating, zharkikh1994estimation}.
+We used Augur---Nextstrain's phylodynamic toolkit---to cluster the sequences \citep{huddleston2021augur}.
+We aligned the sequences to the Wuhan reference genome with MAFFT v7.470 \citep{katoh2002mafft}.
+We estimated the initial maximum-likelihood phylogenetic tree using IQTREE v1.6.12 \citep{nguyen2015iq}, which used a generalized time-reversible (GTR) nucleotide substitution model \citep{tavare1986some, yang1994estimating, zharkikh1994estimation}.
 Phylogenetic confidence was assessed using bootstrapping.
 The raw tree was rooted using the reference genome Wuhan/Hu-1/2019 (GISAID ID: EPI\_ISL\_402125).
-We employed TreeTime v0.8.1 to infer maximum likelihood branch lengths for the phylogenetic tree \cite{sagulenko2018treetime} and used auspice \cite{hadfield2018nextstrain} to visualize the resulting tree.
+We employed TreeTime v0.8.1 to infer maximum likelihood branch lengths for the phylogenetic tree \citep{sagulenko2018treetime} and used auspice \citep{hadfield2018nextstrain} to visualize the resulting tree.
 
 
 \subsection{Bayesian phylogeographic analysis}\label{2:mm-beast}
-To infer the sources from which SARS-CoV-2 was imported into Pakistan during the fifth wave, we used BEAST v.1.10.5 \cite{suchard2018bayesian} to perform a discrete Bayesian phylogeographic analysis \cite{lemey2009bayesian} that incorporated information about travel histories of sequences from Pakistan \cite{lemey2020accommodating}.
+To infer the sources from which SARS-CoV-2 was imported into Pakistan during the fifth wave, we used BEAST v.1.10.5 \citep{suchard2018bayesian} to perform a discrete Bayesian phylogeographic analysis \citep{lemey2009bayesian} that incorporated information about travel histories of sequences from Pakistan \citep{lemey2020accommodating}.
 With the focus on the initial sources of Omicron's introduction to Pakistan during the beginnig of its globalization in late-2021 and early-2022, our subsequent Bayseian phylogeographic was restricted to only consider BA.1 sequences.
 
 We constructed a dataset that included all available BA.1 genomes from Pakistan (63) that were available on GISAID at the time.
-These genomes were added to an alignment consisting of sequences from a contemporary analysis published on \verb|nextstrain.org| \cite{hadfield2018nextstrain}.
-This process yielded an initial dataset of 3\,127 dated BA.1 sequences, which were aligned with Nextalign \cite{aksamentov2021nextclade}.
-To refine the dataset prior to Bayesian phylogeographic analysis, we used IQ-TREE 2 \cite{minh2020iq} to infer an ML phylogeny according to an evolutionary model that featured a GTR substitution model with empirical nucleotide base frequencies and a FreeRate model with three categories to account for among-site heterogeneity \cite{yang1995space, soubrier2012influence}. We performed five independent replicates of this analysis using different starting seeds, and took the resultant tree with the highest likelihood to use as a starting tree for subsequent subsampling and Bayesian phylogenetic analysis.
+These genomes were added to an alignment consisting of sequences from a contemporary analysis published on \verb|nextstrain.org| \citep{hadfield2018nextstrain}.
+This process yielded an initial dataset of 3\,127 dated BA.1 sequences, which were aligned with Nextalign \citep{aksamentov2021nextclade}.
+To refine the dataset prior to Bayesian phylogeographic analysis, we used IQ-TREE 2 \citep{minh2020iq} to infer an ML phylogeny according to an evolutionary model that featured a GTR substitution model with empirical nucleotide base frequencies and a FreeRate model with three categories to account for among-site heterogeneity \citep{yang1995space, soubrier2012influence}. We performed five independent replicates of this analysis using different starting seeds, and took the resultant tree with the highest likelihood to use as a starting tree for subsequent subsampling and Bayesian phylogenetic analysis.
 
 We pruned all sequences from the ML phylogeny that were dated later than our latest sequence from Pakistan, thus removing all sequences dated later than April 15, 2022, as well as any sequences that did not belong to the BA.1 clade.
-Finally, the ML phylogeny was processed using a ``cluster downsampling'' algorithm by which any clade with taxa belonging to a single location (except Pakistan) had one of its constituent sequences chosen at random to be retained, and the rest discarded \cite{hong2020search}.
+Finally, the ML phylogeny was processed using a ``cluster downsampling'' algorithm by which any clade with taxa belonging to a single location (except Pakistan) had one of its constituent sequences chosen at random to be retained, and the rest discarded \citep{hong2020search}.
 This was justified since clades consisting solely of sequences from the same location do not bring any additional information on the discrete-state spread process we aim to infer.
 This processing yielded a final BA.1 dataset of 1\,690 total genomic sequences with exact sampling dates and geographic metadata, which we subsequently realigned with Nextalign in preparation for Bayesian phylogeographic analysis in order to reduce any potential artifacts of downsampling.
-Our dataset included sequences from around the globe, and were each given a discrete location designation based on a bespoke scheme of geographic partitioning whereby Pakistan and its immediate neighboring countries were considered as separate locations, each of the provinces of China for which we had data was considered as a discrete location, and more distant locations were combined by their UN geoscheme classification, yielding 32 discrete locations (Suppl.~Table~\ref{tab:locations}) \cite{unUNSDx2014}.
-To account for sampling bias in our discrete phylogeographic reconstruction, we also included travel history designations according to the method of Lemey et al. 2020 \cite{lemey2020accommodating} for the 15 Pakistani sequences for which such data were available (Supplementary Table~\ref{tab:travel_histories}).
+Our dataset included sequences from around the globe, and were each given a discrete location designation based on a bespoke scheme of geographic partitioning whereby Pakistan and its immediate neighboring countries were considered as separate locations, each of the provinces of China for which we had data was considered as a discrete location, and more distant locations were combined by their UN geoscheme classification, yielding 32 discrete locations (Suppl.~Table~\ref{tab:locations}) \citep{unUNSDx2014}.
+To account for sampling bias in our discrete phylogeographic reconstruction, we also included travel history designations according to the method of Lemey et al. 2020 \citep{lemey2020accommodating} for the 15 Pakistani sequences for which such data were available (Supplementary Table~\ref{tab:travel_histories}).
 
-The evolutionary and spatiotemporal histories of BA.1 for our downsampled dataset were jointly inferred in a Bayesian framework using Markov chain Monte Carlo (MCMC) sampling as implemented in BEAST \cite{suchard2018bayesian}.
-To assist in computation we ran analyses using high-performance GPU computation as implemented by the BEAGLE 3 library \cite{baele2019high,ayres2019beagle}.
-To account for among-lineage evolutionary rate variation, we employed an uncorrelated relaxed molecular clock model with branch-specific rates drawn from a lognormal distribution \cite{drummond2006relaxed}.
-We specified a skygrid phylogenetic tree prior \cite{gill2013improving} that posited a piecewise constant effective population size featuring 52 equally spaced change points between the most recent sampling time and April 15, 2021.
-We employed a Hamiltonian Monte Carlo algorithm to efficiently sample skygrid model parameters \cite{baele2020hamiltonian}.
-We assumed an HKY nucleotide substitution model \cite{hasegawa1985dating}, and used a discretized gamma distribution model for among-site rate heterogeneity with four different rate categories \cite{yang1994maximum}.
-We combined samples from eight independent MCMC simulations that were run for $6\times10^8$ iterations, and we verified adequate convergence and mixing with Tracer v1.7 \cite{rambaut2018posterior} after removing $\geq10\%$ of each Markov chain's samples burn-in.
-We used the combined samples to approximate the posterior distribution and created maximum clade credibility (MCC) summary trees using TreeAnnotator v1.10 \cite{suchard2018bayesian}.
+The evolutionary and spatiotemporal histories of BA.1 for our downsampled dataset were jointly inferred in a Bayesian framework using Markov chain Monte Carlo (MCMC) sampling as implemented in BEAST \citep{suchard2018bayesian}.
+To assist in computation we ran analyses using high-performance GPU computation as implemented by the BEAGLE 3 library \citep{baele2019high,ayres2019beagle}.
+To account for among-lineage evolutionary rate variation, we employed an uncorrelated relaxed molecular clock model with branch-specific rates drawn from a lognormal distribution \citep{drummond2006relaxed}.
+We specified a skygrid phylogenetic tree prior \citep{gill2013improving} that posited a piecewise constant effective population size featuring 52 equally spaced change points between the most recent sampling time and April 15, 2021.
+We employed a Hamiltonian Monte Carlo algorithm to efficiently sample skygrid model parameters \citep{baele2020hamiltonian}.
+We assumed an HKY nucleotide substitution model \citep{hasegawa1985dating}, and used a discretized gamma distribution model for among-site rate heterogeneity with four different rate categories \citep{yang1994maximum}.
+We combined samples from eight independent MCMC simulations that were run for $6\times10^8$ iterations, and we verified adequate convergence and mixing with Tracer v1.7 \citep{rambaut2018posterior} after removing $\geq10\%$ of each Markov chain's samples burn-in.
+We used the combined samples to approximate the posterior distribution and created maximum clade credibility (MCC) summary trees using TreeAnnotator v1.10 \citep{suchard2018bayesian}.
 The resulting MCC trees were visualized in baltic v.0.2.0 (\url{https://github.com/evogytis/baltic}; accessed on July 18, 2023).
 
 
@@ -234,11 +234,11 @@ We further analyzed the breakthrough data by examining the intervals in months b
 Among BA.2 breakthrough cases ($n=41$), individuals vaccinated with Sinovac ($n=15$) amounted to 1 case within 3 months, 2 cases within 4-6 months, and 12 cases after 6 months.
 Individuals vaccinated with Sinopharm ($n=13$) amounted to only 1 case within 3 months, 1 case within 4-6 months, and 11 cases after 6 months.
 On the other hand, for the BA.1 and BA.1.1 sublineages, all of the breakthrough cases occurred by 3 months.
-Despite being vaccinated with a booster, 5 individuals in our study group still became infected by Omicron, reflective of a global trend in Omicron breakthrough cases \cite{goga2022breakthrough}.
-Owing to its large evolutionary distance from Delta and other prior variants, Omicron and its sublineages demonstrated differences in both breakthrough infection rates for individuals vaccinated against prior variants \cite{safdar2023waning}, as well as significant differences in response to treatment with monoclonal antibodies \cite{bruel2022serum}.
+Despite being vaccinated with a booster, 5 individuals in our study group still became infected by Omicron, reflective of a global trend in Omicron breakthrough cases \citep{goga2022breakthrough}.
+Owing to its large evolutionary distance from Delta and other prior variants, Omicron and its sublineages demonstrated differences in both breakthrough infection rates for individuals vaccinated against prior variants \citep{safdar2023waning}, as well as significant differences in response to treatment with monoclonal antibodies \citep{bruel2022serum}.
 
 To investigate the earliest origins of Omicron in Pakistan, we performed a Bayesian phylogeographic analysis informed by 15 individual travel histories.
-Our analysis inferred that Omicron's first introductions to Pakistan occurred approximately at the same time as the first global detected isolate of the variant on 8 November 2021 \cite{dyer2021covid}, with two plausible introductions before that date.
+Our analysis inferred that Omicron's first introductions to Pakistan occurred approximately at the same time as the first global detected isolate of the variant on 8 November 2021 \citep{dyer2021covid}, with two plausible introductions before that date.
 One such introduction was inferred as 4 November 2021 (95\% HPD: [29 October, 15 November]), and the other was inferred as 6 November 2021 (95\% HPD: [30 October, 15 November].
 We estimated that of 35 inferred introductions into Pakistan, the majority came from Northern Europe over a five-week time period between mid-December 2021 and mid-January 2022.
 Our inference suggests that the vast majority of importations of Omicron BA.1 into Pakistan were ``one-off'' importations that did not lead to large transmission chains.
@@ -301,14 +301,14 @@ The fifth wave of COVID-19 in Pakistan spanned over three months starting in the
 Our curated selection of 1\,642 genotyped and 163 sequenced samples provide critical insights into the temporal, geographic, and phylogenetic distribution of circulating lineages of SARS-CoV-2 in Pakistan from December 2021 to April 10, 2022.
 For three months starting in the last week of December 2021 and ending in the last week of March 2022, the fifth wave had 230\,184 cases with a peak ($n=8,183$) detected on January 27, 2022 and the highest positivity ($13\%; n=7,586$) on January 22, 2022.
 Before the fifth wave, the genomic surveillance of SARS-CoV-2 showed that the fourth wave of COVID-19 (June--November 2021) in Pakistan was predominated by the Delta variant. However, our results confirm that the fifth wave was caused by Omicron and that Omicron completely replaced Delta extremely quickly after its arrival in Pakistan, owing to its high transmissibility over the Delta variant.
-This coincided with the globalization of Omicron and its associated worldwide replacement of Delta \cite{mohapatra2022twin, mohapatra2022Omicron}.
+This coincided with the globalization of Omicron and its associated worldwide replacement of Delta \citep{mohapatra2022twin, mohapatra2022Omicron}.
 
 During the study period, according to whole-genome sequencing data ($n=163$), BA.1 (incl. sublineages) was predominant in December, causing 100\% of observed infections, followed by 59\% of cases in January, 20\% in February, and no reported cases thereafter.
 On the contrary, no case of BA.2 was reported in December, but it started increasing exponentially from January (41\% of cases) to February (80\%).
 BA.2 and its sublineages were completely dominant in March ($BA.2=97\%; BA.2.2=3\%$) and April 2022 ($BA.2=93\%; BA.2.1=7\%$).
-These findings are consistent with the trends in cases in Denmark, England, India, the Philippines, and South Africa, where Omicron strains were predominantly sublineage BA.1 in the early stages of the outbreak, and later sublineage BA.2 became predominant \cite{hodcroft2021covariants}.
-Interestingly, as in line with the previous reports \cite{mahase2022covid1, mahase2022covid2}, our data also suggest that the driving factor behind the start of the fifth wave was BA.1 (including sublineages) and not BA.2 (including sublineages) in Pakistan.
-On 23 February 2022, the UK Health Security Agency (UKHSA) reported, with high confidence, that BA.2 had a substantial growth rate advantage compared to BA.1\cite{ukhsa-risk-assessment}.
+These findings are consistent with the trends in cases in Denmark, England, India, the Philippines, and South Africa, where Omicron strains were predominantly sublineage BA.1 in the early stages of the outbreak, and later sublineage BA.2 became predominant \citep{hodcroft2021covariants}.
+Interestingly, as in line with the previous reports \citep{mahase2022covid1, mahase2022covid2}, our data also suggest that the driving factor behind the start of the fifth wave was BA.1 (including sublineages) and not BA.2 (including sublineages) in Pakistan.
+On 23 February 2022, the UK Health Security Agency (UKHSA) reported, with high confidence, that BA.2 had a substantial growth rate advantage compared to BA.1\citep{ukhsa-risk-assessment}.
 On the other hand, our results showed an increase in BA.2 cases but it did not correlate with COVID-19 cases reported at the national level. 
 According to the Ministry of National Health Services Regulations and Coordination, Pakistan, a total of 10\,679 cases of COVID-19 were reported in December, 134\,458 in January, 79\,814 in February, 14\,439 in March, and 2\,860 in April.
 Our findings are also in agreement with national SARS-CoV-2 genomic surveillance data submitted on GISAID.
@@ -316,42 +316,42 @@ Our findings are also in agreement with national SARS-CoV-2 genomic surveillance
 The BA.2 (sub)lineages that we sequenced showed 28 unique mutations not shared by our BA.1 (sub)lineage sequences.
 In the case of other variants of SARS-CoV-2, the sublineages differ in terms of only one or two mutations but BA.2 harbors relatively more mutations while being considered a subvariant.
 These mutations take a toll, with a probable reduction of the immunity in vaccinated as well as already infected individuals.
-Moreover, these mutations give the Omicron variant the ability to evade convalescent plasma and monoclonal antibodies \cite{ai2022antibody, altarawneh2022effect}.
+Moreover, these mutations give the Omicron variant the ability to evade convalescent plasma and monoclonal antibodies \citep{ai2022antibody, altarawneh2022effect}.
 In our study, the mutation profile of eight BA.1 isolate shows the absence of S375F, Q498R, N501Y, and Y505H mutations.
-However, in comparison with the global sequences on GISAID, the Q498R, N501Y and Y505H mutations are present in 85--87\% of sequences while S375F mutation is present in 93\% of BA.1 and BA.1.1 sequences as of April 30, 2022 \cite{shu2017gisaid}.
-Furthermore, in the case of BA.2, there is an absence of Y505H in 42 study isolates but this mutation is observed in 90\% of worldwide reported sequences of BA.2 as of April 30, 2022\cite{shu2017gisaid}.
+However, in comparison with the global sequences on GISAID, the Q498R, N501Y and Y505H mutations are present in 85--87\% of sequences while S375F mutation is present in 93\% of BA.1 and BA.1.1 sequences as of April 30, 2022 \citep{shu2017gisaid}.
+Furthermore, in the case of BA.2, there is an absence of Y505H in 42 study isolates but this mutation is observed in 90\% of worldwide reported sequences of BA.2 as of April 30, 2022\citep{shu2017gisaid}.
 It had been reported that Q498R and N501Y mutations can increase the binding affinity of spike protein with human ACE2.
-These mutations can impact antibody neutralization and vaccine efficacy \cite{schubert2022human}.
-The Y505H mutation in the receptor-binding domain resulted in increased binding interactions of Omicron with ACE-2 \cite{ortega2021Omicron}.
+These mutations can impact antibody neutralization and vaccine efficacy \citep{schubert2022human}.
+The Y505H mutation in the receptor-binding domain resulted in increased binding interactions of Omicron with ACE-2 \citep{ortega2021Omicron}.
 The absence of these mutations in the circulating strains of BA.1.1 and BA.2 in the Pakistani population and a recent decline in the number of cases from the fifth wave in Pakistan can be linked to these circulating sub-variants being not
 very highly transmissible as the BA.1 and the BA.2 with the Q498R, N501Y, and Y505H mutations.
 
 Notably, we find three significant, rare mutations, F643L (BA.1.17.2), A701V (BA.1.17.2) and T76I (BA.1.13).
-The mutations, F643L and A701V are present near the S1/S2 cleavage site and are associated with enhanced fusogenicity and pathogenicity \cite{saito2022enhanced}.
-Mutation T76I, located in the N-terminal domain (NTD) region, was observed to affect antibody binding efficiencies and contribute to evading immune response \cite{ou2022tracking}.
+The mutations, F643L and A701V are present near the S1/S2 cleavage site and are associated with enhanced fusogenicity and pathogenicity \citep{saito2022enhanced}.
+Mutation T76I, located in the N-terminal domain (NTD) region, was observed to affect antibody binding efficiencies and contribute to evading immune response \citep{ou2022tracking}.
 
-In the comparison of the BA.2, BA.1, and BA.1.1 transmissibility, our findings, also corroborated by prior investigations \cite{qassim2022effects, lentini2022monitoring, kirsebom2022covid}, showed that BA.2 had lower mean Ct values ($\approx21$) than BA.1 ($\approx22$) and BA.1.1 ($\approx23$), indicating that BA.2 infections are more recent and/or that higher viral loads contribute to greater transmissibility.
+In the comparison of the BA.2, BA.1, and BA.1.1 transmissibility, our findings, also corroborated by prior investigations \citep{qassim2022effects, lentini2022monitoring, kirsebom2022covid}, showed that BA.2 had lower mean Ct values ($\approx21$) than BA.1 ($\approx22$) and BA.1.1 ($\approx23$), indicating that BA.2 infections are more recent and/or that higher viral loads contribute to greater transmissibility.
 It is necessary to ascertain not just the transmissibility of Omicron sublineages, but also the effectiveness of vaccines.
 It is worth noting that numerous studies have proclaimed vaccines to be highly effective at preventing serious illnesses. %GB: citations??
-However, it is also clear that the antibody response induced by these vaccines is transient, which leads to breakthrough cases \cite{haque2022mitigating, bruel2022serum, seaman2022vaccine}.
+However, it is also clear that the antibody response induced by these vaccines is transient, which leads to breakthrough cases \citep{haque2022mitigating, bruel2022serum, seaman2022vaccine}.
 A large number of breakthrough cases of sequenced individuals infected with BA.2 ($74.5\%, n=44$) are identified in the current study.
 Of particular concern, by comparing the time intervals between testing positive for BA.1, BA.1.1, or BA.2 after being fully vaccinated, fewer cases are seen within 3 months as compared to the number of cases between 3--6 months after being vaccinated or more than 6 months after being vaccinated.
-This result ties well with a prior study where Khoury et al. 2021 \cite{khoury2021covid} demonstrated that antibody titers rose 24-fold after one month of the second dose of vaccine compared to day 1 of the second dose.
-A similar pattern of results was obtained in several studies, indicating an elevated antibody titer in the first month after vaccination, a boost in immunity between the first and third months, followed by a steady decrease after three months \cite{chemaitelly2021waning, levin2021waning}.
+This result ties well with a prior study where Khoury et al. 2021 \citep{khoury2021covid} demonstrated that antibody titers rose 24-fold after one month of the second dose of vaccine compared to day 1 of the second dose.
+A similar pattern of results was obtained in several studies, indicating an elevated antibody titer in the first month after vaccination, a boost in immunity between the first and third months, followed by a steady decrease after three months \citep{chemaitelly2021waning, levin2021waning}.
 Conclusively, these findings imply robust immunity for roughly a month, followed by a steady reduction in immunity.
-So far, one- and two-dose vaccines provide significantly less protection than those combined with a booster, as seen by increased rates of reinfections and breakthrough infections observed in several studies \cite{healthline-covid19-vaccines, stasi2022sars}.
+So far, one- and two-dose vaccines provide significantly less protection than those combined with a booster, as seen by increased rates of reinfections and breakthrough infections observed in several studies \citep{healthline-covid19-vaccines, stasi2022sars}.
 Interestingly, in the current study, despite the booster shot of Pfizer or Sinovac, 5 subjects still contracted the virus.
-In line with our study, another study reported a high incidence of Omicron infections despite booster vaccination in triple-vaccinated individuals \cite{marking2022high}. 
+In line with our study, another study reported a high incidence of Omicron infections despite booster vaccination in triple-vaccinated individuals \citep{marking2022high}. 
 Their results showed post-booster antibody titers to be similar in those with/without subsequent breakthrough infection along with no observed significant differences in viral load and time to the viral clearance between BA.1, BA.1.1, and BA.2 infected individuals.
-While \textit{in vitro} neutralization data suggest similar vaccine-induced neutralizing capacity against BA.1 and BA.2 \cite{evans2022neutralization}.
+While \textit{in vitro} neutralization data suggest similar vaccine-induced neutralizing capacity against BA.1 and BA.2 \citep{evans2022neutralization}.
 However, data on the vaccine's efficacy and duration of immunity are limited.
 
 In our study, we detected the Omicron variant in 16 inbound passengers from the United Kingdom, Saudi Arabia, Oman, Turkey, South Africa, USA, Ethiopia, and Maldives.
 The detection of viruses in travelers highlights the importance of increased testing at all national entry points, as travelers are the major source of introductions of new variants into the community.
 Apart from air travel, Pakistan has borders with India, Iran, and Afghanistan which see high levels of pedestrian travel daily.
 This amount of foot traffic necessitates increased surveillance not only at ports-of-entry, but also at pedestrian border crossings.
-A travel advisory of the civil aviation authority went into effect starting on April 1, 2022, which increased testing at all entry-points for all passengers who presented a valid vaccination card \cite{caapakistan-covid-guidelines}.
-However, Rapid Antigen Test (RAT) testing was implemented at each major airport in Pakistan starting May 13, 2022, to screen inbound passengers \cite{brecorder-inbound-flights}.
+A travel advisory of the civil aviation authority went into effect starting on April 1, 2022, which increased testing at all entry-points for all passengers who presented a valid vaccination card \citep{caapakistan-covid-guidelines}.
+However, Rapid Antigen Test (RAT) testing was implemented at each major airport in Pakistan starting May 13, 2022, to screen inbound passengers \citep{brecorder-inbound-flights}.
 Examining pedestrian movement across borders, according to NCOC data, between January--April, 2022, 317\,435 passengers crossed the border and among them, 314 ($0.1\%$) were found to be positive.
 This low positive number is attributed to reduced testing at the entry points compared to other points-of-entry into Pakistan (unpublished).
 The border checkpoint surveillance---particularly at land border checkpoints with Iran and Afghanistan---is limited due to the movement of very large numbers across the border on daily basis, which needs to be expanded to have a more realistic surveillance mechanism for COVID-19.
@@ -359,13 +359,13 @@ For the effective control of COVID-19 variants in the future, Pakistan needs to 
 
 With the decline in daily cases, COVID-19 testing not only dropped at points-of-entry, but a global decline in testing was also observed after March 2022.
 The overall testing of incoming travelers dropped not only in Pakistan but also in other countries (USA, UK, and India) as well.
-There is about a 60\%--75\% decrease in testing since the last COVID-19 waves in these countries \cite{ourworldindata-covid-explorer}.
+There is about a 60\%--75\% decrease in testing since the last COVID-19 waves in these countries \citep{ourworldindata-covid-explorer}.
 This low testing is attributed to the difficulty in monitoring the pandemic and tracking the evolution of the virus and its spread.
 Due to less number of COVID-19 cases reported, many countries have lifted the restrictions.
-Pakistan also lifted all the restrictions following March 17, 2022 \cite{business-standard-covid-curbs}.
-Further, restrictions were also eased in countries, United Kingdom \cite{bbc-health-news} and USA \cite{cdc-mask-travel-guidance} where wearing a face mask is no longer mandatory.
+Pakistan also lifted all the restrictions following March 17, 2022 \citep{business-standard-covid-curbs}.
+Further, restrictions were also eased in countries, United Kingdom \citep{bbc-health-news} and USA \citep{cdc-mask-travel-guidance} where wearing a face mask is no longer mandatory.
 Apart from wearing masks and maintaining social distancing, comprehensive vaccination campaigns represented the most effective means to reduce the spread and severity of SARS-CoV-2.
-The World Health Organization has strongly recommended improved vaccination rates in all countries \cite{who-covid19-vaccine-advice}.
+The World Health Organization has strongly recommended improved vaccination rates in all countries \citep{who-covid19-vaccine-advice}.
 Up to July 04, 2022, 58\% of the total eligible population of Pakistan was fully vaccinated, 62.6\% was partially vaccinated and 11.8\% had been given boosters.
 
 We investigated the earliest origins of the Omicron variant in Pakistan using travel-history informed Bayesian phylogeographic inference.
@@ -376,15 +376,15 @@ As future variants of SARS-CoV-2 and comparable respiratory pathogens emerge thi
 Based on our analyses, we do not identify Pakistan as a major driver of onwards proliferation of the BA.1 variant to other countries.
 
 We infer a roughly equal distribution of sequences that were part of large within-Pakistan clades versus one-off cases that were not closely related to other Pakistani sequences.
-This further suggests that a significant portion of the early Omicron wave in Pakistan was driven by returning travelers who did not go on to further drive larger chains of viral transmission, a ratio that mirrors previous finding for the Apha variant \cite{nasir2022evolutionary}.
+This further suggests that a significant portion of the early Omicron wave in Pakistan was driven by returning travelers who did not go on to further drive larger chains of viral transmission, a ratio that mirrors previous finding for the Apha variant \citep{nasir2022evolutionary}.
 This result should, however, be interpreted with caution, as there could be a large number of unsampled individuals (either due to systematic difficulties in sampling or infection chains that led to sub-clinical or cryptic transmission of lineages) that may have been related to sequences that we identify as ``singletons''. 
 Additionally, as our study period takes place during the inflection point between BA.1 and BA.2 dominance in Pakistan, the competitive advantages of BA.2 over BA.1 could result in a relative muting of BA.1 clade growth, meaning this observation may not be broadly applicable to future SARS-CoV-2 variants that enter Pakistan.
 
 It is important to note that Pakistan represents a setting with relatively limited resources for genomic surveillance compared to other nations.
 This results in several important implications for both this study, and for future public health interventions.
 Despite its large population of over 240\,000\,000 inhabitants, Pakistan represents less than 1\% of the sequences available on GISAID.
-This relative dearth of sequences is reflective of a global trend in which low- and middle-income countries are able to sequence SARS-CoV-2 as a part of a genomic surveillance program at a rate much lower than that of high-income countries \cite{brito2022global}.
-As a practical matter, this creates discrepancies in sampling that can significantly bias discrete phylogeographic inference \cite{layan2023impact}.
+This relative dearth of sequences is reflective of a global trend in which low- and middle-income countries are able to sequence SARS-CoV-2 as a part of a genomic surveillance program at a rate much lower than that of high-income countries \citep{brito2022global}.
+As a practical matter, this creates discrepancies in sampling that can significantly bias discrete phylogeographic inference \citep{layan2023impact}.
 To mitigate these sampling issues, we have used a bespoke sampling scheme in an attempt to normalize the spatiotemporal sampling of sequences that we use in our analysis.
 With the addition of the travel-history data that we incorporate into our analysis, we have used the best-available methodology for reducing biases associated with sampling disparities.
 However, it is important to note that our inference of the number of introductions to Pakistan should be interpreted as a lower-bound that represents our best estimate based on the sequence data available.

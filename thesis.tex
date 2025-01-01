@@ -133,13 +133,13 @@
 
 % This bit helps draft compilation time
 % Remove from final draft or comment any time I want to see the figures included
-% \newif\ifdropfigures  % At the time of definition it is false!
-% \dropfigurestrue % yes, we drop figures
-% % \dropfiguresfalse % LEAVE THIS COMMENTED EVEN IF THE REST IS UNCOMMENTED
-% \ifdropfigures
-% \renewcommand{\includegraphics}[2][]{%
-% }% Ok, `\includegraphics does nothing any longer
-% \fi
+\newif\ifdropfigures  % At the time of definition it is false!
+\dropfigurestrue % yes, we drop figures
+% \dropfiguresfalse % LEAVE THIS COMMENTED EVEN IF THE REST IS UNCOMMENTED
+\ifdropfigures
+\renewcommand{\includegraphics}[2][]{%
+}% Ok, `\includegraphics does nothing any longer
+\fi
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -245,7 +245,7 @@
 
 \includebibliography
 % BibTex
-\bibliographystyle{unsrtnat}
+\bibliographystyle{plainnat}
 \bibliography{allpapers}
 % BibLatex (comment lines above and comment out biblatex lines in preamble)
 %\printbibliography[title=\bibname]
