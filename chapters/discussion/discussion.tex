@@ -1,8 +1,8 @@
 % !TeX root = ../../thesis.tex
 \chapter{Discussion}\label{ch:discussion}
 
-\begin{minipage}[b]{0.65\textwidth}
-    \includegraphics[width=\textwidth]{title} % Note: image needs to be cropped and faded
+\begin{minipage}[b]{0.63\textwidth}
+    \includegraphics[height=11cm]{title} % Note: image needs to be cropped and faded
   \end{minipage}
   \hfill
   \begin{minipage}[b]{0.35\textwidth}
@@ -86,12 +86,19 @@ Our reconstruction of genotype-specific spread patterns helps explain current ge
 Furthermore, understanding how globalization has accelerated viral movement helps predict how \gls{hbv} genotype distributions may continue to shift in response to changing patterns of human mobility, allowing healthcare systems to adapt their screening and treatment protocols accordingly.
 
 \section{Future directions}
-\subsection{Extensions to other pathogens and timescales}
+\subsection{Extensions to other timescales and pathogens}
 One of the most promising future directions for phylodynamic analysis is the development of methods that would enable Bayesian inference in real-time outbreak settings.
 While maximum likelihood approaches currently provide the necessary speed for immediate public health response, they lack robust methods with which to quantify uncertainty---a feature that makes Bayesian methods so valuable for understanding complex epidemiological dynamics.
 Recent advances in computational methods, including Hamiltonian Monte Carlo approaches \citep{baele2020hamiltonian,ji2023scalable} and online Bayesian inference \citep{gill2020online,dinh2018online}, suggest potential pathways for achieving Bayesian inference with significantly reduced computational time.
 Additionally, the development of new algorithms to exploit cutting-edge parallelized hardware \citep{suchard2009many-core,ayres2019beagle,gangavarapu2024many} could significantly reduce phylogenetic likelihood computation times---the most time consuming part of both Bayesian and ML phylogenetic inference.
 Such advances would be particularly valuable during outbreak responses, allowing public health officials to better understand the uncertainty in their predictions while maintaining the rapid turnaround times necessary for actionable insights.
+
+These advances may prove particularly useful when it comes to the analysis of other non-viral agents such as pathogenic bacteria and parasites.
+Viruses tend to have relatively small genomes with relatively fast evolutionary rates \citep{duffy2008rates} compared to other pathogens.
+As a result, the computational burden of analyzing such organisms is often too great for full-genome analysis, necessitating analysis of specific regions of their genomes, or restriction to variable sites.
+Additionally, due to their decreased evolutionary rates, it becomes more difficult for non-viral pathogens to be sampled across the same time scale on which they evolve---though as more high-quality samples are archived this may be increasingly possible.
+As it currently stands, it is difficult to find a measurably evolving poupulation that is neither a fast-evolving virus (such as \gls{sarscov2}), or well preserved in permafrost (such as \gls{hbv}).
+Advances in both computation, and bacterial/parasitic archival practices may result in more of these pathogens being phylodynamically analyzed in a manner similar to viruses.
 
 \subsection{Pandemic scale phylodynamics}
 The scale of genomic epidemiology has been transformed by the COVID-19 pandemic, with GISAID now hosting over 20 million \gls{sarscov2} genomes---a dataset size that would have been unimaginable just five years ago.

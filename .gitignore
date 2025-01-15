@@ -41,3 +41,4 @@ thesis.fls
 thesis.fdb_latexmk
 .ipynb_checkpoints
 .DS_Store
+chapters/preface/preface.tex

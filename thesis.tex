@@ -23,7 +23,7 @@
 
 \supervisor{Prof.~Dr.~G.~Baele}{}
 \cosupervisor{Prof.~Dr.~M.S.~Gill}{}
-\president{president}
+\president{Prof.~Dr.~K.~Van~Laethem}
 \jury{Prof.~Dr.~P.~Lemey\\
       Prof.~Dr.~J.~Matthijnssens\\
 }
@@ -74,6 +74,7 @@
 
 % for the glossary (comment out if you do not use the glossaries package)
 \usepackage{glossaries} % For list of abbreviations
+% \usepackage[automake]{glossaries-extra}
 \newcommand{\glossname}{List of Abbreviations}
 \newcommand{\myprintglossary}{%
   \renewcommand{\glossaryname}{\glossname}
@@ -110,7 +111,7 @@
 
 % Additional packages not part of the template
 \usepackage[super]{nth} % For superscript ordinal numbers
-\usepackage[square,authoryear,sort&compress]{natbib} % For more control over bibliography and in-line citation formatting
+\usepackage[square,numbers,sort&compress]{natbib} % For more control over bibliography and in-line citation formatting
 
 \usepackage{caption} % For figure caption font size control
 \usepackage{subcaption}
@@ -131,15 +132,27 @@
 \newcommand\xu{\rotatebox[origin=c]{180}{$\pi$}}
 \DeclareMathOperator*{\argmax}{argmax}
 
+\usepackage{rotating}
+\usepackage{multirow}
+\usepackage{longtable}
+
 % This bit helps draft compilation time
 % Remove from final draft or comment any time I want to see the figures included
-\newif\ifdropfigures  % At the time of definition it is false!
-\dropfigurestrue % yes, we drop figures
-% \dropfiguresfalse % LEAVE THIS COMMENTED EVEN IF THE REST IS UNCOMMENTED
-\ifdropfigures
-\renewcommand{\includegraphics}[2][]{%
-}% Ok, `\includegraphics does nothing any longer
-\fi
+% \newif\ifdropfigures  % At the time of definition it is false!
+% \dropfigurestrue % yes, we drop figures
+% % \dropfiguresfalse % LEAVE THIS COMMENTED EVEN IF THE REST IS UNCOMMENTED
+% \ifdropfigures
+% \renewcommand{\includegraphics}[2][]{%
+% }% Ok, `\includegraphics does nothing any longer
+% \fi
+
+\makeatletter
+\patchcmd{\@makechapterhead}{\vspace*{50\p@}}{\vspace*{-20\p@}}{}{}
+\patchcmd{\@makeschapterhead}{\vspace*{50\p@}}{\vspace*{-20\p@}}{}{}
+\patchcmd{\DOTI}{\vskip 80\p@}{\vskip 40\p@}{}{}
+\patchcmd{\DOTIS}{\vskip 40\p@}{\vskip 0\p@}{}{}
+\makeatother
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -147,13 +160,13 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\makefrontcoverXII
+% \makefrontcoverXII
 
 \maketitle
 
 \frontmatter % to get \pagenumbering{roman}
 
-% \includepreface{preface}
+\includepreface{preface}
 % \includeabstract{summary}
 % \includeabstractnl{abstractnl}
 
@@ -202,10 +215,10 @@
 \newglossaryentry{tmrca}{name={tMRCA},description={Time of the most recent common ancestor. Point in time inferred by phylogenetic inference at which the MRCA was hypothesized to have existed}}
 \newglossaryentry{hbsag}{name={HBsAg},description={Hepatitis B surface antigen}}
 \newglossaryentry{hky}{name={HKY},description={Hasegawa-Kishino-Yano model of nucleotide evolution. Markov model of nucleotide evolution in which the rate of transitions ($A \iff G$ or $C \iff T$) share one rate and transversions ($A \iff C/T$ or $G \iff C/T$) share another. The transition/transversion ratio can be described by a single parameter, kappa ($\kappa$)}}
-\newglossaryentry{hpd}{name={HPD},description={Highest posterior density (interval)}}
-\newglossaryentry{orf}{name={ORF},description={Open reading frame. PUT IN MORE DETAILS}}
-\newglossaryentry{hiv}{name={HIV},description={Human immunodeficiency virus. Ont of two species of retroviruses that are the causative agent of acquired immunodeficiency syndrome (AIDS). Responsible for the HIV/AIDS pandemic that started in the 1980s.}}
-\newglossaryentry{hcv}{name={HCV},description={Hepatitis C virus.}}
+\newglossaryentry{hpd}{name={HPD},description={Highest posterior density (interval). The smallest interval that encompases a given percent of posterior density that is used to express the range of estimated uncertainty}}
+\newglossaryentry{orf}{name={ORF},description={Open reading frame. Area of a genome between start and stop codons in which may be transcribed and translated}}
+\newglossaryentry{hiv}{name={HIV},description={Human immunodeficiency virus. Ont of two species of retroviruses that are the causative agent of acquired immunodeficiency syndrome (AIDS). Responsible for the HIV/AIDS pandemic}}
+\newglossaryentry{hcv}{name={HCV},description={Hepatitis C virus}}
 \newglossaryentry{hcc}{name={HCC},description={Hepatocellular carcinoma. A form of liver cancer affecting hepatocyte cells; often caused by chronic infection by hepatitis B virus}}
 \newglossaryentry{msa}{name={MSA},description={Multiple sequence alignment. Set of nucleotide sequences in FASTA format that have had their constituent nucleotides shifted according to an alignment algorithm (as implemented in software such as MAFFT or nextalign) so that the sequences are in frame with one another and can be compared at each site. Often constructed in relation to a given reference genome. The alignment is the primary input into phylogenetic reconstruction software used in this thesis}}
 \newglossaryentry{snp}{name={SNP},description={Single nucleotide polymorphism. An observed difference in a given genome at a single site (as in a multiple sequence alignment). Typically the result of mutation}}
@@ -216,7 +229,6 @@
 \newglossaryentry{pcr}{name={PCR},description={Polymerase chain reaction. A method used for the amplification of genetic material so that it may be used for both diagnostics (i.e PCR testing for COVID-19), or for whole genome sequencing}}
 
 % \includechapter{manual} % Remove this chapter
-
 % Insert here your own chapters
 % Chapters are expected to be in a tex-file with the given name dot
 % tex and in a directory with the given name in the chapters
@@ -226,7 +238,6 @@
 \includechapter{chapter2}
 \includechapter{chapter3}
 \includechapter{discussion}
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -245,7 +256,7 @@
 
 \includebibliography
 % BibTex
-\bibliographystyle{plainnat}
+\bibliographystyle{unsrtnat}
 \bibliography{allpapers}
 % BibLatex (comment lines above and comment out biblatex lines in preamble)
 %\printbibliography[title=\bibname]

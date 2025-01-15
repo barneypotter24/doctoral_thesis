@@ -1,8 +1,8 @@
 % !TeX root = ../../thesis.tex
 \chapter{Real-time genomic epidemiology of SARS-CoV-2 in Belgium}\label{ch:chapter1}
 
-\begin{minipage}[b]{0.57\textwidth}
-    \includegraphics[width=\textwidth]{title2} % Note: image needs to be cropped and faded
+\begin{minipage}[b]{0.6\textwidth}
+    \includegraphics[height=11cm]{title2} % Note: image needs to be cropped and faded
     % https://phil.cdc.gov/Details.aspx?pid=23591
   \end{minipage}
   \hfill
@@ -20,23 +20,41 @@ Tolkien, The Lord of the Rings
 
 \onehalfspacing
 
-\section{Necessities of an ongoing pandemic}
-The onset of the COVID-19 pandemic in early 2020 resulted in unprecedented disruption to global public health, economic activity, and daily life worldwide---Belgium was no exception (Fig.~\ref{fig:beCaseCountsRegion}).
-The Belgian response to \gls{sarscov2} required rapid development and mobilization of public health infrastructure, including the establishment of nationwide genomic surveillance network.
+\singlespacing
+\hrule
+\vspace*{12pt}
+The chapter that follows takes a nonstandard format, as it respresents an amalgamation of work that was done as part of the Belgian genomic surveillance effort in resonse to the SARS-CoV-2 epidemic in the country, as well as contributions to many published research papers. The chapter thus takes the following format:
+
+Section~\ref{sec:mm-intro} introduces the necessities brought on by the Belgian SARS-CoV-2 epidemic. This includes a characterization of how the epidemic progressed within the country, and what the public-health requirements brought on by the epidemic were.
+
+Section~\ref{sec:nextstrainBE} serves as a general Materials \& Methods section for this work. It describes the tools that I developed and the processes I used in order to perform the analyses presented later in the chapter.
+
+Section~\ref{sec:sitRep} contains excerpts from three of the 102 genomic surveillance situation reports that were generated during the Belgian SARS-CoV-2 epidemic. These reports were sent to the Consultative Committee (an advisory counsil of experts who informed policy makers on how to proceed with intervention strategies) on a semi-weekly basis.
+
+Finally, Section~\ref{sec:twoYears} includes a full published manuscript that describes many of the peer-reviewed papers that resulted from the genomic surveillance efforts in Belgium. Not only was I a contributor to this paper, but it also describes many of the publications that I contributed to using the pipelines that I developed (which are described in Section~\ref{sec:nextstrainBE}).
+
+\vspace*{12pt}
+\hrule
+\onehalfspacing
+
+
+\section{Necessities of an ongoing pandemic}\label{sec:mm-intro}
+The onset of the COVID-19 pandemic in early 2020 resulted in significant disruption to global public health, economic activity, and daily life worldwide---Belgium was no exception, experiencing repeated ``waves'' of COVID-19 cases between the start of the pandemic and 2023 (Fig.~\ref{fig:beCaseCountsRegion}).
+The Belgian response to \gls{sarscov2} required rapid development and mobilization of public health infrastructure, including the establishment of a nationwide genomic surveillance network.
 This surveillance system would ultimately process tens of thousands of viral genomes, generating an unprecedented volume of sequence data that needed to be analyzed and interpreted in near real-time to inform public health decision-making.
 
 % Belgian Case Counts
 \begin{figure}[ht]
   \centering
   \includegraphics[width=.9\textwidth]{be_cases_region}
-  \caption[COVID-19 cases in Belgium by province]{Number of weekly confirmed \gls{sarscov2} cases in Belgium between the beginning of the pandemic and October 2022. Bars are colored by province. \textit{(Data: Sciensano)}}
+  \caption[COVID-19 cases in Belgium by province]{Number of weekly confirmed \gls{sarscov2} cases in Belgium between the beginning of the pandemic and October 2022. Bars are colored by region. \textit{(Data: Sciensano)}}
   \label{fig:beCaseCountsRegion}
 \end{figure}
 
 Perhaps the most significant challenge was in maintaining the quality of analyses while operating under intense time pressure.
-The rapid evolution of \gls{sarscov2}, emergence of new \gls{voc} lineages (Fig.~\ref{fig:beVoc}), and changing public-health intervention landscape meant that analytical methods needed to be both robust and adaptable.
+The rapid evolution of the \gls{sarscov2} epidemic, emergence of new \gls{voc} lineages (Fig.~\ref{fig:beVoc}), and changing public-health intervention landscape meant that analytical methods needed to be both robust and adaptable.
 This required constant refinement of bioinformatic pipelines, regular updates to reference datasets, and ongoing communication with international partners to ensure that Belgian surveillance efforts remained aligned with global standards.
-The system needed to be sufficiently flexible to incorporate new types of data and analysis methods as our encoding viral metadata shifted, and needed to be adapted frequently as the number of available genomes rapidly outscaled any previously established analysis methodologies.
+The system needed to be sufficiently flexible to incorporate new types of data and analysis methods as our encoding of viral metadata shifted, and it needed to be adapted frequently as the number of available genomes outscaled any previously established analysis methodologies.
 
 \begin{figure}[ht]
   \centering
@@ -67,7 +85,7 @@ All genomes that were analyzed as part of the real-time phylodynamic analysis in
 Typically, datasets were constructed in a two-step process: assembling a background dataset, and adding target sequences.
 Background dataset construction would usually happen once per lineage of interest (\gls{voc} or \gls{voi})---a preexisting canonical Nextstrain build would be identified for a novel lineage of interest, and its sequence identifiers would be downloaded.
 We operated under the assumption that canonical builds would contain a representative sampling across space and time of high-quality sequences with which other genomes could be placed.
-On occasion, a canonical dataset would be supplemented with sequences the more thoroughly covered a geographic region or span of time---this was particularly important when the specific sources of importations to Belgium were of public-health concern.
+On occasion, a canonical dataset would be supplemented with sequences which more thoroughly covered a geographic region or span of time---this was particularly important when the specific sources of importations to Belgium were of public-health concern.
 Background datasets were fixed for each variant and real-time updates were made only to the target sequences, as described below.
 
 Once background datasets were assembled, specific sets of target sequences were added, depending on the most pressing concerns.
@@ -102,12 +120,12 @@ This pipeline needed to be updated nearly constantly as new sequences were conti
 In addition to the pre-processing pipeline for metadata, we made several modifications to the original fork of the Nextstrain \verb|ncov| pipeline (Fig.~\ref{fig:beNxt}).
 These modifications allowed us to overwrite the default multiple sequence alignment tools, which for many months represented the single biggest computational hurdle that slowed down analyses.
 One of the major modifications that streamlined analysis took place when the multiple-sequence alignment tool \verb|nextalign| \citep{aksamentov2021nextclade} was released in 2021.
-By adding this alignment tool---which was purpose-designed during the pandemic---instead of the previously used MAFFT \citep{katoh2013mafft}---and a simultaneous change to multiple sequence \textit{after} subsampling we were able to reduce total analysis time to less than a day, typically allowing us to have a total processing time of roughly two days between the time new sequences were deposited in GISAID, and the time that a new build was available to the public (for example Fig.~\ref{fig:firstBeBuild}).
+By adding this alignment tool---which was purpose-designed during the pandemic---instead of the previously used MAFFT \citep{katoh2013mafft}---and a simultaneous change to multiple sequence alignment \textit{after} subsampling we were able to reduce total analysis time to less than a day, typically allowing us to have a total processing time of roughly two days between the time new sequences were deposited in GISAID, and the time that a new build was available to the public (for example Fig.~\ref{fig:firstBeBuild}).
 
 \begin{figure}[ht]
   \centering
   \includegraphics[width=.75\textwidth]{nextstrain_process}
-  \caption[Modified Nextstrain pipeline]{Schematic of our modified fork of the Nextstrain pipeline used for real-time genomic epidemiology in Belgium. Steps included in the default Nextstrain \verb|ncov| pipeline (including the tree-building step that we overwrote) are boxed.}
+  \caption[Modified Nextstrain pipeline]{Schematic of our modified fork of the Nextstrain pipeline used for real-time genomic epidemiology in Belgium. Steps included in the default Nextstrain \textit{ncov} pipeline (including the tree-building step that we overwrote) are boxed.}
   \label{fig:beNxt}
 \end{figure}
 
@@ -137,6 +155,8 @@ The first report we ever released is included, as it coincided with the emergenc
 The second report presented in this thesis came from a time when all three of the original \gls{voc}s were circulating, representing one of the periods where we reported ``baseline'' genomic surveillance to the Consultative Committee.
 Finally, a report highlighting an emergent \gls{voc} (Delta) in the middle of its rise to fixation from the summer of 2021 is presented.
 These three reports represent a small sampling of how real-time phylodynamic inferences were generated and reported to public health officials in Belgium during the first year of the pandemic.
+
+While the reports retain their original text, in some places I've added a small amount of clarifying commentary in square brackets.
 \vspace*{12pt}
 \hrule
 \onehalfspacing
@@ -147,7 +167,7 @@ Genomic surveillance has scaled-up as decided on \nth{29} of December 2020, with
 The trend in ``S dropouts'' among \gls{pcr} results obtained in the Federal Platform laboratories are consistent with a recent phenomenon steadily increasing over the recent days.
 
 \subsubsection{International context}
-Since the end of the year, 3 variants of concern (\gls{voc}s) have arisen independently of one another in the United Kingdom (501Y.V1), South Africa (501Y.V2) and Brazil (501Y.V3).
+Since the end of the year, 3 variants of concern (\gls{voc}s) have arisen independently of one another in the United Kingdom (501Y.V1), South Africa (501Y.V2) and Brazil (501Y.V3) [Fig.~\ref{fig:sitRepFirstVOC}].
 These variants harbour a number of mutations and deletions associated with higher infectiousness and immune escape.
 All 3 variants are spreading internationally, with 501Y.V1 and 501Y.V2 having been detected in Belgium.
 
@@ -161,7 +181,7 @@ All 3 variants are spreading internationally, with 501Y.V1 and 501Y.V2 having be
 \begin{figure}[ht]
   \centering
   \includegraphics[width=.8\textwidth]{sitRepCoverage}
-  \caption[Coverage by province of available sequences]{Coverage by province of available sequences.}
+  \caption[Coverage by province of available sequences]{Coverage by province of available sequences. [Colors indicate provinces, and size of dots represent number of sequences.]}
   \label{fig:sitRepCoverage}
 \end{figure}
 
@@ -185,10 +205,9 @@ Although most of the \gls{voc} genomes are not yet included in the analysis here
 \end{figure}
 
 \subsubsection{Active surveillance through ``S dropouts''}
+[In this section, S-dropout refers to the characteristic S69/70 deletion that took place in B.1.1.7 (Alpha), which resulted in a failure to properly amplify samples of that lineage.]
 As shown below, the H69- deletion in the S gene, which generates the ``S dropout'' profile in the \gls{pcr} used by the Belgian Federal Platform Bis laboratories, is not only present in the 501Y.V1, but also in non-\gls{voc} strains circulating in Belgium since several months.
 This is the reason why this signal cannot be considered as specific for \gls{voc}s, nor highly sensitive, considering that 501Y.V2 and 501Y.V3 do not present this deletion.
-
-Another element that needs to be considered is that among Platform Bis laboratories, a variable proportion of ``S dropouts'' also show a weak Orf signal (\textit{table not shown}), what has not been typically described with the 501Y.V1.
 
 \vdots
 
@@ -228,7 +247,7 @@ During weeks 5,6 and 7, 728 samples have been sequenced as part of the baseline 
 \begin{figure}[ht]
   \centering
   \includegraphics[width=.8\textwidth]{sitRepBaseline}
-  \caption[Baseline surveillance VOC phylogeny]{Nextstrain build of currently available sequences from Belgium. \gls{voc}s are highlighted in dark orange (20I/501Y.V1), light orange (20H/501Y.V2) and red (20J/501Y.V3). Warning: this phylogeny tree is not representative is biased due to including all sequenced \gls{voc}s.}
+  \caption[Baseline surveillance VOC phylogeny]{Nextstrain build of currently available sequences from Belgium. \gls{voc}s are highlighted in dark orange (20I/501Y.V1), light orange (20H/501Y.V2) and red (20J/501Y.V3). Warning: this phylogeny tree [\textit{sic}] is not representative is biased [\textit{sic}]due to including all sequenced \gls{voc}s.}
   \label{fig:sitRepBaseline}
 \end{figure}
 
@@ -240,20 +259,20 @@ This suggests that the cluster is actually much wider than the one described her
 \begin{figure}[ht]
   \centering
   \includegraphics[width=.8\textwidth]{sitRepGamma}
-  \caption[20J/501Y.V3 monitoring]{Currently, it the 8 20J/501Y.V3 strains detected in Belgium seem to be clustered when comparing with other strains detected internationally, in particular in Europe. Nevertheless, the information collected by health inspectors to date do not allow to find a clear link between all these patients. This suggests that the cluster is actually much wider than the one described hereunder and that backward contact tracing must be pursued and intensified in order to contain this emerging chain of transmission.}
+  \caption[20J/501Y.V3 monitoring]{Currently, it [\textit{sic}] the 8 20J/501Y.V3 strains detected in Belgium seem to be clustered when comparing with other strains detected internationally, in particular in Europe. Nevertheless, the information collected by health inspectors to date do not allow to find a clear link between all these patients. This suggests that the cluster is actually much wider than the one described hereunder and that backward contact tracing must be pursued and intensified in order to contain this emerging chain of transmission.}
   \label{fig:sitRepGamma}
 \end{figure}
 
 \subsubsection{Variant of interest B1.525}
 This variant of interest was first described mid-December in England (England/CAMC-C769B3/2020) and has since then been described in 11 countries: England (28), Nigeria (7), USA (7), France (5), Canada (4), Ghana (4), Japan (4), Jordan (2), \textbf{Belgium (1)}, Italy (1) and Spain (1).
 
-This variant is characterised by mutations: S:E484K, S:Q677H, S:F888L, S:69-70 deletion, and S:144 deletion, and a 9 nucleotide mutation in nsp6 (as seen in B.1.1.7, B.1.351, P.1). (\url{https://github.com/cov-lineages/pango-designation/issues/4}).
+This variant is characterised by mutations: S:E484K, S:Q677H, S:F888L, S:69-70 deletion, and S:144 deletion, and a 9 nucleotide mutation [\textit{sic}] in nsp6 (as seen in B.1.1.7, B.1.351, P.1). (\url{https://github.com/cov-lineages/pango-designation/issues/4}).
 
 \subsubsection{Variant of interest with Spike Insertion (VOI-SI)}
 A key feature of the recently identified \gls{voc}s is a suite of single base pair mutations that generate amino acid changes at key points within the spike protein.
 In addition to these single base pair changes, a number of sometimes overlapping short deletions have been observed in the different \gls{voc}s \citep{garry2021spike}, both within spike and other viral genes \citep{pango4}.
 
-The lineage B.1.1.7 (20I/501Y.V1), which arose in the United Kingdom in late 2020 \citep{rambaut2020preliminary} and the recently described B.1.525 lineage \citep{pango4}, carry deletions in spike affecting amino acid positions 69-70 & 144, while the B.1.351 lineage (20H/501Y.V2), originally identified in South Africa \citep{Tegally2020} carries a deletion of three amino acids (positions 242 to 244) in spike.
+The lineage B.1.1.7 (20I/501Y.V1), which arose in the United Kingdom in late 2020 \citep{rambaut2020preliminary} and the recently described B.1.525 lineage \citep{pango4}, carry deletions in spike affecting amino acid positions 69-70 \& 144, while the B.1.351 lineage (20H/501Y.V2), originally identified in South Africa \citep{Tegally2020} carries a deletion of three amino acids (positions 242 to 244) in spike.
 In contrast, the P.1 lineage (20J/501Y.V3) \citep{faria2021genomic} does not carry any deletions in the spike protein, however, all four carry a three amino acid deletion in the nsp6 protein.
 
 In contrast to spike deletions, the frequency of insertions in the SARS-CoV-2 spike gene appears rare. \citet{garry2021spike} examined ~350,000 SARS-CoV-2 sequences from the GISAID database, identifying only two examples with insertions at amino acid R214.
@@ -277,8 +296,8 @@ A Nextrain [\textit{sic}] build using the available \gls{voi}-SI shows them to c
 
 In addition to the insertion in spike the lineage also carries a number of other amino acid changes in spike (Q414K, N450K, D614G, T716I) as well as a 30bp deletion in ORF3a (I20-, K21-, D22-, A23-, T24-, P25-, S26-, D27-, F28-, V29-).
 This lineage does not have the N501Y or E484K, changes found in the majority of \gls{voc}s, although the T716I amino acid change is also found in the B.1.1.7 lineage.
-One of the main reasons for concern regarding the B.1.351, P.1 and B.1.525 lineages is the presence of E484K which has been shown to impact antibody binding \citep{Greaney2021}.
-The same work highlighted that mutation in the 443--450 loop region can have a large impact on antibody binding \citep{Greaney2021}, which makes the N450K change observed in the \gls{voi}-SI concerning.
+One of the main reasons for concern regarding the B.1.351, P.1 and B.1.525 lineages is the presence of E484K which has been shown to impact antibody binding \citep{greaney2021comprehensive}.
+The same work highlighted that mutation [\textit{sic}] in the 443--450 loop region can have a large impact on antibody binding \citep{greaney2021comprehensive}, which makes the N450K change observed in the \gls{voi}-SI concerning.
 
 \begin{figure}[ht]
   \centering
@@ -346,7 +365,7 @@ Between 14/6/2021 and 27/6/2021 (486 genomes available to date):
   \label{fig:deltaIntro}
 \end{figure}
 
-\begin{figure}[ht]
+\begin{figure}[!ht]
   \centering
   \includegraphics[width=.8\textwidth]{deltaDist}
   \caption[Distribution of Belgian B.1.617.2 sequences]{B.1.617.2 is present in all Belgian provinces but mostly in and around major cities.}
@@ -358,26 +377,27 @@ Two large clades of B.1.617.2 can be seen in Figure~\ref{fig:deltaIntro}. In Fig
 Whereas Figure~\ref{fig:delta1}, showing less than half of the Belgian B.1.617.2 genomes (the upper blue part in Figure~\ref{fig:deltaIntro}), indicates the importance of our connection to/with the United Kingdom, Figures~\ref{fig:delta2}~and~\ref{fig:delta3} (showing the majority of Belgian infections; the lower blue part in Figure~\ref{fig:deltaIntro}) paint a somewhat different picture.
 While some infections and local transmission clusters in Belgium can still be linked to the United Kingdom (see Figure~\ref{fig:delta2}), Figure~\ref{fig:delta3} shows the impact of Asian countries (India, Singapore, ...) on the increase of B.1.617.2 infections in Belgium.
 
-\begin{figure}[ht]
+\begin{figure}[!ht]
   \centering
   \includegraphics[width=.8\textwidth]{delta1}
   \caption[B.1.617.2 clade 1]{Top clade in Figure~\ref{fig:deltaIntro} analysed in more detail (orange: United Kingdom; green: Belgium). The largest (transmission) cluster of infections is nested within an otherwise entirely UK clade, suggesting the role of the UK in seeding a proportion of B.1.617.2 introductions into Belgium, in a similar manner as to what was observed at the time of B.1.1.7. Single-case introductions and smaller transmission clusters in Belgium can be seen to have both a UK and a non-UK origin.}
   \label{fig:delta1}
 \end{figure}
 
-\begin{figure}[ht]
+\begin{figure}[!ht]
   \centering
   \includegraphics[width=.8\textwidth]{delta2}
   \caption[B.1.617.2 clade 2]{Bottom clade in Figure~\ref{fig:deltaIntro} analysed in more detail (orange: United Kingdom; green: Belgium), showing---to a lesser extent as in Figure~\ref{fig:delta1}---the importance of the situation in the UK for Belgium.}
   \label{fig:delta2}
 \end{figure}
 
-\begin{figure}[ht]
+\begin{figure}[!ht]
   \centering
   \includegraphics[width=.8\textwidth]{delta3}
   \caption[B.1.617.2 alternate coloring]{Alternative representation of Figure~\ref{fig:delta2} to assess the relationship between Asian countries and Belgium, showing the importance of introductions from those countries into Belgium.}
   \label{fig:delta3}
 \end{figure}
+
 
 \section{Two years of genomic surveillance in review}\label{sec:twoYears}
 
@@ -392,7 +412,7 @@ The efforts made by the entirety of the COVID-19 Genomics Belgium consortium\foo
 This included front-line clinicians, wet lab scientists, modelers, data scientists, and numerous researchers willing to put themselves on in the path of not only the virus itself, but also into the public and political spotlight.
 The publication that follows represents a collaborative, \textit{post hoc} review of just a fraction of the total effort that was put forth by so many people to combat the pandemic.
 
-In addition to the public-facing Nextstrain instance mentioned in Section~\ref{sec:nextstrainBE}, and genomic surveillance reports mentioned in Section~\ref{sec:sitRep}, which are in part summarized below, I performed sampling and preliminary ML analysis for several of the published research articles mentioned herein.
+I performed sampling and preliminary ML analysis for several of the published research articles reviewed within this paper. Additionally, I performed phylogentic and variant analyses described in the paper and I characterized the temporal and spatial distribution of lineages. This paper has been selected for this thesis as it represents an overview of the breadth of research I contributed to during the COVID-19 pandemic.
 \vspace*{12pt}
 \hrule
 \onehalfspacing
